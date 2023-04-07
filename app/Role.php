@@ -17,7 +17,7 @@ class Role extends Model
 
 
     /**
-     * RELAZIONE ONE TO MANY TO USERS
+     * RELAZIONE ONE TO MANY CON USERS
      */
     public function users()
     {

@@ -43,7 +43,7 @@ class User extends Authenticatable
 
 
     /**
-     * RELAZIONE ONE TO MANY INVERSE TO ROLE
+     * RELAZIONE ONE TO MANY INVERSE CON ROLE
      */
     public function role()
     {
