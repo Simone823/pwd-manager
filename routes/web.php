@@ -13,10 +13,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+
+// Rotte autenticazione
+Auth::routes(["register" => false]);
+
+// Rotte gruppo middleware auth
+Route::middleware('auth')->group(function () {
+    // Rotta default /
+    Route::get('/', 'HomeController@index')->name('home');
 });
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
