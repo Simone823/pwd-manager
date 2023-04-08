@@ -15,7 +15,7 @@
                 {{-- row crea ruolo --}}
                 <div class="row mb-4">
                     <div class="create-link">
-                        <a class="btn btn-transparent fw-semibold shadow" href="{{route('roles.create')}}" alt="Crea Ruolo">
+                        <a class="btn btn-transparent fw-semibold shadow" href="{{route('roles.create')}}">
                             <i class="fa-solid fa-plus"></i>
                             Crea
                         </a>
