@@ -58,6 +58,14 @@ img {
 
 // table
 table {
+    thead {
+        tr {
+            th {
+                color: $violet;
+            }
+        }
+    }
+
     tr{
         th,
         td {
