@@ -1,0 +1,56 @@
+// TEXT
+.text-violet {
+    color: $violet !important;
+}
+
+.text-light-gray {
+    color: $light-gray !important;
+}
+
+
+// LINKS
+.link-violet {
+    color: $light-gray;
+
+    &:hover {
+        color: $violet;
+        transition: color .3 ease-in-out;
+    }
+
+    &.active {
+        color: $violet !important;
+    }
+}
+
+.link-light-gray {
+    color: $light-gray;
+    text-decoration: none;
+
+    &:hover {
+        color: $violet;
+        transition: color .3 ease-in-out;
+    }
+}
+
+
+// INPUTS
+.input-violet {
+    color: $light-gray !important;
+    border: none !important;
+}
+
+
+// BUTTONS
+.btn-violet,
+.btn-violet.show {
+    color: $black;
+    background-color: $violet;
+
+    &:hover,
+    &:active,
+    &:focus-visible,
+    &:focus {
+        background-color: rgba($color: $violet, $alpha: 0.8) !important;
+        transition: background-color .3s ease-in-out;
+    }
+}
