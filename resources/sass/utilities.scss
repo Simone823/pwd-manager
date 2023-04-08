@@ -53,4 +53,8 @@
         background-color: rgba($color: $violet, $alpha: 0.8) !important;
         transition: background-color .3s ease-in-out;
     }
+
+    &:disabled {
+        background-color: rgba($color: $violet, $alpha: 0.3) !important;
+    }
 }
