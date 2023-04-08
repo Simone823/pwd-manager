@@ -6,3 +6,67 @@
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
+
+// Utilities
+@import './utilities.scss';
+
+// Auth
+@import './auth/login.scss';
+@import './auth/passwords/email.scss';
+
+// Components
+@import './components/loader.scss';
+@import './components/navbar.scss';
+
+
+// scrollbar
+::-webkit-scrollbar {
+    width: 6px;
+    background-color: var(--bs-dark);
+}
+
+::-webkit-scrollbar-thumb {
+    width: 6px;
+    background-color: $violet;
+    border-radius: 3px;
+}
+
+
+// set height
+html {
+    height: 100vh;
+    min-height: 100vh;
+}
+
+body,
+#app,
+main {
+    height: 100%;
+}
+
+main {
+    padding-top: 75px;
+    padding-bottom: 50px;
+}
+
+// reset
+img {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+// table
+table {
+    tr{
+        th,
+        td {
+            white-space: nowrap !important;
+        }
+    }
+}
+
+// section
+section {
+    padding-bottom: 70px;
+}
