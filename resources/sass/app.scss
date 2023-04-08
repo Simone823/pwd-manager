@@ -78,3 +78,27 @@ table {
 section {
     padding-bottom: 70px;
 }
+
+// page link
+.page-link {
+    color: $light-gray;
+    border-color: $violet;
+
+    &:hover {
+        background-color: $violet;
+        color: $black !important;
+        border-color: $violet !important;
+    }
+}
+
+.page-link.active, .active > .page-link {
+    background-color: $violet;
+    color: $black;
+    border-color: $black;
+}
+
+.page-link.disabled, .disabled > .page-link {
+    color: $violet;
+    background-color: $black;
+    border-color: $violet;
+}
