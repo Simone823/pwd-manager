@@ -9,7 +9,10 @@
 
                 {{-- row title --}}
                 <div class="row mb-4">
-                    <h2 class="mb-0 text-violet fs-4 fw-bold">Lista Ruoli</h2>
+                    <h2 class="mb-0 text-violet fs-4 fw-bold">
+                        <i class="fa-solid fa-list"></i>
+                        Lista Ruoli
+                    </h2>
                 </div>
 
                 {{-- row crea ruolo --}}
