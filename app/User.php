@@ -49,4 +49,35 @@ class User extends Authenticatable
     {
         return $this->belongsTo('App\Role');
     }
+
+
+    /**
+     * CONTROLLA SE L'UTENTE HA IL RUOLO
+     * @param string
+     * @return boolean
+     */
+    public function hasRole(string $roleName): bool
+    {
+        // first letter upper
+        $roleName = ucfirst($roleName);
+        
+        // recupero il ruolo dal db by roleName
+        $role = Role::where('name', $roleName)->first();
+
+        // controllo il ruolo dell'utente
+        if($this->role_id == $role->id) {
+            return true;
+        }
+
+        return false;
+    }
+
+    /**
+     * CONTROLLA SE L'UTENTE è ADMIN
+     * @return boolean
+     */
+    public function isAdmin(): bool
+    {
+        return $this->hasRole('admin');
+    }
 }
