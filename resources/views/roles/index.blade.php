@@ -8,8 +8,18 @@
             <div class="card bg-dark py-4 px-3 shadow">
 
                 {{-- row title --}}
-                <div class="row mb-5">
+                <div class="row mb-4">
                     <h2 class="mb-0 text-violet fs-4 fw-bold">Lista Ruoli</h2>
+                </div>
+
+                {{-- row crea ruolo --}}
+                <div class="row mb-4">
+                    <div class="create-link">
+                        <a class="btn btn-transparent fw-semibold shadow" href="{{route('roles.create')}}" alt="Crea Ruolo">
+                            <i class="fa-solid fa-plus"></i>
+                            Crea
+                        </a>
+                    </div>
                 </div>
 
                 {{-- row table roles --}}
