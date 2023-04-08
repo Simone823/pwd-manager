@@ -98,5 +98,7 @@ class PermissionController extends Controller
 
         // cancello il permesso
         $permission->delete();
+
+        return redirect()->route('permissions.index')->with('success', "Il Permesso con nome: {$permission->name} è stato eliminato");
     }
 }
