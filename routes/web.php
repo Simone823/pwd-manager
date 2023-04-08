@@ -21,4 +21,10 @@ Auth::routes(["register" => false]);
 Route::middleware('auth')->group(function () {
     // Rotta default /
     Route::get('/', 'HomeController@index')->name('home');
+
+    // Rotte middleware role admin
+    Route::middleware('hasRole:admin')->group(function () {
+        // Rotte permissions
+        Route::resource('/permissions', 'PermissionController');
+    });
 });
