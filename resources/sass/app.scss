@@ -107,6 +107,9 @@ section {
 // input checkbox
 .form-check-input {
     border-color: $violet;
+    width: 16px;
+    height: 16px;
+    margin-right: 10px;
 
     &:focus {
         border-color: $violet;
