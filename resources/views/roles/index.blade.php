@@ -40,18 +40,16 @@
                                     <tr>
                                         <th>
                                             {{-- btn delete --}}
-                                            @if ($role->name != 'Admin')
-                                                <div class="btn-delete">
-                                                    <form action="{{route('roles.destroy', $role->id)}}" method="POST">
-                                                        @csrf
-                                                        @method('DELETE')
+                                            <div class="btn-delete">
+                                                <form action="{{route('roles.destroy', $role->id)}}" method="POST">
+                                                    @csrf
+                                                    @method('DELETE')
 
-                                                        <button type="submit" class="btn btn-violet shadow">
-                                                            <i class="fa-solid fa-trash"></i>
-                                                        </button>
-                                                    </form>
-                                                </div>
-                                            @endif
+                                                    <button @if($role->name == 'Admin') disabled @endif type="submit" class="btn btn-violet shadow">
+                                                        <i class="fa-solid fa-trash"></i>
+                                                    </button>
+                                                </form>
+                                            </div>
                                         </th>
                                         <th class="fw-normal">{{$role->name}}</th>
                                     </tr>
