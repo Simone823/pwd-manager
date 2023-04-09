@@ -54,7 +54,7 @@ class RoleController extends Controller
     {
         // validazione request
         $request->validate([
-            'name' => 'required|unique:roles,name|alpha',
+            'name' => 'required|unique:roles,name|alpha|min:4|max:150',
             'permissions' => 'exists:permissions,id'
         ]);
 
@@ -125,8 +125,11 @@ class RoleController extends Controller
         // recupero il ruolo by id
         $role = Role::find($id);
 
-        // cancello il ruolo
-        $role->delete();
+        if($role->name == 'Admin') {
+            return redirect()->route('roles.index')->with('error', "Non puoi eliminare il Ruolo {$role->name} !");
+        } else {
+            $role->delete();
+        }
 
         return redirect()->route('roles.index')->with('success', "Il Ruolo con nome: {$role->name} è stato eliminato");
     }
