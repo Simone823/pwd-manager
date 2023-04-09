@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Permission;
 use App\Role;
 use Illuminate\Http\Request;
 
@@ -37,7 +38,10 @@ class RoleController extends Controller
      */
     public function create()
     {
-        //
+        // recupero i permessi dal db ordinati per nome asc
+        $permissions = Permission::orderBy('name', 'asc')->get();
+
+        return view('roles.create', compact('permissions'));
     }
 
     /**
@@ -48,7 +52,32 @@ class RoleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // validazione request
+        $request->validate([
+            'name' => 'required|unique:roles,name|alpha',
+            'permissions' => 'exists:permissions,id'
+        ]);
+
+        // request data
+        $data = $request->all();
+
+        // creo un nuovo ruolo
+        $newRole = new Role();
+
+        // setto i valori
+        $newRole->name = ucfirst($data['name']);
+
+        // save
+        $newRole->save();
+
+        // controllo se esiste la key permessi
+        if(array_key_exists('permissions', $data)) {
+            $newRole->permissions()->attach($data['permissions']);
+        } else {
+            $newRole->permissions()->attach([]);
+        }
+
+        return redirect()->route('roles.index')->with('success', "Il Ruolo con nome {$newRole->name} è stato creato");
     }
 
     /**

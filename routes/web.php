@@ -25,6 +25,9 @@ Route::middleware('auth')->group(function () {
     // Rotte middleware role admin
     Route::middleware('hasRole:admin')->group(function () {
         // Rotte permissions
-        Route::resource('/permissions', 'PermissionController');
+        Route::resource('/permissions', 'PermissionController')->only(['index', 'destroy']);
+
+        // Rotte roles
+        Route::resource('/roles', 'RoleController');
     });
 });
