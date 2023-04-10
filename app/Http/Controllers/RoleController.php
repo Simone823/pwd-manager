@@ -99,7 +99,18 @@ class RoleController extends Controller
      */
     public function edit($id)
     {
-        //
+        // recupero il ruolo by id
+        $role = Role::find($id);
+
+        // recupero tutti i permessi
+        $permissions = Permission::orderBy('name', 'asc')->get();
+
+        // controllo se il nome del ruolo è Admin
+        if($role->name == 'Admin') {
+            return redirect()->route('roles.index')->with('error', "Non puoi modificare il Ruolo {$role->name}");
+        }
+
+        return view('roles.edit', compact('role', 'permissions'));
     }
 
     /**
@@ -111,7 +122,32 @@ class RoleController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // validazione request
+        $request->validate([
+            'name' => 'required|alpha|min:4|max:150',
+            'permissions' => 'exists:permissions,id'
+        ]);
+
+        // request data
+        $data = $request->all();
+
+        // recupero il ruolo by id
+        $role = Role::find($id);
+
+        // setto i valori
+        $role->name = ucfirst($data['name']);
+
+        // update
+        $role->update();
+
+        // controllo se esiste la key permessi
+        if(array_key_exists('permissions', $data)) {
+            $role->permissions()->sync($data['permissions']);
+        } else {
+            $role->permissions()->sync([]);
+        }
+
+        return redirect()->route('roles.index')->with('success', "Il Ruolo {$role->name} è stato aggiornato");
     }
 
     /**
