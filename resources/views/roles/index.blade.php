@@ -38,7 +38,12 @@
                             <tbody>
                                 @foreach ($roles as $role)    
                                     <tr>
-                                        <th>
+                                        <th class="d-flex gap-2">
+                                            {{-- btn edit --}}
+                                            <a href="{{route('roles.edit', $role->id)}}" class="btn btn-violet shadow @if($role->name == 'Admin') disabled @endif">
+                                                <i class="fa-solid fa-pen"></i>
+                                            </a>
+
                                             {{-- btn delete --}}
                                             <div class="btn-delete">
                                                 <form action="{{route('roles.destroy', $role->id)}}" method="POST">
