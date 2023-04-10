@@ -60,6 +60,12 @@
         border: none;
         color: $black;
     }
+
+    &.disabled {
+        background-color: rgba($color: $violet, $alpha: 0.5) !important;
+        border: none;
+        color: $black;
+    }
 }
 
 .btn-transparent,
