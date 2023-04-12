@@ -53,7 +53,7 @@ class User extends Authenticatable
 
     /**
      * CONTROLLA SE L'UTENTE HA IL RUOLO
-     * @param string
+     * @param string $roleName
      * @return boolean
      */
     public function hasRole(string $roleName): bool
@@ -67,6 +67,29 @@ class User extends Authenticatable
         // controllo il ruolo dell'utente
         if($this->role_id == $role->id) {
             return true;
+        }
+
+        return false;
+    }
+
+    /**
+     * CONTROLLA SE L'UTENTE HA IL PERMESSO
+     * @param string $permissionName
+     * @return boolean
+     */
+    public function hasPermission(string $permissionName): bool
+    {
+        // format permissionName
+        $permissionName = strtolower($permissionName);
+
+        // recupero dal db il permesso by permissionName
+        $permissionInstance = Permission::where('name', $permissionName)->first();
+        
+        // ciclo i permessi legati al ruolo utente e controllo il permesso
+        foreach ($this->role->permissions as $permission) {
+            if($permission->name == $permissionInstance->name) {
+                return true;
+            }
         }
 
         return false;
