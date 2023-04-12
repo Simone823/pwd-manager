@@ -124,7 +124,7 @@ class RoleController extends Controller
     {
         // validazione request
         $request->validate([
-            'name' => 'required|alpha|min:4|max:150',
+            'name' => 'required|alpha|min:4|max:150|unique:roles,name,'.$id,
             'permissions' => 'exists:permissions,id'
         ]);
 
