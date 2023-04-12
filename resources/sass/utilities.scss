@@ -33,8 +33,9 @@
 }
 
 
-// INPUTS
-.input-violet {
+// INPUTS / TEXTAREA
+.input-violet,
+.text-area-violet {
     color: $light-gray !important;
     border: none !important;
 }
@@ -85,4 +86,10 @@
     &:disabled {
         opacity: 0.35;
     }
+}
+
+
+// BOX SHADOW
+.shadow-top {
+    box-shadow: 0 -0.5rem 1rem rgba(0, 0, 0, 0.20) !important;
 }
