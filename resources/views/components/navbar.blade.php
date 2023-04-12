@@ -24,10 +24,24 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link link-violet @if (Route::is('home')) active @endif" href="{{ url('/') }}" alt="Dashboard">
+                    <a class="nav-link link-violet @if (Route::is('home')) active @endif" href="{{ url('/') }}">
                         Dashboard
                     </a>
                 </li>
+                @if (Auth::user()->hasPermission('categories-view'))
+                    <li class="nav-item">
+                        <a class="nav-link link-violet @if (Route::is('categories.*')) active @endif" href="{{ route('categories.index') }}">
+                            Categorie
+                        </a>
+                    </li>
+                @endif
+                @if (Auth::user()->hasPermission('clients-view'))    
+                    <li class="nav-item">
+                        <a class="nav-link link-violet @if (Route::is('clients.*')) active @endif" href="{{ route('clients.index') }}">
+                            Clienti
+                        </a>
+                    </li>
+                @endif
             </ul>
 
             {{-- btn dropdown profile --}}
@@ -36,6 +50,17 @@
                     {{Auth::user()->username}}
                 </button>
                 <ul class="dropdown-menu dropdown-menu-dark">
+                    @if(Auth::user()->isAdmin())
+                        <li>
+                            <a class="dropdown-item @if (Route::is('permissions.*')) active @endif" href="{{route('permissions.index')}}">Permessi</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item @if (Route::is('roles.*')) active @endif" href="{{route('roles.index')}}">Ruoli</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item @if (Route::is('users.*')) active @endif" href="{{route('users.index')}}">Utenti</a>
+                        </li>
+                    @endif
                     <li><hr class="dropdown-divider"></li>
                     <li>
                         <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
