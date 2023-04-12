@@ -48,8 +48,8 @@ class UserSeeder extends Seeder
             $newUser = new User();
 
             // setto i valori
-            $newUser->name = $user['name'];
-            $newUser->username = $user['username'];
+            $newUser->name = ucfirst($user['name']);
+            $newUser->username = strtolower($user['username']);
             $newUser->email = $user['email'];
             $newUser->password = Hash::make($user['password']);
             $newUser->role_id = $user['role_id'];
