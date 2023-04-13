@@ -38,6 +38,14 @@ Route::middleware('auth')->group(function () {
     Route::put('/clients/update/{id}', 'ClientController@update')->middleware('hasPermission:clients-edit')->name('clients.update');
     Route::delete('/clients/delete/{id}', 'ClientController@destroy')->middleware('hasPermission:clients-delete')->name('clients.destroy');
 
+    // Rotte accounts
+    Route::get('/accounts/index', 'AccountController@index')->middleware('hasPermission:accounts-view')->name('accounts.index');
+    Route::get('/accounts/create', 'AccountController@create')->middleware('hasPermission:accounts-create')->name('accounts.create');
+    Route::post('/accounts/store', 'AccountController@store')->middleware('hasPermission:accounts-create')->name('accounts.store');
+    Route::get('/accounts/edit/{id}', 'AccountController@edit')->middleware('hasPermission:accounts-edit')->name('accounts.edit');
+    Route::put('/accounts/update/{id}', 'AccountController@update')->middleware('hasPermission:accounts-edit')->name('accounts.update');
+    Route::delete('/accounts/delete/{id}', 'AccountController@destroy')->middleware('hasPermission:accounts-delete')->name('accounts.destroy');
+
     // Rotte middleware role admin
     Route::middleware('hasRole:admin')->group(function () {
         // Rotte permissions
