@@ -15,4 +15,12 @@ class Category extends Model
         'name',
         'description'
     ];
+
+    /**
+     * RELAZIONE ONE TO MANY CON ACCOUNTS PASSWORD
+     */
+    public function accounts()
+    {
+        return $this->hasMany('App\AccountPassword');
+    }
 }
