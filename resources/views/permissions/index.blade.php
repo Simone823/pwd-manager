@@ -18,15 +18,14 @@
                         <table class="table table-dark table-striped shadow">
                             <thead>
                                 <tr>
-                                    <th scope="col"></th>
                                     <th scope="col">Nome</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($permissions as $permission)    
                                     <tr>
-                                        <th>
-                                            {{-- btn delete --}}
+                                        {{-- <th>
+                                            btn delete
                                             <div class="btn-delete">
                                                 <form action="{{route('permissions.destroy', $permission->id)}}" method="POST">
                                                     @csrf
@@ -38,7 +37,7 @@
                                                     </button>
                                                 </form>
                                             </div>
-                                        </th>
+                                        </th> --}}
                                         <th class="fw-normal">{{$permission->name}}</th>
                                     </tr>
                                 @endforeach
