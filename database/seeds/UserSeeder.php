@@ -24,21 +24,21 @@ class UserSeeder extends Seeder
                 'name' => 'admin',
                 "username" => 'admin',
                 'email' => 'admin@pwdmanager.test',
-                'password' => 'password',
+                'password' => 'PwdManager!!2023!!',
                 "role_id" => $roleAdmin->id
             ],
             [
                 'name' => 'manager',
                 "username" => 'manager',
                 'email' => 'manager@pwdmanager.test',
-                'password' => 'password',
+                'password' => 'PwdManager!!2023!!',
                 "role_id" => $roleManager->id
             ],
             [
                 'name' => 'simone',
                 "username" => 'simone',
                 'email' => 'simone@pwdmanager.test',
-                'password' => 'password',
+                'password' => 'PwdManager!!2023!!',
                 "role_id" => $roleUser->id
             ]
         );
