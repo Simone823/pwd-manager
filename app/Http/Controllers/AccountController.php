@@ -131,6 +131,12 @@ class AccountController extends Controller
      */
     public function destroy($id)
     {
-        //
+        // recupero l'account by id
+        $account = Account::find($id);
+
+        // delete
+        $account->delete();
+
+        return redirect()->route('accounts.index')->with('success', "L'Account con nome: {$account->name} è stato eliminato.");
     }
 }
