@@ -22,23 +22,30 @@
 
         {{-- list link menu --}}
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0 py-4 py-lg-0 gap-4">
                 <li class="nav-item">
-                    <a class="nav-link link-violet @if (Route::is('home')) active @endif" href="{{ url('/') }}">
+                    <a class="nav-link link-violet @if (Route::is('home')) active fw-bold @endif" href="{{ url('/') }}">
                         Dashboard
                     </a>
                 </li>
                 @if (Auth::user()->hasPermission('categories-view'))
                     <li class="nav-item">
-                        <a class="nav-link link-violet @if (Route::is('categories.*')) active @endif" href="{{ route('categories.index') }}">
+                        <a class="nav-link link-violet @if (Route::is('categories.*')) active fw-bold @endif" href="{{ route('categories.index') }}">
                             Categorie
                         </a>
                     </li>
                 @endif
                 @if (Auth::user()->hasPermission('clients-view'))    
                     <li class="nav-item">
-                        <a class="nav-link link-violet @if (Route::is('clients.*')) active @endif" href="{{ route('clients.index') }}">
+                        <a class="nav-link link-violet @if (Route::is('clients.*')) active fw-bold @endif" href="{{ route('clients.index') }}">
                             Clienti
+                        </a>
+                    </li>
+                @endif
+                @if (Auth::user()->hasPermission('accounts-view'))    
+                    <li class="nav-item">
+                        <a class="nav-link link-violet @if (Route::is('accounts.*')) active fw-bold @endif" href="{{ route('accounts.index') }}">
+                            Account
                         </a>
                     </li>
                 @endif
