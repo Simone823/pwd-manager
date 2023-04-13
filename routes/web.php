@@ -49,7 +49,7 @@ Route::middleware('auth')->group(function () {
     // Rotte middleware role admin
     Route::middleware('hasRole:admin')->group(function () {
         // Rotte permissions
-        Route::resource('/permissions', 'PermissionController')->only(['index', 'destroy']);
+        Route::resource('/permissions', 'PermissionController')->only(['index']);
 
         // Rotte roles
         Route::resource('/roles', 'RoleController');
