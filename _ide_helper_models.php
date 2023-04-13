@@ -12,6 +12,19 @@
 
 namespace App{
 /**
+ * App\Account
+ *
+ * @property-read \App\Category $category
+ * @property-read \App\Client $client
+ * @method static \Illuminate\Database\Eloquent\Builder|Account newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Account newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Account query()
+ */
+	class Account extends \Eloquent {}
+}
+
+namespace App{
+/**
  * App\Category
  *
  * @property int $id
