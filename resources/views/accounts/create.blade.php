@@ -68,7 +68,7 @@
 
                                 {{-- category --}}
                                 <div class="col-12 col-md-6">
-                                    <div class="form-floating">
+                                    <div class="form-floating mb-4">
                                         <select class="form-select" id="category_id" name="category_id" aria-label="category_id" required>
                                           <option selected>-- Seleziona una Categoria --</option>
                                             @foreach ($categories as $category)
