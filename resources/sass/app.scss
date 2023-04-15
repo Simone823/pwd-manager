@@ -130,4 +130,8 @@ section {
 .form-select {
     border: none;
     color: $violet;
+
+    &:disabled {
+        background-color: var(--bs-body-bg);
+    }
 }

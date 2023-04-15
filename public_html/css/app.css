@@ -14145,3 +14145,7 @@ section {
   color: #A684FF;
 }
 
+.form-select:disabled {
+  background-color: var(--bs-body-bg);
+}
+
