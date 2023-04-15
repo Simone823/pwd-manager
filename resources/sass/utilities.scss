@@ -38,6 +38,10 @@
 .text-area-violet {
     color: $light-gray !important;
     border: none !important;
+
+    &:read-only {
+        pointer-events: none;
+    }
 }
 
 
