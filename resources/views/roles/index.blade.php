@@ -39,6 +39,11 @@
                                 @foreach ($roles as $role)    
                                     <tr>
                                         <th class="d-flex gap-2">
+                                            {{-- btn show --}}
+                                            <a href="{{route('roles.show', $role->id)}}" class="btn btn-violet shadow">
+                                                <i class="fa-sharp fa-solid fa-eye"></i>
+                                            </a>
+
                                             {{-- btn edit --}}
                                             <a href="{{route('roles.edit', $role->id)}}" class="btn btn-violet shadow @if($role->name == 'Admin') disabled @endif">
                                                 <i class="fa-solid fa-pen"></i>
