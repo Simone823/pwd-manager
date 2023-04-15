@@ -1,7 +1,7 @@
 {
-    "name": "laravel/laravel",
+    "name": "pwd/manager",
     "type": "project",
-    "description": "The Laravel Framework.",
+    "description": "Password Manager",
     "keywords": [
         "framework",
         "laravel"
