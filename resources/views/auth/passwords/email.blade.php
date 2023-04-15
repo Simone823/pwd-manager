@@ -17,7 +17,7 @@
 
                 {{-- turn back login --}}
                 <div class="turn-back mb-4">
-                    <a href="{{route('login')}}">
+                    <a href="{{route('login')}}" class="btn btn-transparent fw-semibold">
                         Torna alla pagina Login
                     </a>
                 </div>
@@ -38,7 +38,10 @@
                             {{-- email --}}
                             <div class="form-floating mb-4">
                                 <input type="email" class="form-control input-violet shadow-sm @error('email') is-invalid @enderror" id="email" name="email" value="{{old('email')}}" placeholder="Indirizzo Email" required autocomplete="email">
-                                <label for="email" class="text-violet">Indirizzo Email</label>
+                                <label for="email" class="text-violet">
+                                    <i class="fa-solid fa-envelope"></i>
+                                    Indirizzo Email
+                                </label>
     
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">

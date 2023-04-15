@@ -24,7 +24,10 @@
                                 {{-- email --}}
                                 <div class="form-floating mb-3">
                                     <input type="email" class="form-control input-violet shadow-sm @error('email') is-invalid @enderror" id="email" name="email" value="{{old('email')}}" placeholder="Indirizzo Email" required autocomplete="email">
-                                    <label for="email" class="text-violet">Indirizzo Email</label>
+                                    <label for="email" class="text-violet">
+                                        <i class="fa-solid fa-envelope"></i>
+                                        Indirizzo Email
+                                    </label>
 
                                     @error('email')
                                         <span class="invalid-feedback" role="alert">
@@ -36,7 +39,10 @@
                                 {{-- password --}}
                                 <div class="form-floating mb-4">
                                     <input type="password" class="form-control input-violet shadow-sm @error('password') is-invalid @enderror" id="password" name="password" placeholder="Password" required autocomplete="current-password">
-                                    <label for="password" class="text-violet">Password</label>
+                                    <label for="password" class="text-violet">
+                                        <i class="fa-solid fa-lock"></i>
+                                        Password
+                                    </label>
 
                                     @error('password')
                                         <span class="invalid-feedback" role="alert">
