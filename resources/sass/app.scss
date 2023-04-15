@@ -109,6 +109,13 @@ section {
     border-color: $violet;
 }
 
+// drop down
+.dropdown-item.active,
+.dropdown-item:active {
+    background-color: $violet;
+    color: $black;
+}
+
 
 // input checkbox
 .form-check {

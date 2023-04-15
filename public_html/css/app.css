@@ -14131,6 +14131,12 @@ section {
   border-color: #A684FF;
 }
 
+.dropdown-item.active,
+.dropdown-item:active {
+  background-color: #A684FF;
+  color: black;
+}
+
 .form-check .form-check-input {
   border-color: #A684FF;
   width: 16px;
