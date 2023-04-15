@@ -10,7 +10,7 @@
                 {{-- row title --}}
                 <div class="row mb-4">
                     <h2 class="mb-0 text-violet fs-4 fw-bold">
-                        <i class="fa-solid fa-plus"></i>
+                        <i class="fa-solid fa-pen"></i>
                         Modifica Utente {{$user->username}}
                     </h2>
                 </div>
@@ -18,9 +18,9 @@
                 {{-- row turn back users index --}}
                 <div class="row mb-5">
                     <div class="turn-back">
-                        <a class="btn btn-transparent fw-semibold shadow" href="{{route('users.index')}}">
+                        <a class="btn btn-transparent fw-semibold shadow" href="{{request()->headers->get('referer')}}">
                             <i class="fa-solid fa-arrow-left"></i>
-                            Torna alla lista Utenti
+                            Torna indietro
                         </a>
                     </div>
                 </div>

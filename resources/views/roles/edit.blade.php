@@ -18,9 +18,9 @@
                 {{-- row turn back role index --}}
                 <div class="row mb-5">
                     <div class="turn-back">
-                        <a class="btn btn-transparent fw-semibold shadow" href="{{route('roles.index')}}">
+                        <a class="btn btn-transparent fw-semibold shadow" href="{{request()->headers->get('referer')}}">
                             <i class="fa-solid fa-arrow-left"></i>
-                            Torna alla lista Ruoli
+                            Torna indietro
                         </a>
                     </div>
                 </div>

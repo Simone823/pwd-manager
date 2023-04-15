@@ -18,9 +18,9 @@
                 {{-- row turn back categories index --}}
                 <div class="row mb-5">
                     <div class="turn-back">
-                        <a class="btn btn-transparent fw-semibold shadow" href="{{route('categories.index')}}">
+                        <a class="btn btn-transparent fw-semibold shadow" href="{{request()->headers->get('referer')}}">
                             <i class="fa-solid fa-arrow-left"></i>
-                            Torna alla lista Categorie
+                            Torna indietro
                         </a>
                     </div>
                 </div>

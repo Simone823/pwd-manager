@@ -18,9 +18,9 @@
                 {{-- row turn back clients index --}}
                 <div class="row mb-5">
                     <div class="turn-back">
-                        <a class="btn btn-transparent fw-semibold shadow" href="{{route('clients.index')}}">
+                        <a class="btn btn-transparent fw-semibold shadow" href="{{request()->headers->get('referer')}}">
                             <i class="fa-solid fa-arrow-left"></i>
-                            Torna alla lista Clienti
+                            Torna indietro
                         </a>
                     </div>
                 </div>
