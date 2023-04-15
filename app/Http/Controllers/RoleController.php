@@ -98,7 +98,16 @@ class RoleController extends Controller
      */
     public function show($id)
     {
-        //
+        // recupero il ruolo by id
+        $role = Role::find($id);
+
+        // recupero tutti i permessi 
+        $permissions = Permission::orderBy('name', 'asc')->get();
+
+        // aggiungo il log attività
+        LogActivity::addLog("Visualizza Ruolo {$role->name}");
+
+        return view('roles.show', compact('role', 'permissions'));
     }
 
     /**
