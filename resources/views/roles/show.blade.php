@@ -55,6 +55,16 @@
                                 @endforeach
                             </div>
                         </div>
+
+                        {{-- row btn modifica --}}
+                        <div class="row">
+                            <div class="col-12 d-flex justify-content-end">
+                                <a href="{{route('roles.edit', $role->id)}}" class="btn btn-violet fw-bold px-4 text-uppercase">
+                                    <i class="fa-solid fa-pen"></i>
+                                    Modifica
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
