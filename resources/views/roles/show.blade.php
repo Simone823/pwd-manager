@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', "| Visualizza {$role->name}")
+@section('title', "| Visualizza Ruolo {$role->name}")
 
 @section('content')
     <section id="roles-show" class="pt-4">
