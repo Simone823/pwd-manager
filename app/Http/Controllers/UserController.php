@@ -103,7 +103,16 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+        // recupero l'utente by id
+        $user = User::find($id);
+
+        // recupero tutti i ruoli
+        $roles = Role::orderBy('name', 'asc')->get();
+
+        // aggiungo il log attività
+        LogActivity::addLog("Visualizza Utente {$user->username}");
+
+        return view('users.show', compact('user', 'roles'));
     }
 
     /**
