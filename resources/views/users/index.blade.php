@@ -42,6 +42,11 @@
                                 @foreach ($users as $user)    
                                     <tr>
                                         <th class="d-flex gap-2">
+                                            {{-- btn show --}}
+                                            <a href="{{route('users.show', $user->id)}}" class="btn btn-violet shadow">
+                                                <i class="fa-sharp fa-solid fa-eye"></i>
+                                            </a>
+
                                             {{-- btn edit --}}
                                             <a href="{{route('users.edit', $user->id)}}" class="btn btn-violet shadow @if($user->username == 'admin') disabled @endif">
                                                 <i class="fa-solid fa-pen"></i>
