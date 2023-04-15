@@ -67,6 +67,9 @@
                         <li>
                             <a class="dropdown-item @if (Route::is('users.*')) active @endif" href="{{route('users.index')}}">Utenti</a>
                         </li>
+                        <li>
+                            <a class="dropdown-item @if (Route::is('log-activities.*')) active @endif" href="{{route('log-activities.index')}}">Log Attività</a>
+                        </li>
                     @endif
                     <li><hr class="dropdown-divider"></li>
                     <li>
