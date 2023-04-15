@@ -14042,11 +14042,13 @@ fieldset:disabled .btn {
 }
 
 ::-webkit-scrollbar {
+  height: 6px;
   width: 6px;
   background-color: var(--bs-dark);
 }
 
 ::-webkit-scrollbar-thumb {
+  height: 6px;
   width: 6px;
   background-color: #A684FF;
   border-radius: 3px;

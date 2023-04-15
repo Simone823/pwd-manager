@@ -14,11 +14,31 @@ namespace App{
 /**
  * App\Account
  *
- * @property-read \App\Category $category
- * @property-read \App\Client $client
+ * @property int $id
+ * @property string $name
+ * @property int|null $client_id
+ * @property int|null $category_id
+ * @property string|null $url
+ * @property string $username
+ * @property string $password
+ * @property string|null $description
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Category|null $category
+ * @property-read \App\Client|null $client
  * @method static \Illuminate\Database\Eloquent\Builder|Account newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Account newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Account query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Account whereCategoryId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Account whereClientId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Account whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Account whereDescription($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Account whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Account whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Account wherePassword($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Account whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Account whereUrl($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Account whereUsername($value)
  */
 	class Account extends \Eloquent {}
 }
@@ -63,6 +83,17 @@ namespace App{
  * @method static \Illuminate\Database\Eloquent\Builder|Client whereUpdatedAt($value)
  */
 	class Client extends \Eloquent {}
+}
+
+namespace App{
+/**
+ * App\LogActivity
+ *
+ * @method static \Illuminate\Database\Eloquent\Builder|LogActivity newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|LogActivity newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|LogActivity query()
+ */
+	class LogActivity extends \Eloquent {}
 }
 
 namespace App{
