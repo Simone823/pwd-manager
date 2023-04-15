@@ -82,6 +82,10 @@ section {
 }
 
 // page link
+.pagination {
+    flex-wrap: wrap;
+}
+
 .page-link {
     color: $light-gray;
     border-color: $violet;
