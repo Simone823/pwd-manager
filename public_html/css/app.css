@@ -14008,6 +14008,10 @@ fieldset:disabled .btn {
   box-shadow: 0 -0.5rem 1rem rgba(0, 0, 0, 0.2) !important;
 }
 
+.z-50 {
+  z-index: 50;
+}
+
 #auth-login .logo-large {
   max-width: 355px;
 }
@@ -14096,6 +14100,10 @@ table tr td {
 
 section {
   padding-bottom: 70px;
+}
+
+.pagination {
+  flex-wrap: wrap;
 }
 
 .page-link {
