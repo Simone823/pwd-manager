@@ -47,6 +47,9 @@ class LogActivityController extends Controller
         // delete log
         $logActivity->delete();
 
+        // aggiungo il log attività
+        LogActivity::addLog("Eliminato Log Activity {$logActivity->action}");
+
         return redirect()->route('log-activities.index')->with('success', "Il Log Attività con Azione: {$logActivity->action}, IP: {$logActivity->ip} è stato eliminato.");
     }
 }
