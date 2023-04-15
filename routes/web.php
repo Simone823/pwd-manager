@@ -56,5 +56,8 @@ Route::middleware('auth')->group(function () {
 
         // Rotte users
         Route::resource('/users', 'UserController');
+
+        // Rote log activities
+        Route::resource('/log-activities', 'LogActivityController')->only(['index', 'destroy']);
     });
 });
