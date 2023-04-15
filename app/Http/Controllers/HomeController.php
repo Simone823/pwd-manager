@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\LogActivity;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,6 +24,9 @@ class HomeController extends Controller
      */
     public function index()
     {
+        // aggiungo il log di attività
+        LogActivity::addLog('Dashboard View');
+
         return view('home');
     }
 }

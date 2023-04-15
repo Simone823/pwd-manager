@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\LogActivity;
 use App\Permission;
 use App\Role;
 use Illuminate\Http\Request;
@@ -25,6 +26,9 @@ class RoleController extends Controller
      */
     public function index()
     {
+        // aggiungo il log attività
+        LogActivity::addLog('Lista Ruoli');
+
         // get all roles orber by name asc
         $roles = Role::orderBy('name', 'asc')->paginate(10);
 
@@ -38,6 +42,9 @@ class RoleController extends Controller
      */
     public function create()
     {
+        // aggiungo il log attività
+        LogActivity::addLog('Creazione Ruolo');
+
         // recupero i permessi dal db ordinati per nome asc
         $permissions = Permission::orderBy('name', 'asc')->get();
 
@@ -77,6 +84,9 @@ class RoleController extends Controller
             $newRole->permissions()->attach([]);
         }
 
+        // aggiungo il log attività
+        LogActivity::addLog("Creato Ruolo {$newRole->name}");
+
         return redirect()->route('roles.index')->with('success', "Il Ruolo con nome {$newRole->name} è stato creato");
     }
 
@@ -107,8 +117,14 @@ class RoleController extends Controller
 
         // controllo se il nome del ruolo è Admin
         if($role->name == 'Admin') {
+            // aggiungo il log attività
+            LogActivity::addLog("Ha provato ad entrare in modifica Ruolo {$role->name}");
+
             return redirect()->route('roles.index')->with('error', "Non puoi modificare il Ruolo {$role->name}");
         }
+
+        // aggiungo il log attività
+        LogActivity::addLog("Modifica Ruolo {$role->name}");
 
         return view('roles.edit', compact('role', 'permissions'));
     }
@@ -147,6 +163,9 @@ class RoleController extends Controller
             $role->permissions()->sync([]);
         }
 
+        // aggiungo il log attività
+        LogActivity::addLog("Modificato Ruolo {$role->name}");
+
         return redirect()->route('roles.index')->with('success', "Il Ruolo {$role->name} è stato aggiornato");
     }
 
@@ -162,9 +181,15 @@ class RoleController extends Controller
         $role = Role::find($id);
 
         if($role->name == 'Admin') {
+            // aggiungo il log attività
+            LogActivity::addLog("Ha provato ad eliminare il Ruolo {$role->name}");
+
             return redirect()->route('roles.index')->with('error', "Non puoi eliminare il Ruolo {$role->name} !");
         } else {
             $role->delete();
+
+            // aggiungo il log attività
+            LogActivity::addLog("Eliminato Ruolo {$role->name}");
         }
 
         return redirect()->route('roles.index')->with('success', "Il Ruolo con nome: {$role->name} è stato eliminato");

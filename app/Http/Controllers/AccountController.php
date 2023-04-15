@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Account;
 use App\Category;
 use App\Client;
+use App\LogActivity;
 use Crypt;
 use Illuminate\Http\Request;
 
@@ -27,6 +28,9 @@ class AccountController extends Controller
      */
     public function index()
     {
+        // aggiungo il log attività
+        LogActivity::addLog("Lista Account");
+
         // recupero tuti gli account dal db
         $accounts = Account::orderBy('created_at', 'desc')->paginate(10);
 
@@ -40,6 +44,9 @@ class AccountController extends Controller
      */
     public function create()
     {
+        // aggiungo il log attività
+        LogActivity::addLog("Creazione Account");
+
         // recupero tutti i clienti dal db
         $clients = Client::orderBy('name', 'asc')->get();
 
@@ -85,6 +92,9 @@ class AccountController extends Controller
 
         // save
         $newAccount->save();
+
+        // aggiungo il log attività
+        LogActivity::addLog("Creato Account {$newAccount->name}");
 
         return redirect()->route('accounts.index')->with('success', "L'Account con nome: {$newAccount->name} è stato creato.");
     }
@@ -136,6 +146,9 @@ class AccountController extends Controller
 
         // delete
         $account->delete();
+
+        // aggiungo il log attività
+        LogActivity::addLog("Eliminato Account {$account->name}");
 
         return redirect()->route('accounts.index')->with('success', "L'Account con nome: {$account->name} è stato eliminato.");
     }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Client;
+use App\LogActivity;
 use Illuminate\Http\Request;
 
 class ClientController extends Controller
@@ -24,6 +25,9 @@ class ClientController extends Controller
      */
     public function index()
     {
+        // aggiungo il log attività
+        LogActivity::addLog("Lista Clienti");
+
         // recupero tutti i clienti da db
         $clients = Client::orderBy('name', 'asc')->paginate(10);
 
@@ -37,6 +41,9 @@ class ClientController extends Controller
      */
     public function create()
     {
+        // aggiungo il log attività
+        LogActivity::addLog("Creazione Cliente");
+
         return view('clients.create');
     }
 
@@ -67,6 +74,9 @@ class ClientController extends Controller
         // save
         $newClient->save();
 
+        // aggiungo il log attività
+        LogActivity::addLog("Creato Cliente {$newClient->name}");
+
         return redirect()->route('clients.index')->with('success', "Il Cliente con nome: {$newClient->name} è stato creato.");
     }
 
@@ -91,6 +101,9 @@ class ClientController extends Controller
     {
         // recupero il cliente by id
         $client = Client::find($id);
+
+        // aggiungo il log attività
+        LogActivity::addLog("Modifica Cliente {$client->name}");
 
         return view('clients.edit', compact('client'));
     }
@@ -123,6 +136,9 @@ class ClientController extends Controller
         // save
         $client->update();
 
+        // aggiungo il log attività
+        LogActivity::addLog("Modificato Cliente {$client->name}");
+
         return redirect()->route('clients.index')->with('success', "Il Cliente con nome: {$client->name} è stato modificato.");
     }
 
@@ -139,6 +155,9 @@ class ClientController extends Controller
 
         // delete
         $client->delete();
+
+        // aggiungo il log attività
+        LogActivity::addLog("Eliminato Cliente {$client->name}");
 
         return redirect()->route('clients.index')->with('success', "Il Cliente con nome: {$client->name} è stato eliminato.");
     }

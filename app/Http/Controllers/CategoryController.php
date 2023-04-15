@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Category;
+use App\LogActivity;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -24,6 +25,9 @@ class CategoryController extends Controller
      */
     public function index()
     {
+        // aggiungo il log attività
+        LogActivity::addLog("Lista Categorie");
+
         // recupero tutte le categorie dal db
         $categories = Category::orderBy('name', 'asc')->paginate(10);
 
@@ -37,6 +41,9 @@ class CategoryController extends Controller
      */
     public function create()
     {
+        // aggiungo il log attività
+        LogActivity::addLog("Creazione Categoria");
+
         return view('categories.create');
     }
 
@@ -65,6 +72,9 @@ class CategoryController extends Controller
         // save
         $newCategory->save();
 
+        // aggiungo il log attività
+        LogActivity::addLog("Creata Categoria {$newCategory->name}");
+
         return redirect()->route('categories.index')->with('success', "La Categoria con nome: {$newCategory->name} è stata creata.");
     }
 
@@ -89,7 +99,10 @@ class CategoryController extends Controller
     {
         // recupero la categoria by id
         $category = Category::find($id);
-
+        
+        // aggiungo il log attività
+        LogActivity::addLog("Modifica Categoria {$category->name}");
+        
         return view('categories.edit', compact('category'));
     }
 
@@ -119,6 +132,9 @@ class CategoryController extends Controller
         // save
         $category->update();
 
+        // aggiungo il log attività
+        LogActivity::addLog("Modificata Categoria {$category->name}");
+
         return redirect()->route('categories.index')->with('success', "La Categoria con nome: $category->name è stata modificata.");
     }
 
@@ -135,6 +151,9 @@ class CategoryController extends Controller
 
         // elimino la categoria
         $category->delete();
+
+        // aggiungo il log attività
+        LogActivity::addLog("Eliminata Categoria {$category->name}");
 
         return redirect()->route('categories.index')->with('success', "La Categoria con nome: {$category->name} è stata eliminata.");
     }

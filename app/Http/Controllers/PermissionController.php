@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\LogActivity;
 use App\Permission;
 use Illuminate\Http\Request;
 
@@ -24,6 +25,9 @@ class PermissionController extends Controller
      */
     public function index()
     {
+        // aggiungo il log attività
+        LogActivity::addLog('Lista Permessi');
+
         // get all permissions orbe by name asc
         $permissions = Permission::orderBy('name', 'asc')->paginate(10);
 
@@ -93,12 +97,6 @@ class PermissionController extends Controller
      */
     public function destroy($id)
     {
-        // recupero il permesso by id
-        $permission = Permission::find($id);
-
-        // cancello il permesso
-        $permission->delete();
-
-        return redirect()->route('permissions.index')->with('success', "Il Permesso con nome: {$permission->name} è stato eliminato");
+        
     }
 }
