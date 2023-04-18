@@ -33,8 +33,6 @@
                             </thead>
                             <tbody>
                                 @foreach ($logActivities as $log)    
-
-                                    {{-- @dd($log->created_at) --}}
                                     <tr>
                                         <th class="d-flex gap-2">
                                             {{-- btn delete --}}
