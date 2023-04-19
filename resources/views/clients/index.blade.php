@@ -34,8 +34,8 @@
                             <thead>
                                 <tr>
                                     <th scope="col"></th>
-                                    <th scope="col">Nome</th>
-                                    <th scope="col">Descrizione</th>
+                                    <th scope="col">@sortablelink('name', 'Nome Cliente', [], ['class' => 'link-violet'])</th>
+                                    <th scope="col">@sortablelink('description', 'Descrizione', [], ['class' => 'link-violet'])</th>
                                 </tr>
                             </thead>
                             <tbody>

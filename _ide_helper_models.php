@@ -77,6 +77,7 @@ namespace App{
  * @method static \Illuminate\Database\Eloquent\Builder|Client newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Client newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Client query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Client sortable($defaultParameters = null)
  * @method static \Illuminate\Database\Eloquent\Builder|Client whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Client whereDescription($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Client whereId($value)
