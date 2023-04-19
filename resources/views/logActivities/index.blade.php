@@ -50,7 +50,7 @@
                                         <th class="fw-normal">{{$log->action}}</th>
                                         <th class="fw-normal">{{$log->created_at->format('d-m-Y H:i:s')}}</th>
                                         <th class="fw-normal">
-                                            <a href="{{$log->url}}">{{$log->url}}</a>
+                                            <a class="link-light-gray" href="{{$log->url}}">{{$log->url}}</a>
                                         </th>
                                         <th class="fw-normal">{{$log->method}}</th>
                                         <th class="fw-normal">{{$log->ip}}</th>
