@@ -18,6 +18,15 @@ class Role extends Model
         'name'
     ];
 
+    /**
+     * The attributes that are mass sortable.
+     *
+     * @var array
+     */
+    public $sortable = [
+        'name'
+    ];
+
 
     /**
      * RELAZIONE ONE TO MANY CON USERS
