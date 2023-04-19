@@ -10044,6 +10044,17 @@
         {
                         return \Illuminate\Http\Request::hasValidSignature($absolute);
         }
+                    /**
+         * 
+         *
+         * @see \Kyslik\ColumnSortable\ColumnSortableServiceProvider::boot()
+         * @param array $keys
+         * @static 
+         */ 
+        public static function allFilled($keys)
+        {
+                        return \Illuminate\Http\Request::allFilled($keys);
+        }
          
     }
             /**
@@ -14478,6 +14489,17 @@
         public static function hasValidSignature($absolute = true)
         {
                         return \Illuminate\Http\Request::hasValidSignature($absolute);
+        }
+                    /**
+         * 
+         *
+         * @see \Kyslik\ColumnSortable\ColumnSortableServiceProvider::boot()
+         * @param array $keys
+         * @static 
+         */ 
+        public static function allFilled($keys)
+        {
+                        return \Illuminate\Http\Request::allFilled($keys);
         }
          
     }
