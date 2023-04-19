@@ -32,7 +32,7 @@
                             <thead>
                                 <tr>
                                     <th scope="col"></th>
-                                    <th scope="col">Nome</th>
+                                    <th scope="col">@sortablelink('name', 'Nome Ruolo', [], ['class' => 'link-violet'])</th>
                                 </tr>
                             </thead>
                             <tbody>

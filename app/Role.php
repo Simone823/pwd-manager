@@ -3,9 +3,12 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Kyslik\ColumnSortable\Sortable;
 
 class Role extends Model
 {
+    use Sortable;
+
     /**
      * The attributes that are mass assignable.
      *
