@@ -32,10 +32,10 @@
                             <thead>
                                 <tr>
                                     <th scope="col"></th>
-                                    <th scope="col">Nome</th>
-                                    <th scope="col">Username</th>
-                                    <th scope="col">Email</th>
-                                    <th scope="col">Ruolo</th>
+                                    <th scope="col">@sortablelink('name', 'Nome', [], ['class' => 'link-violet'])</th>
+                                    <th scope="col">@sortablelink('username', 'Nome Utente', [], ['class' => 'link-violet'])</th>
+                                    <th scope="col">@sortablelink('email', 'Email', [], ['class' => 'link-violet'])</th>
+                                    <th scope="col">@sortablelink('role.name', 'Ruolo', [], ['class' => 'link-violet'])</th>
                                 </tr>
                             </thead>
                             <tbody>
