@@ -18,7 +18,7 @@
                         <table class="table table-dark table-striped shadow">
                             <thead>
                                 <tr>
-                                    <th scope="col">Nome</th>
+                                    <th scope="col">@sortablelink('name', 'Nome Permesso', [], ['class' => 'link-violet'])</th>
                                 </tr>
                             </thead>
                             <tbody>

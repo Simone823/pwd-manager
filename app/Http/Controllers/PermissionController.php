@@ -29,7 +29,7 @@ class PermissionController extends Controller
         LogActivity::addLog('Lista Permessi');
 
         // get all permissions orbe by name asc
-        $permissions = Permission::orderBy('name', 'asc')->paginate(10);
+        $permissions = Permission::sortable(['name' => 'asc'])->paginate(10);
 
         return view('permissions.index', compact('permissions'));
     }
