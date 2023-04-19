@@ -10,10 +10,10 @@
 
 // LINKS
 .link-violet {
-    color: $light-gray;
-
+    color: $violet;
+    
     &:hover {
-        color: $violet;
+        color: $light-gray;
         transition: color .3 ease-in-out;
     }
 
@@ -29,6 +29,10 @@
     &:hover {
         color: $violet;
         transition: color .3 ease-in-out;
+    }
+
+    &.active {
+        color: $violet !important;
     }
 }
 

@@ -13910,11 +13910,11 @@ fieldset:disabled .btn {
 }
 
 .link-violet {
-  color: rgb(243, 242, 242);
+  color: #A684FF;
 }
 
 .link-violet:hover {
-  color: #A684FF;
+  color: rgb(243, 242, 242);
   transition: color 0.3 ease-in-out;
 }
 
@@ -13930,6 +13930,10 @@ fieldset:disabled .btn {
 .link-light-gray:hover {
   color: #A684FF;
   transition: color 0.3 ease-in-out;
+}
+
+.link-light-gray.active {
+  color: #A684FF !important;
 }
 
 .input-violet,

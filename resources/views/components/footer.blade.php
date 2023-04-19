@@ -6,7 +6,7 @@
                 {{-- copryright --}}
                 <h6 class="mb-0 d-flex flex-wrap gap-2">
                     &copy;Copyright {{date('Y')}}
-                    <a class="link-violet text-decoration-none fs-6" target="_blank" href="https://simonedaglio.it" alt="Simone Daglio">@Simone Daglio</a>
+                    <a class="link-light-gray text-decoration-none fs-6" target="_blank" href="https://simonedaglio.it" alt="Simone Daglio">@Simone Daglio</a>
                 </h6>
 
                 {{-- version app --}}
