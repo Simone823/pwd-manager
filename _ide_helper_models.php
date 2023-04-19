@@ -101,6 +101,7 @@ namespace App{
  * @method static \Illuminate\Database\Eloquent\Builder|LogActivity newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|LogActivity newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|LogActivity query()
+ * @method static \Illuminate\Database\Eloquent\Builder|LogActivity sortable($defaultParameters = null)
  * @method static \Illuminate\Database\Eloquent\Builder|LogActivity whereAction($value)
  * @method static \Illuminate\Database\Eloquent\Builder|LogActivity whereAgent($value)
  * @method static \Illuminate\Database\Eloquent\Builder|LogActivity whereCreatedAt($value)

@@ -28,7 +28,7 @@ class LogActivityController extends Controller
         LogActivity::addLog('Lista Log Attività');
 
         // recupero tutti i log dal db
-        $logActivities = LogActivity::orderBy('created_at', 'desc')->paginate(10);
+        $logActivities = LogActivity::sortable(['created_at' => 'desc'])->paginate(10);
 
         return view('logActivities.index', compact('logActivities'));
     }

@@ -22,12 +22,12 @@
                             <thead>
                                 <tr>
                                     <th scope="col"></th>
-                                    <th scope="col">Azione</th>
-                                    <th scope="col">Data azione</th>
-                                    <th scope="col">Url</th>
-                                    <th scope="col">Metodo</th>
-                                    <th scope="col">IP</th>
-                                    <th scope="col">Agent</th>
+                                    <th scope="col">@sortablelink('action', 'Nome Azione', [], ['class' => 'link-violet'])</th>
+                                    <th scope="col">@sortablelink('created_at', 'Data Azione', [], ['class' => 'link-violet'])</th>
+                                    <th scope="col">@sortablelink('url', 'Url', [], ['class' => 'link-violet'])</th>
+                                    <th scope="col">@sortablelink('method', 'Metodo', [], ['class' => 'link-violet'])</th>
+                                    <th scope="col">@sortablelink('ip', 'Ip', [], ['class' => 'link-violet'])</th>
+                                    <th scope="col">@sortablelink('agent', 'Agent', [], ['class' => 'link-violet'])</th>
                                     <th scope="col">Utente</th>
                                 </tr>
                             </thead>

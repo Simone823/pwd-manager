@@ -5,16 +5,33 @@ namespace App;
 use App\LogActivity as AppLogActivity;
 use Auth;
 use Illuminate\Database\Eloquent\Model;
+use Kyslik\ColumnSortable\Sortable;
 use Request;
 
 class LogActivity extends Model
 {
+    use Sortable;
+
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
+        'action',
+        'url', 
+        'method',
+        'ip',
+        'agent',
+        'user_id'
+    ];
+
+    /**
+     * The attributes that are mass sortable.
+     *
+     * @var array
+     */
+    public $sortable = [
         'action',
         'url', 
         'method',
