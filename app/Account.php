@@ -3,9 +3,12 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Kyslik\ColumnSortable\Sortable;
 
 class Account extends Model
 {
+    use Sortable;
+
     /**
      * The attributes that are mass assignable.
      *
@@ -18,6 +21,16 @@ class Account extends Model
         'url',
         'username',
         'password',
+        'description'
+    ];
+
+    /**
+     * The attributes that are mass sortable.
+     *
+     * @var array
+     */
+    public $sortable = [
+        'name',
         'description'
     ];
 

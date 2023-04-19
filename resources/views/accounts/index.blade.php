@@ -34,10 +34,10 @@
                             <thead>
                                 <tr>
                                     <th scope="col"></th>
-                                    <th scope="col">Nome Account</th>
-                                    <th scope="col">Cliente</th>
-                                    <th scope="col">Categoria</th>
-                                    <th scope="col">Descrizione</th>
+                                    <th scope="col">@sortablelink('name', 'Nome Account', [], ['class' => 'link-violet'])</th>
+                                    <th scope="col">@sortablelink('client.name', 'Cliente', [], ['class' => 'link-violet'])</th>
+                                    <th scope="col">@sortablelink('category.name', 'Categoria', [], ['class' => 'link-violet'])</th>
+                                    <th scope="col">@sortablelink('descrizione', 'Descrizione', [], ['class' => 'link-violet'])</th>
                                 </tr>
                             </thead>
                             <tbody>

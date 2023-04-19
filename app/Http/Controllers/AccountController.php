@@ -32,7 +32,7 @@ class AccountController extends Controller
         LogActivity::addLog("Lista Account");
 
         // recupero tuti gli account dal db
-        $accounts = Account::orderBy('created_at', 'desc')->paginate(10);
+        $accounts = Account::sortable(['created_at' => 'desc'])->paginate(10);
 
         return view('accounts.index', compact('accounts'));
     }

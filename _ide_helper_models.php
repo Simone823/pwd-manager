@@ -29,6 +29,7 @@ namespace App{
  * @method static \Illuminate\Database\Eloquent\Builder|Account newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Account newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Account query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Account sortable($defaultParameters = null)
  * @method static \Illuminate\Database\Eloquent\Builder|Account whereCategoryId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Account whereClientId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Account whereCreatedAt($value)
