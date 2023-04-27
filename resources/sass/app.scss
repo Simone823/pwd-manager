@@ -58,6 +58,11 @@ img {
     display: block;
 }
 
+ul,
+ol {
+    list-style-type: none;
+}
+
 // table
 table {
     thead {
