@@ -97,6 +97,15 @@
 }
 
 
+// BADGE
+.badge-violet {
+    background-color: $violet;
+    color: $black;
+    text-align: center;
+    max-width: max-content;
+}
+
+
 // BOX SHADOW
 .shadow-top {
     box-shadow: 0 -0.5rem 1rem rgba(0, 0, 0, 0.20) !important;
@@ -106,4 +115,9 @@
 // Z-INDEX
 .z-50 {
     z-index: 50;
+}
+
+// BORDERS
+.border-bottom-violet {
+    border-bottom: 1px solid $violet;
 }
