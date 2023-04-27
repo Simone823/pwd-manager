@@ -24,9 +24,6 @@ class LogActivityController extends Controller
      */
     public function index()
     {
-        // aggiungo il log attività
-        LogActivity::addLog('Lista Log Attività');
-
         // recupero tutti i log dal db
         $logActivities = LogActivity::sortable(['created_at' => 'desc'])->paginate(10);
 
@@ -46,9 +43,6 @@ class LogActivityController extends Controller
 
         // delete log
         $logActivity->delete();
-
-        // aggiungo il log attività
-        LogActivity::addLog("Eliminato Log Activity {$logActivity->action}");
 
         return redirect()->route('log-activities.index')->with('success', "Il Log Attività con Azione: {$logActivity->action}, IP: {$logActivity->ip} è stato eliminato.");
     }
