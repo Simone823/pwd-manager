@@ -37,7 +37,8 @@ class LogActivity extends Model
         'method',
         'ip',
         'agent',
-        'user_id'
+        'user_id',
+        'created_at'
     ];
 
 
