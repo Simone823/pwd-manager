@@ -41,14 +41,13 @@ html {
 }
 
 body,
-#app,
-main {
+#app {
     height: 100%;
 }
 
 main {
     padding-top: 85px;
-    padding-bottom: 50px;
+    padding-bottom: 65px;
 }
 
 // reset
@@ -79,11 +78,6 @@ table {
             white-space: nowrap !important;
         }
     }
-}
-
-// section
-section {
-    padding-bottom: 70px;
 }
 
 // page link

@@ -54,6 +54,29 @@
 .btn-violet.show {
     color: $black;
     background-color: $violet;
+    position: relative;
+
+    .tooltiptext-bottom {
+        visibility: hidden;
+        background-color: rgba($color: $violet, $alpha: 0.85);
+        color: $black;
+        font-weight: bold;
+        text-align: center;
+        border-radius: 6px;
+        padding: 3px 10px;
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateY(38px) translateX(-50%);
+        z-index: 1;
+    }
+
+    &:hover {
+        .tooltiptext-bottom {
+            visibility: visible;
+            transition: visibility .3s ease-in-out;
+        }
+    }
 
     &:hover,
     &:active,

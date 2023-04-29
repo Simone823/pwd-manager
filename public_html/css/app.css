@@ -13955,6 +13955,29 @@ fieldset:disabled .btn {
 .btn-violet.show {
   color: black;
   background-color: #A684FF;
+  position: relative;
+}
+
+.btn-violet .tooltiptext-bottom,
+.btn-violet.show .tooltiptext-bottom {
+  visibility: hidden;
+  background-color: rgba(166, 132, 255, 0.85);
+  color: black;
+  font-weight: bold;
+  text-align: center;
+  border-radius: 6px;
+  padding: 3px 10px;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateY(38px) translateX(-50%);
+  z-index: 1;
+}
+
+.btn-violet:hover .tooltiptext-bottom,
+.btn-violet.show:hover .tooltiptext-bottom {
+  visibility: visible;
+  transition: visibility 0.3s ease-in-out;
 }
 
 .btn-violet:hover,
@@ -14089,14 +14112,13 @@ html {
 }
 
 body,
-#app,
-main {
+#app {
   height: 100%;
 }
 
 main {
   padding-top: 85px;
-  padding-bottom: 50px;
+  padding-bottom: 65px;
 }
 
 img {
@@ -14117,10 +14139,6 @@ table thead tr th {
 table tr th,
 table tr td {
   white-space: nowrap !important;
-}
-
-section {
-  padding-bottom: 70px;
 }
 
 .pagination {
