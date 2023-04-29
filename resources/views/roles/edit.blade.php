@@ -3,7 +3,7 @@
 @section('title', "| Modifica Ruolo {$role->name}")
 
 @section('content')
-    <section id="roles-edit" class="pt-4">
+    <section id="roles-edit">
         <div class="container">
             <div class="card bg-dark py-4 px-3 shadow">
 

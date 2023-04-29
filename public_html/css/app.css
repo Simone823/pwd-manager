@@ -14008,12 +14008,24 @@ fieldset:disabled .btn {
   opacity: 0.35;
 }
 
+.badge-violet {
+  background-color: #A684FF;
+  color: black;
+  text-align: center;
+  max-width: -moz-max-content;
+  max-width: max-content;
+}
+
 .shadow-top {
   box-shadow: 0 -0.5rem 1rem rgba(0, 0, 0, 0.2) !important;
 }
 
 .z-50 {
   z-index: 50;
+}
+
+.border-bottom-violet {
+  border-bottom: 1px solid #A684FF;
 }
 
 #auth-login .logo-large {
@@ -14083,7 +14095,7 @@ main {
 }
 
 main {
-  padding-top: 75px;
+  padding-top: 85px;
   padding-bottom: 50px;
 }
 
@@ -14091,6 +14103,11 @@ img {
   width: 100%;
   height: 100%;
   display: block;
+}
+
+ul,
+ol {
+  list-style-type: none;
 }
 
 table thead tr th {

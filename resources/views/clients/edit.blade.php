@@ -3,7 +3,7 @@
 @section('title', "| Modifica Cliente {$client->name}")
 
 @section('content')
-    <section id="clients-edit" class="pt-4">
+    <section id="clients-edit">
         <div class="container">
             <div class="card bg-dark py-4 px-3 shadow">
 

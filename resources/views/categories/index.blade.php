@@ -3,7 +3,7 @@
 @section('title', '| Lista Categorie')
 
 @section('content')
-    <section id="categories-index" class="pt-4">
+    <section id="categories-index">
         <div class="container">
             <div class="card bg-dark py-4 px-3 shadow">
 

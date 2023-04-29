@@ -3,7 +3,7 @@
 @section('title', '| Lista Utenti')
 
 @section('content')
-    <section id="users-index" class="pt-4">
+    <section id="users-index">
         <div class="container">
             <div class="card bg-dark py-4 px-3 shadow">
 

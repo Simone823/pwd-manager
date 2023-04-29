@@ -3,7 +3,7 @@
 @section('title', "| Creazione Account")
 
 @section('content')
-    <section id="accounts-create" class="pt-4">
+    <section id="accounts-create">
         <div class="container">
             <div class="card bg-dark py-4 px-3 shadow">
 

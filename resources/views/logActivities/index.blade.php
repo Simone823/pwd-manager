@@ -3,7 +3,7 @@
 @section('title', '| Lista Log Attività')
 
 @section('content')
-    <section id="log-activities-index" class="pt-4">
+    <section id="log-activities-index">
         <div class="container">
             <div class="card bg-dark py-4 px-3 shadow">
 

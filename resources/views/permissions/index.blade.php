@@ -3,7 +3,7 @@
 @section('title', '| Lista Permessi')
 
 @section('content')
-    <section id="permissions-index" class="pt-4">
+    <section id="permissions-index">
         <div class="container">
             <div class="card bg-dark py-4 px-3 shadow">
 
