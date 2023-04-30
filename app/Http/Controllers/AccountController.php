@@ -51,7 +51,7 @@ class AccountController extends Controller
         $clients = Client::orderBy('name', 'asc')->get();
 
         // recupero tutte le categorie dal db
-        $categories = Category::orderBy('name', 'asc')->get();
+        $categories = Category::orderBy('category_name', 'asc')->get();
 
         return view('accounts.create', compact('clients', 'categories'));
     }

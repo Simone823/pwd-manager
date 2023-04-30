@@ -16,8 +16,8 @@ class AccountSeeder extends Seeder
     public function run(Faker $faker)
     {
         // categories
-        $categoryEmailId = Category::where('name', 'Email')->pluck('id')->first();
-        $categorySocialId = Category::where('name', 'Social')->pluck('id')->first();
+        $categoryEmailId = Category::where('category_name', 'Email')->pluck('id')->first();
+        $categorySocialId = Category::where('category_name', 'Social')->pluck('id')->first();
 
         // client random
         $client = Client::all()->random()->first();

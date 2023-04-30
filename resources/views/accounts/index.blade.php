@@ -36,7 +36,7 @@
                                     <th scope="col"></th>
                                     <th scope="col">@sortablelink('name', 'Nome Account', [], ['class' => 'link-violet'])</th>
                                     <th scope="col">@sortablelink('client.name', 'Cliente', [], ['class' => 'link-violet'])</th>
-                                    <th scope="col">@sortablelink('category.name', 'Categoria', [], ['class' => 'link-violet'])</th>
+                                    <th scope="col">@sortablelink('category.category_name', 'Categoria', [], ['class' => 'link-violet'])</th>
                                     <th scope="col">@sortablelink('descrizione', 'Descrizione', [], ['class' => 'link-violet'])</th>
                                 </tr>
                             </thead>
@@ -67,7 +67,7 @@
                                         </th>
                                         <th class="fw-normal">{{$account->name}}</th>
                                         <th class="fw-normal">{{$account->client->name}}</th>
-                                        <th class="fw-normal">{{$account->category->name}}</th>
+                                        <th class="fw-normal">{{$account->category->category_name}}</th>
                                         <th class="fw-normal">{{$account->description}}</th>
                                     </tr>
                                 @endforeach

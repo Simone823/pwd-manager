@@ -34,7 +34,7 @@
                             <thead>
                                 <tr>
                                     <th scope="col"></th>
-                                    <th scope="col">@sortablelink('name', 'Nome Categoria', [], ['class' => 'link-violet'])</th>
+                                    <th scope="col">@sortablelink('category_name', 'Nome Categoria', [], ['class' => 'link-violet'])</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -62,7 +62,7 @@
                                                 </div>
                                             @endif
                                         </th>
-                                        <th class="fw-normal">{{$category->name}}</th>
+                                        <th class="fw-normal">{{$category->category_name}}</th>
                                     </tr>
                                 @endforeach
                             </tbody>

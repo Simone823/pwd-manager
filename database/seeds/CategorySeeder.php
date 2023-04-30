@@ -24,7 +24,7 @@ class CategorySeeder extends Seeder
             $newCategory = new Category();
 
             // setto i valori
-            $newCategory->name = $category;
+            $newCategory->category_name = $category;
 
             // save
             $newCategory->save();

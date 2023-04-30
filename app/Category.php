@@ -15,7 +15,7 @@ class Category extends Model
      * @var array
      */
     protected $fillable = [
-        'name',
+        'category_name',
         'description'
     ];
 
@@ -25,7 +25,7 @@ class Category extends Model
      * @var array
      */
     protected $sortable = [
-        'name',
+        'category_name',
         'description'
     ];
 

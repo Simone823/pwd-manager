@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', "| Modifica Categoria {$category->name}")
+@section('title', "| Modifica Categoria {$category->category_name}")
 
 @section('content')
     <section id="categories-edit">
@@ -11,7 +11,7 @@
                 <div class="row mb-4">
                     <h2 class="mb-0 text-violet fs-4 fw-bold">
                         <i class="fa-solid fa-pen"></i>
-                        Modifica Categoria {{$category->name}}
+                        Modifica Categoria {{$category->category_name}}
                     </h2>
                 </div>
 
@@ -36,10 +36,10 @@
                             <div class="row mb-2">
                                 <div class="col-12 col-md-6">
                                     <div class="form-floating mb-4">
-                                        <input type="text" class="form-control input-violet shadow-sm @error('name') is-invalid @enderror" id="name" name="name" value="{{old('name', $category->name)}}" placeholder="Nome Categoria" required>
-                                        <label for="name" class="text-violet">Nome Categoria</label>
+                                        <input type="text" class="form-control input-violet shadow-sm @error('category_name') is-invalid @enderror" id="category_name" name="category_name" value="{{old('category_name', $category->category_name)}}" placeholder="Nome Categoria" required>
+                                        <label for="category_name" class="text-violet">Nome Categoria</label>
     
-                                        @error('name')
+                                        @error('category_name')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>

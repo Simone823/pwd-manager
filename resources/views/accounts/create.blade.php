@@ -72,7 +72,7 @@
                                         <select class="form-select" id="category_id" name="category_id" aria-label="category_id" required>
                                           <option selected>-- Seleziona una Categoria --</option>
                                             @foreach ($categories as $category)
-                                                <option {{old('category_id') == $category->id ? 'selected' : ''}} value="{{$category->id}}">{{$category->name}}</option>
+                                                <option {{old('category_id') == $category->id ? 'selected' : ''}} value="{{$category->id}}">{{$category->category_name}}</option>
                                             @endforeach
                                         </select>
                                         <label for="category_id" class="text-violet">Categoria</label>

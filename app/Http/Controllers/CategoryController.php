@@ -29,7 +29,7 @@ class CategoryController extends Controller
         LogActivity::addLog("Lista Categorie");
 
         // recupero tutte le categorie dal db
-        $categories = Category::sortable(['name' => 'asc'])->paginate(10);
+        $categories = Category::sortable(['category_name' => 'asc'])->paginate(10);
 
         return view('categories.index', compact('categories'));
     }
@@ -57,7 +57,7 @@ class CategoryController extends Controller
     {
         // validazione request
         $request->validate([
-            'name' => 'required|string|alpha|min:3|max:200|unique:categories,name'
+            'category_name' => 'required|string|alpha|min:3|max:200|unique:categories,category_name'
         ]);
 
         // data request all
@@ -67,15 +67,15 @@ class CategoryController extends Controller
         $newCategory = new Category();
 
         // setto i valori
-        $newCategory->name = ucfirst($data['name']);
+        $newCategory->category_name = ucfirst($data['category_name']);
 
         // save
         $newCategory->save();
 
         // aggiungo il log attività
-        LogActivity::addLog("Creata Categoria {$newCategory->name}");
+        LogActivity::addLog("Creata Categoria {$newCategory->category_name}");
 
-        return redirect()->route('categories.index')->with('success', "La Categoria con nome: {$newCategory->name} è stata creata.");
+        return redirect()->route('categories.index')->with('success', "La Categoria con nome: {$newCategory->category_name} è stata creata.");
     }
 
     /**
@@ -101,7 +101,7 @@ class CategoryController extends Controller
         $category = Category::find($id);
         
         // aggiungo il log attività
-        LogActivity::addLog("Modifica Categoria {$category->name}");
+        LogActivity::addLog("Modifica Categoria {$category->category_name}");
         
         return view('categories.edit', compact('category'));
     }
@@ -120,22 +120,22 @@ class CategoryController extends Controller
 
         // validazione request
         $request->validate([
-            'name' => 'required|string|alpha|min:3|max:200|unique:categories,name,'.$id
+            'category_name' => 'required|string|alpha|min:3|max:200|unique:categories,category_name,'.$id
         ]);
 
         // data request all
         $data = $request->all();
 
         // update valori
-        $category->name = ucfirst($data['name']);
+        $category->category_name = ucfirst($data['category_name']);
 
         // save
         $category->update();
 
         // aggiungo il log attività
-        LogActivity::addLog("Modificata Categoria {$category->name}");
+        LogActivity::addLog("Modificata Categoria {$category->category_name}");
 
-        return redirect()->route('categories.index')->with('success', "La Categoria con nome: $category->name è stata modificata.");
+        return redirect()->route('categories.index')->with('success', "La Categoria con nome: $category->category_name è stata modificata.");
     }
 
     /**
@@ -153,8 +153,8 @@ class CategoryController extends Controller
         $category->delete();
 
         // aggiungo il log attività
-        LogActivity::addLog("Eliminata Categoria {$category->name}");
+        LogActivity::addLog("Eliminata Categoria {$category->category_name}");
 
-        return redirect()->route('categories.index')->with('success', "La Categoria con nome: {$category->name} è stata eliminata.");
+        return redirect()->route('categories.index')->with('success', "La Categoria con nome: {$category->category_name} è stata eliminata.");
     }
 }
