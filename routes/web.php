@@ -21,6 +21,7 @@ Auth::routes(["register" => false]);
 Route::middleware('auth')->group(function () {
     // Rotta default /
     Route::get('/', 'HomeController@index')->name('home');
+    Route::get('/home/search-accounts', 'HomeController@searchAccounts')->middleware('hasPermission:accounts-view')->name('home.search-accounts');
 
     // Rotte categorie
     Route::get('/categories/index', 'CategoryController@index')->middleware('hasPermission:categories-view')->name('categories.index');
@@ -40,6 +41,7 @@ Route::middleware('auth')->group(function () {
 
     // Rotte accounts
     Route::get('/accounts/index', 'AccountController@index')->middleware('hasPermission:accounts-view')->name('accounts.index');
+    Route::get('/accounts/show/{id}', 'AccountController@show')->middleware('hasPermission:accounts-view')->name('accounts.show');
     Route::get('/accounts/create', 'AccountController@create')->middleware('hasPermission:accounts-create')->name('accounts.create');
     Route::post('/accounts/store', 'AccountController@store')->middleware('hasPermission:accounts-create')->name('accounts.store');
     Route::get('/accounts/edit/{id}', 'AccountController@edit')->middleware('hasPermission:accounts-edit')->name('accounts.edit');
