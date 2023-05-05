@@ -151,9 +151,11 @@ class HomeController extends Controller
         }
 
         // svuoto i filtri in sessione
-        Session::put('home-account_name-filter', '');
-        Session::put('home-category_id-filter', '');
-        Session::put('home-client_id-filter', '');
+        Session::forget([
+            'home-account_name-filter',
+            'home-category_id-filter',
+            'home-client_id-filter'
+        ]);
 
         return redirect()->route('home')->with('error', "Nessun risultato per questa ricerca");
     }
