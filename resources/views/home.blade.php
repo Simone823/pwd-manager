@@ -158,6 +158,15 @@
                         </div>
                     </div>
                 @endforeach
+
+                {{-- paginate --}}
+                @if ($accounts->lastPage() > 1)    
+                    <div class="col-12">
+                        <div class="paginate-wrapper bg-dark py-3 px-3 bg-dark shadow rounded">
+                            {{!! $accounts->appends(\Request::except('page'))->render() !!}}
+                        </div>
+                    </div>
+                @endif
             </div>
         @endif
 
