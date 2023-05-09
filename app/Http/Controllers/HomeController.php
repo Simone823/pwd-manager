@@ -40,11 +40,16 @@ class HomeController extends Controller
         // recupero tutti gli accounts dal db
         $accounts = Account::sortable(['created_at' => 'desc'])->paginate(8);
 
+        // controllo se esistono account in sessione
+        if(!empty(Session::get('home-accounts-filtered'))) {
+            $accounts = Session::get('home-accounts-filtered');
+        }
+
         return view('home', compact('accounts', 'categories', 'clients'));
     }
 
     /**
-     * CERCA ACCOUNT
+     * RICERCA ACCOUNT
      * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Contracts\Support\Renderable
      */
@@ -59,104 +64,113 @@ class HomeController extends Controller
             'client_id' => 'nullable', 'exists:clients,id',
             'category_id' => 'nullable', 'exists:categories,id'
         ]);
-        
-        // recupero tutte le categorie dal db
-        $categories = Category::orderBy('category_name', 'asc')->get();
 
-        // recupero tutti i clienti dal db
-        $clients = Client::orderBy('name', 'asc')->get();
-
+        // controllo se esitono il filtri
         if(!empty($request->account_name) && !empty($request->client_id) && !empty($request->category_id)) {
             $accounts = Account::where('name','LIKE', "%{$request->account_name}%")
                 ->where('client_id', $request->client_id)
                 ->where('category_id', $request->category_id)->paginate(8);
                 
-            if(count($accounts) > 0) {
-                // salvo in sessione i filtri
-                Session::put('home-account_name-filter', $request->account_name);
-                Session::put('home-client_id-filter', $request->client_id);
-                Session::put('home-category_id-filter', $request->category_id);
+            // salvo in sessione i filtri
+            Session::put([
+                'home-account_name-filter' => $request->account_name,
+                'home-client_id-filter' => $request->client_id,
+                'home-category_id-filter' => $request->category_id,
+                'home-accounts-filtered' => $accounts
+            ]);
 
-                return view('home', compact('accounts', 'categories', 'clients'));
-            }
+            return redirect()->route('home');
+
         } else if(!empty($request->account_name) && !empty($request->client_id)) {
             $accounts = Account::where('name','LIKE', "%{$request->account_name}%")
                 ->where('client_id', $request->client_id)->paginate(8);
                 
-            if(count($accounts) > 0) {
-                // salvo in sessione i filtri
-                Session::put('home-account_name-filter', $request->account_name);
-                Session::put('home-client_id-filter', $request->client_id);
-                Session::put('home-category_id-filter', '');
+            // salvo in sessione i filtri
+            Session::put([
+                'home-account_name-filter' => $request->account_name,
+                'home-client_id-filter' => $request->client_id,
+                'home-category_id-filter' => '',
+                'home-accounts-filtered' => $accounts
+            ]);
 
-                return view('home', compact('accounts', 'categories', 'clients'));
-            }
+            return redirect()->route('home');
+            
         } else if(!empty($request->account_name) && !empty($request->category_id)) {
             $accounts = Account::where('name','LIKE', "%{$request->account_name}%")
                 ->where('category_id', $request->category_id)->paginate(8);
                 
-            if(count($accounts) > 0) {
-                // salvo in sessione i filtri
-                Session::put('home-account_name-filter', $request->account_name);
-                Session::put('home-client_id-filter', '');
-                Session::put('home-category_id-filter', $request->category_id);
+            // salvo in sessione i filtri
+            Session::put([
+                'home-account_name-filter' => $request->account_name,
+                'home-client_id-filter' => '',
+                'home-category_id-filter' => $request->category_id,
+                'home-accounts-filtered' => $accounts
+            ]);
 
-                return view('home', compact('accounts', 'categories', 'clients'));
-            }
+            return redirect()->route('home');
+           
         } else if(!empty($request->client_id) && !empty($request->category_id)) {
             $accounts = Account::where('client_id', $request->client_id)
                 ->where('category_id', $request->category_id)->paginate(8);
 
-            if(count($accounts) > 0) {
-                // salvo in sessione i filtri
-                Session::put('home-account_name-filter', '');
-                Session::put('home-client_id-filter', $request->client_id);
-                Session::put('home-category_id-filter', $request->category_id);
+            // salvo in sessione i filtri
+            Session::put([
+                'home-account_name-filter' => '',
+                'home-client_id-filter' => $request->client_id,
+                'home-category_id-filter' => $request->category_id,
+                'home-accounts-filtered' => $accounts
+            ]);
 
-                return view('home', compact('accounts', 'categories', 'clients'));
-            }
+            return redirect()->route('home');
+            
         } else if(!empty($request->account_name)) {
             $accounts = Account::where('name','LIKE', "%{$request->account_name}%")->paginate(8);
                 
-            if(count($accounts) > 0) {
-                // salvo in sessione i filtri
-                Session::put('home-account_name-filter', $request->account_name);
-                Session::put('home-client_id-filter', '');
-                Session::put('home-category_id-filter', '');
+            // salvo in sessione i filtri
+            Session::put([
+                'home-account_name-filter' => $request->account_name,
+                'home-client_id-filter' => '',
+                'home-category_id-filter' => '',
+                'home-accounts-filtered' => $accounts
+            ]);
 
-                return view('home', compact('accounts', 'categories', 'clients'));
-            }
+            return redirect()->route('home');
+            
         } else if(!empty($request->client_id)) {
             $accounts = Account::where('client_id', $request->client_id)->paginate(8);
 
-            if(count($accounts) > 0) {
-                // salvo in sessione i filtri
-                Session::put('home-account_name-filter', '');
-                Session::put('home-client_id-filter', $request->client_id);
-                Session::put('home-category_id-filter', '');
+            // salvo in sessione i filtri
+            Session::put([
+                'home-account_name-filter' => '',
+                'home-client_id-filter' => $request->client_id,
+                'home-category_id-filter' => '',
+                'home-accounts-filtered' => $accounts
+            ]);
 
-                return view('home', compact('accounts', 'categories', 'clients'));
-            }
+            return redirect()->route('home');
+
         } else if(!empty($request->category_id)) {
             $accounts = Account::where('category_id', $request->category_id)->paginate(8);
 
-            if(count($accounts) > 0) {
-                // salvo in sessione i filtri
-                Session::put('home-account_name-filter', '');
-                Session::put('home-client_id-filter', '');
-                Session::put('home-category_id-filter', $request->category_id);
+            // salvo in sessione i filtri
+            Session::put([
+                'home-account_name-filter' => '',
+                'home-client_id-filter' => '',
+                'home-category_id-filter' => $request->category_id,
+                'home-accounts-filtered' => $accounts
+            ]);
 
-                return view('home', compact('accounts', 'categories', 'clients'));
-            }
+            return redirect()->route('home');
         }
 
         // svuoto i filtri in sessione
         Session::forget([
             'home-account_name-filter',
             'home-category_id-filter',
-            'home-client_id-filter'
+            'home-client_id-filter',
+            'home-accounts-filtered'
         ]);
 
-        return redirect()->route('home')->with('error', "Nessun risultato per questa ricerca");
+        return redirect()->route('home')->with('error', "Inserire almeno un campo per la ricerca.");
     }
 }
