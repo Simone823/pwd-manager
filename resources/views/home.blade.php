@@ -33,7 +33,7 @@
                             {{-- client --}}
                             <div class="col-12 col-md-6 col-lg-3">
                                 <div class="form-floating">
-                                    <select class="form-select" id="client_id" name="client_id" aria-label="client_id">
+                                    <select class="form-select select-violet shadow-sm" id="client_id" name="client_id" aria-label="client_id">
                                       <option value="" selected>-- Seleziona un Cliente --</option>
                                         @foreach ($clients as $client)
                                             <option {{old('client_id', Session::get('home-client_id-filter')) == $client->id ? 'selected' : ''}} value="{{$client->id}}">{{$client->name}}</option>
@@ -52,7 +52,7 @@
                             {{-- category --}}
                             <div class="col-12 col-md-6 col-lg-3">
                                 <div class="form-floating">
-                                    <select class="form-select" id="category_id" name="category_id" aria-label="category_id">
+                                    <select class="form-select select-violet shadow-sm" id="category_id" name="category_id" aria-label="category_id">
                                       <option value="" selected>-- Seleziona una Categoria --</option>
                                         @foreach ($categories as $category)
                                             <option {{old('category_id', Session::get('home-category_id-filter')) == $category->id ? 'selected' : ''}} value="{{$category->id}}">{{$category->category_name}}</option>
