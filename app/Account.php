@@ -31,6 +31,8 @@ class Account extends Model
      */
     public $sortable = [
         'name',
+        'url',
+        'username',
         'description',
         'created_at'
     ];
