@@ -36,7 +36,7 @@
                                 <div class="col-12 col-md-6">
                                     <div class="form-floating mb-4">
                                         <input type="text" class="form-control input-violet shadow-sm @error('category_name') is-invalid @enderror" id="category_name" name="category_name" value="{{old('category_name')}}" placeholder="Nome Categoria" required>
-                                        <label for="category_name" class="text-violet">Nome Categoria</label>
+                                        <label for="category_name" class="text-violet">Nome Categoria*</label>
     
                                         @error('category_name')
                                             <span class="invalid-feedback" role="alert">

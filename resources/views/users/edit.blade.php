@@ -75,26 +75,23 @@
                                         @enderror
                                     </div>
                                 </div>
-                            </div>
 
-                            {{-- row ruolo --}}
-                            <div class="row mb-4">
-                                <div class="col-12 mb-3">
-                                    <h4 class="mb-0 text-violet fw-light">Ruolo</h4>
-                                </div>
-
+                                {{-- ruolo --}}
                                 <div class="col-12 col-md-6">
-                                    <select class="form-select form-select-md shadow-sm" name="role_id" id="role_id" aria-label="role" required>
-                                        @foreach ($roles as $role)
-                                            <option {{old('role_id', $user->role->id == $role->id) ? 'selected' : ''}} value="{{$role->id}}">{{$role->name}}</option>
-                                        @endforeach
-                                    </select>
+                                    <div class="form-floating mb-4">
+                                        <select class="form-select select-violet shadow-sm" id="role_id" name="role_id" aria-label="role_id" required>
+                                            @foreach ($roles as $role)
+                                                <option {{old('role_id', $user->role->id == $role->id) ? 'selected' : ''}} value="{{$role->id}}">{{$role->name}}</option>
+                                            @endforeach
+                                        </select>
+                                        <label for="role_id" class="text-violet">Ruolo*</label>
 
-                                    @error('role_id')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
+                                        @error('role_id')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
                                 </div>
                             </div>
 

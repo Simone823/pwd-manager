@@ -37,7 +37,7 @@
                                 <div class="col-12 col-md-6">
                                     <div class="form-floating mb-4">
                                         <input type="text" class="form-control input-violet shadow-sm @error('name') is-invalid @enderror" id="name" name="name" value="{{old('name')}}" placeholder="Nome Account" required>
-                                        <label for="name" class="text-violet">Nome Account</label>
+                                        <label for="name" class="text-violet">Nome Account*</label>
     
                                         @error('name')
                                             <span class="invalid-feedback" role="alert">
@@ -56,7 +56,7 @@
                                                 <option {{old('client_id') == $client->id ? 'selected' : ''}} value="{{$client->id}}">{{$client->name}}</option>
                                             @endforeach
                                         </select>
-                                        <label for="client_id" class="text-violet">Cliente</label>
+                                        <label for="client_id" class="text-violet">Cliente*</label>
 
                                         @error('client_id')
                                             <span class="invalid-feedback" role="alert">
@@ -75,7 +75,7 @@
                                                 <option {{old('category_id') == $category->id ? 'selected' : ''}} value="{{$category->id}}">{{$category->category_name}}</option>
                                             @endforeach
                                         </select>
-                                        <label for="category_id" class="text-violet">Categoria</label>
+                                        <label for="category_id" class="text-violet">Categoria*</label>
 
                                         @error('category_id')
                                             <span class="invalid-feedback" role="alert">
@@ -89,7 +89,7 @@
                                 <div class="col-12 col-md-6">
                                     <div class="form-floating mb-4">
                                         <input type="url" class="form-control input-violet shadow-sm @error('url') is-invalid @enderror" id="url" name="url" value="{{old('url')}}" placeholder="Nome Account">
-                                        <label for="url" class="text-violet">Url / Ip web</label>
+                                        <label for="url" class="text-violet">Url / Ip </label>
     
                                         @error('url')
                                             <span class="invalid-feedback" role="alert">
@@ -103,7 +103,7 @@
                                 <div class="col-12 col-md-6">
                                     <div class="form-floating mb-4">
                                         <input type="text" class="form-control input-violet shadow-sm @error('username') is-invalid @enderror" id="username" name="username" value="{{old('username')}}" placeholder="Username" required>
-                                        <label for="username" class="text-violet">Username</label>
+                                        <label for="username" class="text-violet">Username*</label>
     
                                         @error('username')
                                             <span class="invalid-feedback" role="alert">
@@ -117,7 +117,7 @@
                                 <div class="col-12 col-md-6">
                                     <div class="form-floating mb-4">
                                         <input type="password" class="form-control input-violet shadow-sm @error('password') is-invalid @enderror" id="password" name="password" value="" placeholder="Password" required>
-                                        <label for="password" class="text-violet">Password</label>
+                                        <label for="password" class="text-violet">Password*</label>
     
                                         @error('email')
                                             <span class="invalid-feedback" role="alert">
@@ -131,7 +131,7 @@
                                 <div class="col-12 col-md-6">
                                     <div class="form-floating mb-4">
                                         <input type="password" class="form-control input-violet shadow-sm @error('password') is-invalid @enderror" id="password-confirm" name="password_confirmation" value="" placeholder="Conferma Password" required>
-                                        <label for="password-confirm" class="text-violet">Conferma Password</label>
+                                        <label for="password-confirm" class="text-violet">Conferma Password*</label>
     
                                         @error('email')
                                             <span class="invalid-feedback" role="alert">

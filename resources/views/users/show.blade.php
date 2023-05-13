@@ -53,20 +53,17 @@
                                     <label for="email" class="text-violet">Email</label>
                                 </div>
                             </div>
-                        </div>
 
-                        {{-- row ruolo --}}
-                        <div class="row mb-4">
-                            <div class="col-12 mb-3">
-                                <h4 class="mb-0 text-violet fw-light">Ruolo</h4>
-                            </div>
-
+                            {{-- ruolo --}}
                             <div class="col-12 col-md-6">
-                                <select class="form-select form-select-md shadow-sm" name="role_id" id="role_id" aria-label="role" disabled>
-                                    @foreach ($roles as $role)
-                                        <option {{$user->role->id == $role->id ? 'selected' : ''}} value="{{$role->id}}">{{$role->name}}</option>
-                                    @endforeach
-                                </select>
+                                <div class="form-floating mb-4">
+                                    <select class="form-select select-violet shadow-sm" id="role_id" name="role_id" aria-label="role_id" disabled>
+                                        @foreach ($roles as $role)
+                                            <option {{$user->role->id == $role->id ? 'selected' : ''}} value="{{$role->id}}">{{$role->name}}</option>
+                                        @endforeach
+                                    </select>
+                                    <label for="role_id" class="text-violet">Ruolo*</label>
+                                </div>
                             </div>
                         </div>
 

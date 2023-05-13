@@ -37,7 +37,7 @@
 }
 
 
-// INPUTS / TEXTAREA
+// INPUTS / TEXTAREA / SELECT
 .input-violet,
 .text-area-violet {
     color: $light-gray !important;
@@ -45,6 +45,20 @@
 
     &:read-only {
         pointer-events: none;
+    }
+}
+
+.select-violet {
+    color: $light-gray !important;
+    border: none !important;
+    
+    &:disabled {
+        background-color: var(--bs-body-bg);
+        pointer-events: none;
+
+        & ~ label::after {
+            background-color: initial;
+        }
     }
 }
 

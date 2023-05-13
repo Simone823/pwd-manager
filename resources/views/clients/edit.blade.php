@@ -37,7 +37,7 @@
                                 <div class="col-12 col-md-6">
                                     <div class="form-floating mb-4">
                                         <input type="text" class="form-control input-violet shadow-sm @error('name') is-invalid @enderror" id="name" name="name" value="{{old('name', $client->name)}}" placeholder="Nome Cliente" required>
-                                        <label for="name" class="text-violet">Nome Cliente</label>
+                                        <label for="name" class="text-violet">Nome Cliente*</label>
     
                                         @error('name')
                                             <span class="invalid-feedback" role="alert">

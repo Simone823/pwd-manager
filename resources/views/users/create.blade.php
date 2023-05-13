@@ -37,7 +37,7 @@
                                 <div class="col-12 col-md-6">
                                     <div class="form-floating mb-4">
                                         <input type="text" class="form-control input-violet shadow-sm @error('name') is-invalid @enderror" id="name" name="name" value="{{old('name')}}" placeholder="Nome" required>
-                                        <label for="name" class="text-violet">Nome</label>
+                                        <label for="name" class="text-violet">Nome*</label>
     
                                         @error('name')
                                             <span class="invalid-feedback" role="alert">
@@ -51,7 +51,7 @@
                                 <div class="col-12 col-md-6">
                                     <div class="form-floating mb-4">
                                         <input type="text" class="form-control input-violet shadow-sm @error('username') is-invalid @enderror" id="username" name="username" value="{{old('username')}}" placeholder="Username" required>
-                                        <label for="username" class="text-violet">Username</label>
+                                        <label for="username" class="text-violet">Username*</label>
     
                                         @error('username')
                                             <span class="invalid-feedback" role="alert">
@@ -65,7 +65,7 @@
                                 <div class="col-12 col-md-6">
                                     <div class="form-floating mb-4">
                                         <input type="email" class="form-control input-violet shadow-sm @error('email') is-invalid @enderror" id="email" name="email" value="{{old('email')}}" placeholder="email" required>
-                                        <label for="email" class="text-violet">Email</label>
+                                        <label for="email" class="text-violet">Email*</label>
     
                                         @error('email')
                                             <span class="invalid-feedback" role="alert">
@@ -79,7 +79,7 @@
                                 <div class="col-12 col-md-6">
                                     <div class="form-floating mb-4">
                                         <input type="password" class="form-control input-violet shadow-sm @error('password') is-invalid @enderror" id="password" name="password" value="" placeholder="Password" required>
-                                        <label for="password" class="text-violet">Password</label>
+                                        <label for="password" class="text-violet">Password*</label>
     
                                         @error('email')
                                             <span class="invalid-feedback" role="alert">
@@ -93,7 +93,7 @@
                                 <div class="col-12 col-md-6">
                                     <div class="form-floating mb-4">
                                         <input type="password" class="form-control input-violet shadow-sm @error('password') is-invalid @enderror" id="password-confirm" name="password_confirmation" value="" placeholder="Conferma Password" required>
-                                        <label for="password-confirm" class="text-violet">Conferma Password</label>
+                                        <label for="password-confirm" class="text-violet">Conferma Password*</label>
     
                                         @error('email')
                                             <span class="invalid-feedback" role="alert">
@@ -102,27 +102,24 @@
                                         @enderror
                                     </div>
                                 </div>
-                            </div>
 
-                            {{-- row ruolo --}}
-                            <div class="row mb-4">
-                                <div class="col-12 mb-3">
-                                    <h4 class="mb-0 text-violet fw-light">Ruolo</h4>
-                                </div>
-
+                                {{-- ruolo --}}
                                 <div class="col-12 col-md-6">
-                                    <select class="form-select form-select-md shadow-sm" name="role_id" id="role_id" aria-label="role" required>
-                                        <option selected>-- Seleziona un Ruolo --</option>
-                                        @foreach ($roles as $role)
-                                            <option value="{{$role->id}}">{{$role->name}}</option>
-                                        @endforeach
-                                    </select>
+                                    <div class="form-floating mb-4">
+                                        <select class="form-select select-violet shadow-sm" id="role_id" name="role_id" aria-label="role_id" required>
+                                            <option selected>-- Seleziona un Ruolo --</option>
+                                            @foreach ($roles as $role)
+                                                <option value="{{$role->id}}">{{$role->name}}</option>
+                                            @endforeach
+                                        </select>
+                                        <label for="role_id" class="text-violet">Ruolo*</label>
 
-                                    @error('role_id')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
+                                        @error('role_id')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
                                 </div>
                             </div>
 

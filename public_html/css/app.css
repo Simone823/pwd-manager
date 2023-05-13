@@ -13951,6 +13951,20 @@ fieldset:disabled .btn {
   pointer-events: none;
 }
 
+.select-violet {
+  color: rgb(243, 242, 242) !important;
+  border: none !important;
+}
+
+.select-violet:disabled {
+  background-color: var(--bs-body-bg);
+  pointer-events: none;
+}
+
+.select-violet:disabled ~ label::after {
+  background-color: initial;
+}
+
 .btn-violet,
 .btn-violet.show {
   color: black;
@@ -14191,14 +14205,5 @@ table tr td {
 .form-check .form-check-input:disabled,
 .form-check .form-check-input:disabled ~ .form-check-label {
   opacity: 1 !important;
-}
-
-.form-select {
-  border: none;
-  color: #A684FF;
-}
-
-.form-select:disabled {
-  background-color: var(--bs-body-bg);
 }
 
