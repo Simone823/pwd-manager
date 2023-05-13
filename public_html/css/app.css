@@ -13942,6 +13942,11 @@ fieldset:disabled .btn {
   border: none !important;
 }
 
+.input-violet:focus,
+.text-area-violet:focus {
+  outline: 2px solid rgba(166, 132, 255, 0.5) !important;
+}
+
 .input-violet:-moz-read-only, .text-area-violet:-moz-read-only {
   pointer-events: none;
 }
@@ -13954,6 +13959,10 @@ fieldset:disabled .btn {
 .select-violet {
   color: rgb(243, 242, 242) !important;
   border: none !important;
+}
+
+.select-violet:focus {
+  outline: 2px solid rgba(166, 132, 255, 0.5) !important;
 }
 
 .select-violet:disabled {

@@ -43,6 +43,10 @@
     color: $light-gray !important;
     border: none !important;
 
+    &:focus {
+        outline: 2px solid rgba($color: $violet, $alpha: 0.5) !important;
+    }
+
     &:read-only {
         pointer-events: none;
     }
@@ -51,6 +55,10 @@
 .select-violet {
     color: $light-gray !important;
     border: none !important;
+
+    &:focus {
+        outline: 2px solid rgba($color: $violet, $alpha: 0.5) !important;
+    }
     
     &:disabled {
         background-color: var(--bs-body-bg);
