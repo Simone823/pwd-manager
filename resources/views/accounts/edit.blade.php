@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', "| Creazione Account")
+@section('title', "| Modifica Account {$account->name}")
 
 @section('content')
     <section id="accounts-create">
@@ -10,8 +10,8 @@
                 {{-- row title --}}
                 <div class="row mb-4">
                     <h2 class="mb-0 text-violet fs-4 fw-bold">
-                        <i class="fa-solid fa-plus"></i>
-                        Creazione Account
+                        <i class="fa-solid fa-pen"></i>
+                        Modifica Account {{$account->name}}
                     </h2>
                 </div>
 
@@ -28,15 +28,16 @@
                 {{-- row form --}}
                 <div class="row">
                     <div class="col-12">
-                        <form action="{{route('accounts.store')}}" method="POST">
+                        <form action="{{route('accounts.update', $account->id)}}" method="POST">
                             @csrf
+                            @method('PUT')
 
                             {{-- row inputs --}}
                             <div class="row mb-2">
                                 {{-- account name --}}
                                 <div class="col-12 col-md-6">
                                     <div class="form-floating mb-4">
-                                        <input type="text" class="form-control input-violet shadow-sm @error('name') is-invalid @enderror" id="name" name="name" value="{{old('name')}}" placeholder="Nome Account" required>
+                                        <input type="text" class="form-control input-violet shadow-sm @error('name') is-invalid @enderror" id="name" name="name" value="{{old('name', $account->name)}}" placeholder="Nome Account" required>
                                         <label for="name" class="text-violet">Nome Account*</label>
     
                                         @error('name')
@@ -51,9 +52,8 @@
                                 <div class="col-12 col-md-6">
                                     <div class="form-floating mb-4">
                                         <select class="form-select select-violet shadow-sm" id="client_id" name="client_id" aria-label="client_id" required>
-                                          <option selected>-- Seleziona un Cliente --</option>
                                             @foreach ($clients as $client)
-                                                <option {{old('client_id') == $client->id ? 'selected' : ''}} value="{{$client->id}}">{{$client->name}}</option>
+                                                <option {{old('client_id', $account->client_id) == $client->id ? 'selected' : ''}} value="{{$client->id}}">{{$client->name}}</option>
                                             @endforeach
                                         </select>
                                         <label for="client_id" class="text-violet">Cliente*</label>
@@ -70,9 +70,8 @@
                                 <div class="col-12 col-md-6">
                                     <div class="form-floating mb-4">
                                         <select class="form-select select-violet shadow-sm" id="category_id" name="category_id" aria-label="category_id" required>
-                                          <option selected>-- Seleziona una Categoria --</option>
                                             @foreach ($categories as $category)
-                                                <option {{old('category_id') == $category->id ? 'selected' : ''}} value="{{$category->id}}">{{$category->category_name}}</option>
+                                                <option {{old('category_id', $account->category_id) == $category->id ? 'selected' : ''}} value="{{$category->id}}">{{$category->category_name}}</option>
                                             @endforeach
                                         </select>
                                         <label for="category_id" class="text-violet">Categoria*</label>
@@ -88,7 +87,7 @@
                                 {{-- url ip --}}
                                 <div class="col-12 col-md-6">
                                     <div class="form-floating mb-4">
-                                        <input type="url" class="form-control input-violet shadow-sm @error('url') is-invalid @enderror" id="url" name="url" value="{{old('url')}}" placeholder="Nome Account">
+                                        <input type="url" class="form-control input-violet shadow-sm @error('url') is-invalid @enderror" id="url" name="url" value="{{old('url', $account->url)}}" placeholder="Nome Account">
                                         <label for="url" class="text-violet">Url / Ip </label>
     
                                         @error('url')
@@ -102,7 +101,7 @@
                                 {{-- username --}}
                                 <div class="col-12 col-md-6">
                                     <div class="form-floating mb-4">
-                                        <input type="text" class="form-control input-violet shadow-sm @error('username') is-invalid @enderror" id="username" name="username" value="{{old('username')}}" placeholder="Username" required>
+                                        <input type="text" class="form-control input-violet shadow-sm @error('username') is-invalid @enderror" id="username" name="username" value="{{old('username', $account->username)}}" placeholder="Username" required>
                                         <label for="username" class="text-violet">Username*</label>
     
                                         @error('username')
@@ -116,8 +115,8 @@
                                 {{-- password --}}
                                 <div class="col-12 col-md-6">
                                     <div class="form-floating mb-4">
-                                        <input type="password" class="form-control input-violet shadow-sm @error('password') is-invalid @enderror" id="password" name="password" value="" placeholder="Password" required>
-                                        <label for="password" class="text-violet">Password*</label>
+                                        <input type="password" class="form-control input-violet shadow-sm @error('password') is-invalid @enderror" id="password" name="password" value="" placeholder="Password">
+                                        <label for="password" class="text-violet">Password</label>
     
                                         @error('password')
                                             <span class="invalid-feedback" role="alert">
@@ -130,8 +129,8 @@
                                 {{-- password confirm --}}
                                 <div class="col-12 col-md-6">
                                     <div class="form-floating mb-4">
-                                        <input type="password" class="form-control input-violet shadow-sm @error('password') is-invalid @enderror" id="password-confirm" name="password_confirmation" value="" placeholder="Conferma Password" required>
-                                        <label for="password-confirm" class="text-violet">Conferma Password*</label>
+                                        <input type="password" class="form-control input-violet shadow-sm @error('password') is-invalid @enderror" id="password-confirm" name="password_confirmation" value="" placeholder="Conferma Password">
+                                        <label for="password-confirm" class="text-violet">Conferma Password</label>
     
                                         @error('password-confirm')
                                             <span class="invalid-feedback" role="alert">
@@ -144,7 +143,7 @@
                                 {{-- description --}}
                                 <div class="col-12">
                                     <div class="form-floating mb-4">
-                                        <textarea class="form-control text-area-violet shadow-sm" placeholder="Descrizione" id="description" name="description" style="height: 100px">{{old('description')}}</textarea>
+                                        <textarea class="form-control text-area-violet shadow-sm" placeholder="Descrizione" id="description" name="description" style="height: 100px">{{old('description', $account->description)}}</textarea>
                                         <label for="description" class="text-violet">Descrizione</label>
                                     </div>
                                 </div>
@@ -155,7 +154,7 @@
                                 <div class="col-12 d-flex justify-content-end">
                                     <button type="submit" class="btn btn-violet fw-bold px-4 text-uppercase">
                                         <i class="fa-solid fa-floppy-disk"></i>
-                                        Salva
+                                        Salva Modifica
                                     </button>
                                 </div>
                             </div>

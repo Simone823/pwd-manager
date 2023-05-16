@@ -118,7 +118,19 @@ class AccountController extends Controller
      */
     public function edit($id)
     {
-        //
+        // recupero l'account by id
+        $account = Account::find($id);
+        
+        // recupero tutti i clienti dal db
+        $clients = Client::orderBy('name', 'asc')->get();
+        
+        // recupero tutte le categorie dal db
+        $categories = Category::orderBy('category_name', 'asc')->get();
+
+        // aggiungo il log attività
+        LogActivity::addLog("Modifica Account {$account->name}");
+
+        return view('accounts.edit', compact('account', 'clients', 'categories'));
     }
 
     /**
@@ -130,7 +142,44 @@ class AccountController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // recupero l'account by id
+        $account = Account::find($id);
+
+        // validazione request
+        $request->validate([
+            'name' => 'required|string|min:4|max:230',
+            'client_id' => 'required|exists:clients,id',
+            'category_id' => 'required|exists:categories,id',
+            'url' => 'nullable|url',
+            'username' => 'required|string|min:4|max:255',
+            'password' => 'nullable|string|min:8|confirmed',
+            'description' => 'nullable|string'
+        ]);
+
+        // data request all
+        $data = $request->all();
+
+        // setto i valori
+        $account->name = ucwords($data['name']);
+        $account->client_id = $data['client_id'];
+        $account->category_id = $data['category_id'];
+        $account->url = $data['url'];
+        $account->description = $data['description'];
+
+        // controllo se c'è la password nuova
+        if(array_key_exists('password', $data) && !empty($data['password'])) {
+            $account->password = Crypt::encryptString($data['password']);
+        } else {
+            $account->password = $account->password;
+        }
+
+        // update account
+        $account->update();
+
+        // aggiungo il log attività
+        LogActivity::addLog("Modificato Account {$account->name}");
+
+        return redirect()->route('accounts.show', $account->id)->with('success', "L'Account con nome: {$account->name} è stato modificato.");
     }
 
     /**
