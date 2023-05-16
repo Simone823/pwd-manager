@@ -10,7 +10,7 @@
                 {{-- row title --}}
                 <div class="row mb-4">
                     <h2 class="mb-0 text-violet fs-4 fw-bold">
-                        <i class="fa-solid fa-pen"></i>
+                        <i class="fa-solid fa-plus"></i>
                         Creazione Cliente
                     </h2>
                 </div>
