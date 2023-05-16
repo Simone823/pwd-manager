@@ -95,7 +95,7 @@
                             {{-- card body --}}
                             <div class="card-body flex-grow-1 border-bottom-violet">
                                 {{-- client name --}}
-                                <p class="badge-violet rounded-pill py-2 px-2 fw-bold fs-6">{{$account->client->name}}</p>
+                                <p class="badge-violet rounded-pill py-2 px-3 fw-bold fs-6">{{$account->client->name}}</p>
 
                                 {{-- account name --}}
                                 <div class="field-wrapper mb-3">
