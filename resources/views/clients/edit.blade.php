@@ -63,7 +63,7 @@
                                 <div class="col-12 d-flex justify-content-end">
                                     <button type="submit" class="btn btn-violet fw-bold px-4 text-uppercase">
                                         <i class="fa-solid fa-floppy-disk"></i>
-                                        Salva
+                                        Salva Modifica
                                     </button>
                                 </div>
                             </div>
