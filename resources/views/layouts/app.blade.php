@@ -7,16 +7,10 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    {{-- Icons --}}
+    {{-- Icons website--}}
     <link rel="icon" href="{{asset('assets/img/icon-site/icon-32x32.png')}}" sizes="32x32" />
     <link rel="icon" href="{{asset('assets/img/icon-site/icon-192x192.png')}}" sizes="192x192" />
     <link rel="apple-touch-icon" href="{{asset('assets/img/icon-site/icon-apple-touch.png')}}" />
-
-    {{-- Title --}}
-    <title>{{config('app.name')}} @yield('title')</title>
-
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -27,6 +21,12 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    <!-- Scripts stack -->
+    <script src="{{ asset('js/app.js') }}" defer></script>
+
+    {{-- Title --}}
+    <title>{{config('app.name')}} @yield('title')</title>
 </head>
 <body>
     <div id="app">
