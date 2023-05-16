@@ -107,7 +107,19 @@ class AccountController extends Controller
      */
     public function show($id)
     {
-        //
+        // recupero l'account by id
+        $account = Account::find($id);
+
+        // recupero tutti i clienti dal db
+        $clients = Client::orderBy('name', 'asc')->get();
+
+        // recupero tutte le categorie dal db
+        $categories = Category::orderBy('category_name', 'asc')->get();
+
+        // aggiungo il log attività
+        LogActivity::addLog("Visualizza Account {$account->name}");
+
+        return view('accounts.show', compact('account', 'clients', 'categories'));
     }
 
     /**
