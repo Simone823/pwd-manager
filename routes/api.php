@@ -14,6 +14,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+// Rotte middleware check token api
+Route::middleware('checkApiToken')->namespace('Api')->group(function() {
+
+    // Rotta ottieni username & password dell'account
+    Route::get('/viewPasswordAccount', 'AccountController@viewPasswordAccount');
+});
+
+// Route fallback not exist
+Route::fallback(function () {
+    return response()->json([
+        'status' => 404,
+        'message' => 'Page Not Found.'
+    ], 404);
 });
