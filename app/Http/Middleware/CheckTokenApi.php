@@ -17,9 +17,6 @@ class CheckTokenApi
      */
     public function handle($request, Closure $next)
     {
-        // my app token api
-        $apiToken = PersonalAccessApiToken::where('token_name', '=', 'Api_Token')->first();
-
         // controllo se esiste il parametro Api_Token
         if(!$request->has('Api_Token')) {
             return response()->json([
