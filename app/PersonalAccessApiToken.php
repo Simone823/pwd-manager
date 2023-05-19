@@ -16,13 +16,4 @@ class PersonalAccessApiToken extends Model
         'token_code',
         'abilities'
     ];
-
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
-    protected $hidden = [
-        'token_code'
-    ];
 }
