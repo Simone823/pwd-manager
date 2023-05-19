@@ -24,7 +24,7 @@ class CheckTokenApi
         if(!$request->has('Api_Token')) {
             return response()->json([
                 'status' => 422,
-                'message' => 'Param Api_Token is required',
+                'message' => 'Param Api_Token is required.',
             ], 422);
         }
 
@@ -32,7 +32,7 @@ class CheckTokenApi
         if($request->Api_Token != Hash::check(config('app.api_token'), $apiToken->token_code)) {
             return response()->json([
                 'status' => 401,
-                'message' => 'Param Api_token is invalid'
+                'message' => 'Param Api_Token is invalid.'
             ], 401);
         }
 
