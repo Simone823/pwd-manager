@@ -28,8 +28,8 @@ class CheckTokenApi
             ], 422);
         }
 
-        // controllo se Api_Token corrisponde a quello nel db in hash
-        if($request->Api_Token != Hash::check(config('app.api_token'), $apiToken->token_code)) {
+        // controllo se il parametro richiesta Api_Token corrisponde a quello nel db in hash
+        if(!Hash::check(config('app.api_token'), $request->Api_Token)) {
             return response()->json([
                 'status' => 401,
                 'message' => 'Param Api_Token is invalid.'
