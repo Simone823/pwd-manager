@@ -17,7 +17,8 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             CategorySeeder::class,
             ClientSeeder::class,
-            AccountSeeder::class
+            AccountSeeder::class,
+            PersonalAccessTokenSeeder::class
         ]);
     }
 }

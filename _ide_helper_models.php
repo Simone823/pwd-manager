@@ -142,6 +142,17 @@ namespace App{
 
 namespace App{
 /**
+ * App\PersonalAccessApiToken
+ *
+ * @method static \Illuminate\Database\Eloquent\Builder|PersonalAccessApiToken newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|PersonalAccessApiToken newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|PersonalAccessApiToken query()
+ */
+	class PersonalAccessApiToken extends \Eloquent {}
+}
+
+namespace App{
+/**
  * App\Role
  *
  * @property int $id
