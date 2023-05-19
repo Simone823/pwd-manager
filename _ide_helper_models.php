@@ -144,9 +144,21 @@ namespace App{
 /**
  * App\PersonalAccessApiToken
  *
+ * @property int $id
+ * @property string $token_name
+ * @property string $token_code
+ * @property string $abilities
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
  * @method static \Illuminate\Database\Eloquent\Builder|PersonalAccessApiToken newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|PersonalAccessApiToken newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|PersonalAccessApiToken query()
+ * @method static \Illuminate\Database\Eloquent\Builder|PersonalAccessApiToken whereAbilities($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|PersonalAccessApiToken whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|PersonalAccessApiToken whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|PersonalAccessApiToken whereTokenCode($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|PersonalAccessApiToken whereTokenName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|PersonalAccessApiToken whereUpdatedAt($value)
  */
 	class PersonalAccessApiToken extends \Eloquent {}
 }
