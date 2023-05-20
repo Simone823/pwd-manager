@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Account;
 use App\Http\Controllers\Controller;
+use App\LogActivity;
 use Crypt;
 use Illuminate\Http\Request;
 
@@ -71,6 +72,9 @@ class AccountController extends Controller
                 'message' => 'Error, Unable to decrypt password.'
             ], 422);
         }
+
+        // aggiungo il log attività
+        LogActivity::addLog("Api decrypt password Account {$account->name}");
 
         return response()->json([
             'status' => 200,
