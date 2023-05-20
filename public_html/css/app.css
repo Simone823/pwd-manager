@@ -13995,6 +13995,7 @@ fieldset:disabled .btn {
   left: 50%;
   transform: translateY(38px) translateX(-50%);
   z-index: 1;
+  white-space: nowrap;
 }
 
 .btn-violet:hover .tooltiptext-bottom,
