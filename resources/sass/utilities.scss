@@ -163,7 +163,39 @@
     z-index: 50;
 }
 
+
 // BORDERS
 .border-bottom-violet {
     border-bottom: 1px solid $violet;
+}
+
+
+// SWEET ALERT
+.swal2-popup {
+    background: var(--bs-dark) !important;
+    padding: 20px 4px !important;
+    color: $white !important;
+
+    .swal2-title {
+        color: $violet !important;
+    }
+
+    .swal2-html-container {
+        margin-bottom: 15px;
+    }
+
+    .swal2-confirm {
+        background-color: $violet !important;
+        color: $black !important;
+        font-weight: bold !important;
+
+        &.swal2-styled:hover {
+            background-color: rgba($color: $violet, $alpha: 0.8) !important;
+            transition: background-color .3s ease-in-out;
+        }
+
+        &.swal2-styled:focus {
+            box-shadow: none !important;
+        }
+    }
 }
