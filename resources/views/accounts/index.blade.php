@@ -44,6 +44,11 @@
                                 @foreach ($accounts as $account)
                                     <tr>
                                         <th class="d-flex gap-2">
+                                            {{-- btn show --}}
+                                            <a href="{{route('accounts.show', $account->id)}}" class="btn btn-violet shadow">
+                                                <i class="fa-sharp fa-solid fa-eye"></i>
+                                            </a>
+
                                             {{-- btn edit --}}
                                             @if (Auth::user()->hasPermission('accounts-edit'))
                                                 <a href="{{route('accounts.edit', $account->id)}}" class="btn btn-violet shadow">
