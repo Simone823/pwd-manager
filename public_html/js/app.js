@@ -45371,8 +45371,8 @@ module.exports = function(module) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _utilities_common__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./utilities/common */ "./resources/js/utilities/common.js");
-/* harmony import */ var _utilities_common__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_utilities_common__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _utilities_api__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./utilities/api */ "./resources/js/utilities/api.js");
+/* harmony import */ var _utilities_api__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_utilities_api__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var sweetalert2_src_sweetalert2_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! sweetalert2/src/sweetalert2.scss */ "./node_modules/sweetalert2/src/sweetalert2.scss");
 /* harmony import */ var sweetalert2_src_sweetalert2_scss__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(sweetalert2_src_sweetalert2_scss__WEBPACK_IMPORTED_MODULE_1__);
 /************************ IMPORTS ************************/
@@ -45437,10 +45437,10 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 /***/ }),
 
-/***/ "./resources/js/utilities/common.js":
-/*!******************************************!*\
-  !*** ./resources/js/utilities/common.js ***!
-  \******************************************/
+/***/ "./resources/js/utilities/api.js":
+/*!***************************************!*\
+  !*** ./resources/js/utilities/api.js ***!
+  \***************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
