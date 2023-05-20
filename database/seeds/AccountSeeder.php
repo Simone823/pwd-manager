@@ -78,6 +78,33 @@ class AccountSeeder extends Seeder
                 'password' => $faker->password(),
                 'description' => ''
             ],
+            [
+                'name' => 'Website',
+                'client_id' => $client->id,
+                'category_id' => $categorySocialId,
+                'url' => $faker->url(),
+                'username' => $faker->userName(),
+                'password' => $faker->password(),
+                'description' => ''
+            ],
+            [
+                'name' => 'Website icons',
+                'client_id' => $client->id,
+                'category_id' => $categorySocialId,
+                'url' => $faker->url(),
+                'username' => $faker->userName(),
+                'password' => $faker->password(),
+                'description' => ''
+            ],
+            [
+                'name' => 'Website Personal',
+                'client_id' => $client->id,
+                'category_id' => $categorySocialId,
+                'url' => $faker->url(),
+                'username' => $faker->userName(),
+                'password' => $faker->password(),
+                'description' => ''
+            ],
         );
 
         foreach ($accounts as $key => $account) {
