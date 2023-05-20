@@ -71,10 +71,10 @@
                             {{-- buttons --}}
                             <div class="col-12 col-md-6 col-lg-3 d-flex flex-wrap gap-3">
                                 {{-- btn submit --}}
-                                <button type="submit" class="btn btn-violet fw-semibold">Cerca</button>
+                                <button type="submit" class="btn btn-violet fw-semibold shadow">Cerca</button>
 
                                 {{-- btn create account --}}
-                                <a href="{{route('accounts.create')}}" class="btn btn-violet fw-semibold">
+                                <a href="{{route('accounts.create')}}" class="btn btn-violet fw-semibold shadow">
                                     <i class="fa-solid fa-plus"></i>
                                     Crea Account
                                 </a>
