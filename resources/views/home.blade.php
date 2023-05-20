@@ -132,6 +132,12 @@
                                             <span class="tooltiptext-bottom">Visualizza</span>
                                         </a>
 
+                                        {{-- btn view password account --}}
+                                        <button onclick="viewPasswordAccount('{{Session::get('Api_Token')}}', {{$account->id}})" type="button" class="btn btn-violet shadow">
+                                            <i class="fa-solid fa-unlock"></i>
+                                            <span class="tooltiptext-bottom">Vedi Password</span>
+                                        </button>
+
                                         {{-- btn edit --}}
                                         @if (Auth::user()->hasPermission('accounts-edit'))
                                             <a href="{{route('accounts.edit', $account->id)}}" class="btn btn-violet shadow">
@@ -142,7 +148,7 @@
 
                                         {{-- btn delete --}}
                                         @if (Auth::user()->hasPermission('accounts-delete'))
-                                            <form action="{{route('accounts.destroy', $account->id)}}" method="POST">
+                                            <form class="m-0" action="{{route('accounts.destroy', $account->id)}}" method="POST">
                                                 @csrf
                                                 @method('DELETE')
 
