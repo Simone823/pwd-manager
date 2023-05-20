@@ -26,6 +26,7 @@ class AccountSeeder extends Seeder
         $accounts = array(
             [
                 'name' => 'Email Personale',
+                'client_id' => $client->id,
                 'category_id' => $categoryEmailId,
                 'url' => $faker->url(),
                 'username' => $faker->userName(),
@@ -34,6 +35,7 @@ class AccountSeeder extends Seeder
             ],
             [
                 'name' => 'Email Website',
+                'client_id' => $client->id,
                 'category_id' => $categoryEmailId,
                 'url' => $faker->url(),
                 'username' => $faker->userName(),
@@ -42,6 +44,7 @@ class AccountSeeder extends Seeder
             ],
             [
                 'name' => 'Email Agency',
+                'client_id' => $client->id,
                 'category_id' => $categoryEmailId,
                 'url' => $faker->url(),
                 'username' => $faker->userName(),
@@ -50,6 +53,7 @@ class AccountSeeder extends Seeder
             ],
             [
                 'name' => 'Social Facebook',
+                'client_id' => $client->id,
                 'category_id' => $categorySocialId,
                 'url' => $faker->url(),
                 'username' => $faker->userName(),
@@ -58,6 +62,7 @@ class AccountSeeder extends Seeder
             ],
             [
                 'name' => 'Social Twitter',
+                'client_id' => $client->id,
                 'category_id' => $categorySocialId,
                 'url' => $faker->url(),
                 'username' => $faker->userName(),
@@ -66,6 +71,7 @@ class AccountSeeder extends Seeder
             ],
             [
                 'name' => 'Social Instagram',
+                'client_id' => $client->id,
                 'category_id' => $categorySocialId,
                 'url' => $faker->url(),
                 'username' => $faker->userName(),
@@ -74,6 +80,7 @@ class AccountSeeder extends Seeder
             ],
             [
                 'name' => 'Website',
+                'client_id' => $client->id,
                 'category_id' => $categorySocialId,
                 'url' => $faker->url(),
                 'username' => $faker->userName(),
@@ -82,6 +89,7 @@ class AccountSeeder extends Seeder
             ],
             [
                 'name' => 'Website icons',
+                'client_id' => $client->id,
                 'category_id' => $categorySocialId,
                 'url' => $faker->url(),
                 'username' => $faker->userName(),
@@ -90,6 +98,7 @@ class AccountSeeder extends Seeder
             ],
             [
                 'name' => 'Website Personal',
+                'client_id' => $client->id,
                 'category_id' => $categorySocialId,
                 'url' => $faker->url(),
                 'username' => $faker->userName(),
@@ -107,7 +116,7 @@ class AccountSeeder extends Seeder
 
             // setto i valori
             $newAccount->name = $account['name'];
-            $newAccount->client_id = Account::inRandomOrder()->pluck('id')->first();
+            $newAccount->client_id = $account['client_id'];
             $newAccount->category_id = $account['category_id'];
             $newAccount->url = $account['url'];
             $newAccount->username = $account['username'];
