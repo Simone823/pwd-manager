@@ -6,7 +6,7 @@
 <section id="auth-passwords-email">
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-8">
+            <div class="col-md-6">
     
                 {{-- logo --}}
                 <a href="{{url('/')}}" alt="{{config('app.name')}}">
@@ -18,6 +18,7 @@
                 {{-- turn back login --}}
                 <div class="turn-back mb-4">
                     <a href="{{route('login')}}" class="btn btn-transparent fw-semibold">
+                        <i class="fa-solid fa-arrow-left"></i>
                         Torna alla pagina Login
                     </a>
                 </div>

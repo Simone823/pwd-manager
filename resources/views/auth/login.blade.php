@@ -6,7 +6,7 @@
     <section id="auth-login">
         <div class="container">
             <div class="row align-items-center justify-content-center">
-                <div class="col-md-8">
+                <div class="col-md-6">
     
                     {{-- logo --}}
                     <a href="{{url('/')}}" alt="{{config('app.name')}}">
