@@ -107,6 +107,9 @@ class AccountSeeder extends Seeder
             ],
         );
 
+        // date time current
+        $dateTime = new DateTime();
+
         foreach ($accounts as $key => $account) {
             // creo nuova istanza Account
             $newAccount = new Account();
@@ -119,6 +122,7 @@ class AccountSeeder extends Seeder
             $newAccount->username = $account['username'];
             $newAccount->password = Crypt::encryptString($account['password']);
             $newAccount->description = $account['description'];
+            $newAccount->created_at = $dateTime->modify("+ 1 seconds");
 
             // save
             $newAccount->save();
