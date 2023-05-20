@@ -23,13 +23,13 @@
     
                                 {{-- email --}}
                                 <div class="form-floating mb-3">
-                                    <input type="email" class="form-control input-violet shadow-sm @error('email') is-invalid @enderror" id="email" name="email" value="{{old('email')}}" placeholder="Indirizzo Email" required autocomplete="email">
-                                    <label for="email" class="text-violet">
-                                        <i class="fa-solid fa-envelope"></i>
-                                        Indirizzo Email
+                                    <input type="text" class="form-control input-violet shadow-sm @error('username') is-invalid @enderror" id="username" name="username" value="{{old('username')}}" placeholder="Nome Utente" required autocomplete="username">
+                                    <label for="username" class="text-violet">
+                                        <i class="fa-solid fa-user"></i>
+                                        Nome Utente
                                     </label>
 
-                                    @error('email')
+                                    @error('username')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
