@@ -1,15 +1,13 @@
+/** IMPORTS **/
 require('./bootstrap');
 
-// Sweetalert
-// import Swal from 'sweetalert2/dist/sweetalert2.js';
-// import 'sweetalert2/src/sweetalert2.scss';
+// Utilities
+import './utilities';
 
-// Swal.fire({
-//     title: 'Sweet!',
-//     html: `<input type="text" id="login" class="swal2-input" placeholder="Username">
-//         <input type="password" id="password" class="swal2-input" placeholder="Password">
-//     `,
-//   });
+// Sweetalert
+import 'sweetalert2/src/sweetalert2.scss';
+/** **/
+
 
 // div loader
 const divLoader = document.getElementById('loader');
