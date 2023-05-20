@@ -8,7 +8,7 @@
 
         {{-- row accounts --}}
         @if (Auth::user()->hasPermission('accounts-view'))    
-            <div class="row gy-4">
+            <div class="row gy-5">
                 {{-- search --}}
                 <div class="col-12">
                     <form action="{{route('home.search-accounts')}}" class="search-fields py-3 px-3 bg-dark shadow rounded" method="GET">
@@ -168,7 +168,7 @@
                 {{-- paginate --}}
                 @if ($accounts->lastPage() > 1)    
                     <div class="col-12">
-                        <div class="paginate-wrapper bg-dark py-3 px-3 bg-dark shadow rounded">
+                        <div class="paginate-wrapper bg-dark px-3 bg-dark shadow rounded">
                             {{!! $accounts->appends(\Request::except('page'))->render() !!}}
                         </div>
                     </div>
