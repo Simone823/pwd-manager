@@ -18,9 +18,9 @@
                 {{-- row turn back accounts index --}}
                 <div class="row mb-5">
                     <div class="turn-back">
-                        <a class="btn btn-transparent fw-semibold shadow" href="{{route('accounts.index')}}">
+                        <a class="btn btn-transparent fw-semibold shadow" href="{{url()->previous()}}">
                             <i class="fa-solid fa-arrow-left"></i>
-                            Torna alla lista Account
+                            Torna indietro
                         </a>
                     </div>
                 </div>
