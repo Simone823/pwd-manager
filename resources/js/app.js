@@ -1,8 +1,8 @@
 require('./bootstrap');
 
 // Sweetalert
-import Swal from 'sweetalert2/dist/sweetalert2.js';
-import 'sweetalert2/src/sweetalert2.scss';
+// import Swal from 'sweetalert2/dist/sweetalert2.js';
+// import 'sweetalert2/src/sweetalert2.scss';
 
 // Swal.fire({
 //     title: 'Sweet!',
@@ -16,7 +16,6 @@ const divLoader = document.getElementById('loader');
 
 // div page loaded
 const divPageLoaded = document.getElementById('page-loaded');
-
 
 // document load event
 document.addEventListener('readystatechange', function(e) {
