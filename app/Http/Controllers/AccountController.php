@@ -96,7 +96,7 @@ class AccountController extends Controller
         // aggiungo il log attività
         LogActivity::addLog("Creato Account {$newAccount->name}");
 
-        return redirect()->route('accounts.index')->with('success', "L'Account con nome: {$newAccount->name} è stato creato.");
+        return redirect()->route('accounts.show', $newAccount->id)->with('success', "L'Account con nome: {$newAccount->name} è stato creato.");
     }
 
     /**
@@ -211,6 +211,6 @@ class AccountController extends Controller
         // aggiungo il log attività
         LogActivity::addLog("Eliminato Account {$account->name}");
 
-        return redirect()->route('accounts.index')->with('success', "L'Account con nome: {$account->name} è stato eliminato.");
+        return redirect()->back()->with('success', "L'Account con nome: {$account->name} è stato eliminato.");
     }
 }
