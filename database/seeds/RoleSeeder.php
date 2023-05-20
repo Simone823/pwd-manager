@@ -33,12 +33,16 @@ class RoleSeeder extends Seeder
             ]
         );
 
+        // data e ora corrente
+        $dateTime = new DateTime();
+
         foreach ($roles as $key => $role) {
             // creo nuova istanza di Role
             $newRole = new Role();
 
             // setto i valori
             $newRole->name = $role['name'];
+            $newRole->created_at = $dateTime->modify("+ 1 seconds");
 
             // save
             $newRole->save();

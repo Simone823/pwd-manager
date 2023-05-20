@@ -13,6 +13,9 @@ class ClientSeeder extends Seeder
      */
     public function run(Faker $faker)
     {
+        // data e ora corrente
+        $dateTime = new DateTime();
+
         // random fake client
         for ($i = 0; $i < 10; $i++) {
             // nuova istanza Client
@@ -20,6 +23,7 @@ class ClientSeeder extends Seeder
 
             // setto i valori
             $newClient->name = $faker->name();
+            $newClient->created_at = $dateTime->modify("+ 1 seconds");
 
             // save
             $newClient->save();
