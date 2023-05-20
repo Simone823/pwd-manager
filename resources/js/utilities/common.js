@@ -1,8 +1,8 @@
-/** IMPORTS **/
+/************************ IMPORTS ************************/
 
 // sweet alert
 const Swal = require('sweetalert2/dist/sweetalert2.js');
-/** **/
+/**********************************************************/
 
 
 // Visualizza password & username account
