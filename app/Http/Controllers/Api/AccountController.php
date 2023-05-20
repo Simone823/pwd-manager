@@ -73,9 +73,6 @@ class AccountController extends Controller
             ], 422);
         }
 
-        // aggiungo il log attività
-        LogActivity::addLog("Api decrypt password Account {$account->name}");
-
         return response()->json([
             'status' => 200,
             'data' => [
