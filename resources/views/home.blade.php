@@ -68,9 +68,16 @@
                                 </div>
                             </div>
 
-                            {{-- btn submit --}}
-                            <div class="col-12 col-md-6 col-lg-3">
-                                <button type="submit" class="btn btn-violet">Cerca</button>
+                            {{-- buttons --}}
+                            <div class="col-12 col-md-6 col-lg-3 d-flex flex-wrap gap-3">
+                                {{-- btn submit --}}
+                                <button type="submit" class="btn btn-violet fw-semibold">Cerca</button>
+
+                                {{-- btn create account --}}
+                                <a href="{{route('accounts.create')}}" class="btn btn-violet fw-semibold">
+                                    <i class="fa-solid fa-plus"></i>
+                                    Crea Account
+                                </a>
                             </div>
                         </div>
                     </form>
