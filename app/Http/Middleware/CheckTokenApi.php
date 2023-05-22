@@ -2,7 +2,6 @@
 
 namespace App\Http\Middleware;
 
-use App\PersonalAccessApiToken;
 use Closure;
 use Hash;
 
@@ -17,19 +16,19 @@ class CheckTokenApi
      */
     public function handle($request, Closure $next)
     {
-        // controllo se esiste il parametro Api_Token
-        if(!$request->has('Api_Token')) {
+        // controllo se esiste il parametro Authorization
+        if(!$request->header('Authorization')) {
             return response()->json([
                 'status' => 422,
-                'message' => 'Param Api_Token is required.',
+                'message' => 'Header Authorization is required.',
             ], 422);
         }
 
-        // controllo se il parametro richiesta Api_Token corrisponde a quello nel db in hash
-        if(!Hash::check(config('app.api_token'), $request->Api_Token)) {
+        // controllo se il parametro richiesta Authorization corrisponde a quello nel db in hash
+        if(!Hash::check(config('app.api_token'), $request->header('Authorization'))) {
             return response()->json([
                 'status' => 401,
-                'message' => 'Param Api_Token is invalid.'
+                'message' => 'Header Authorization is invalid.'
             ], 401);
         }
 
