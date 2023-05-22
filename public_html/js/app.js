@@ -45453,8 +45453,10 @@ var Swal = __webpack_require__(/*! sweetalert2/dist/sweetalert2.js */ "./node_mo
 // Visualizza password & username account
 viewPasswordAccount = function viewPasswordAccount(apiToken, idAccount) {
   axios.get('/api/viewPasswordAccount', {
+    headers: {
+      Authorization: apiToken
+    },
     params: {
-      Api_Token: apiToken,
       idAccount: idAccount
     }
   }).then(function (res) {

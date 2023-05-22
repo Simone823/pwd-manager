@@ -8,8 +8,10 @@ const Swal = require('sweetalert2/dist/sweetalert2.js');
 // Visualizza password & username account
 viewPasswordAccount = function(apiToken, idAccount) {
     axios.get('/api/viewPasswordAccount', {
+        headers: {
+            Authorization: apiToken,
+        },
         params: {
-            Api_Token: apiToken,
             idAccount: idAccount
         }
     })
