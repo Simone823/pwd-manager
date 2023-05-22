@@ -39,10 +39,10 @@ class AccountController extends Controller
         // decrypt password
         try {
             $account->password = Crypt::decryptString($account->password);
-        } catch (\Throwable $th) {
+        } catch (\Exception $e) {
             return response()->json([
                 'status' => 422,
-                'message' => 'Error, Unable to decrypt password.'
+                'message' => $e->getMessage()
             ], 422);
         }
 
