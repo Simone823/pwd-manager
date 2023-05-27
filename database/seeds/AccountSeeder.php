@@ -18,15 +18,12 @@ class AccountSeeder extends Seeder
         // categories
         $categoryEmailId = Category::where('category_name', 'Email')->pluck('id')->first();
         $categorySocialId = Category::where('category_name', 'Social')->pluck('id')->first();
-
-        // client random
-        $client = Client::all()->random()->first();
+        $categoryWebsiteId = Category::where('category_name', 'Website')->pluck('id')->first();
 
         // array accounts password
         $accounts = array(
             [
                 'name' => 'Email Personale',
-                'client_id' => $client->id,
                 'category_id' => $categoryEmailId,
                 'url' => $faker->url(),
                 'username' => $faker->userName(),
@@ -35,7 +32,6 @@ class AccountSeeder extends Seeder
             ],
             [
                 'name' => 'Email Website',
-                'client_id' => $client->id,
                 'category_id' => $categoryEmailId,
                 'url' => $faker->url(),
                 'username' => $faker->userName(),
@@ -44,7 +40,6 @@ class AccountSeeder extends Seeder
             ],
             [
                 'name' => 'Email Agency',
-                'client_id' => $client->id,
                 'category_id' => $categoryEmailId,
                 'url' => $faker->url(),
                 'username' => $faker->userName(),
@@ -53,7 +48,6 @@ class AccountSeeder extends Seeder
             ],
             [
                 'name' => 'Social Facebook',
-                'client_id' => $client->id,
                 'category_id' => $categorySocialId,
                 'url' => $faker->url(),
                 'username' => $faker->userName(),
@@ -62,7 +56,6 @@ class AccountSeeder extends Seeder
             ],
             [
                 'name' => 'Social Twitter',
-                'client_id' => $client->id,
                 'category_id' => $categorySocialId,
                 'url' => $faker->url(),
                 'username' => $faker->userName(),
@@ -71,7 +64,6 @@ class AccountSeeder extends Seeder
             ],
             [
                 'name' => 'Social Instagram',
-                'client_id' => $client->id,
                 'category_id' => $categorySocialId,
                 'url' => $faker->url(),
                 'username' => $faker->userName(),
@@ -80,8 +72,7 @@ class AccountSeeder extends Seeder
             ],
             [
                 'name' => 'Website',
-                'client_id' => $client->id,
-                'category_id' => $categorySocialId,
+                'category_id' => $categoryWebsiteId,
                 'url' => $faker->url(),
                 'username' => $faker->userName(),
                 'password' => $faker->password(),
@@ -89,8 +80,7 @@ class AccountSeeder extends Seeder
             ],
             [
                 'name' => 'Website icons',
-                'client_id' => $client->id,
-                'category_id' => $categorySocialId,
+                'category_id' => $categoryWebsiteId,
                 'url' => $faker->url(),
                 'username' => $faker->userName(),
                 'password' => $faker->password(),
@@ -98,8 +88,7 @@ class AccountSeeder extends Seeder
             ],
             [
                 'name' => 'Website Personal',
-                'client_id' => $client->id,
-                'category_id' => $categorySocialId,
+                'category_id' => $categoryWebsiteId,
                 'url' => $faker->url(),
                 'username' => $faker->userName(),
                 'password' => $faker->password(),
@@ -111,12 +100,15 @@ class AccountSeeder extends Seeder
         $dateTime = new DateTime();
 
         foreach ($accounts as $key => $account) {
+            // client random
+            $clientRandom = Client::inRandomOrder()->first();
+
             // creo nuova istanza Account
             $newAccount = new Account();
 
             // setto i valori
             $newAccount->name = $account['name'];
-            $newAccount->client_id = $account['client_id'];
+            $newAccount->client_id = $clientRandom->id;
             $newAccount->category_id = $account['category_id'];
             $newAccount->url = $account['url'];
             $newAccount->username = $account['username'];
