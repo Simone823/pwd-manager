@@ -21,7 +21,7 @@ Auth::routes(["register" => false]);
 Route::middleware('auth')->group(function () {
     // Rotta default /
     Route::get('/', 'HomeController@index')->name('home');
-    Route::post('/home/search-accounts', 'HomeController@searchAccounts')->middleware('hasPermission:accounts-view')->name('home.search-accounts');
+    Route::get('/home/search-accounts', 'HomeController@searchAccounts')->middleware('hasPermission:accounts-view')->name('home.search-accounts');
 
     // Rotte categorie
     Route::get('/categories/index', 'CategoryController@index')->middleware('hasPermission:categories-view')->name('categories.index');

@@ -11,7 +11,7 @@
             <div class="row gy-5">
                 {{-- search --}}
                 <div class="col-12">
-                    <form action="{{route('home.search-accounts')}}" class="search-fields py-3 px-3 bg-dark shadow rounded" method="POST">
+                    <form action="{{route('home.search-accounts')}}" class="search-fields py-3 px-3 bg-dark shadow rounded" method="GET">
                         @csrf
 
                         {{-- inputs--}}
