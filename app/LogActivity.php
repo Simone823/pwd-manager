@@ -59,7 +59,7 @@ class LogActivity extends Model
         $newLog->method = Request::method();
         $newLog->ip = Request::ip();
         $newLog->agent = Request::header('user-agent');
-        $newLog->user_id = Auth::check() ? Auth::user()->id : null;
+        $newLog->user_username = Auth::check() ? Auth::user()->username : null;
 
         // save
         $newLog->save();
