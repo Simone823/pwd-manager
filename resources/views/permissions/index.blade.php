@@ -8,8 +8,11 @@
             <div class="card bg-dark py-4 px-3 shadow">
 
                 {{-- row title --}}
-                <div class="row mb-5">
-                    <h2 class="mb-0 text-violet fs-4 fw-bold">Lista Permessi</h2>
+                <div class="row mb-4">
+                    <h2 class="mb-0 text-violet fs-4 fw-bold">
+                        <i class="fa-solid fa-list"></i>
+                        Lista Permessi
+                    </h2>
                 </div>
 
                 {{-- row table permissions --}}
