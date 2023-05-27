@@ -24,11 +24,11 @@
                                     <th scope="col"></th>
                                     <th scope="col">@sortablelink('action', 'Nome Azione', [], ['class' => 'link-violet'])</th>
                                     <th scope="col">@sortablelink('created_at', 'Data Azione', [], ['class' => 'link-violet'])</th>
-                                    <th scope="col">@sortablelink('url', 'Url', [], ['class' => 'link-violet'])</th>
+                                    <th scope="col">Utente</th>
                                     <th scope="col">@sortablelink('method', 'Metodo', [], ['class' => 'link-violet'])</th>
                                     <th scope="col">@sortablelink('ip', 'Ip', [], ['class' => 'link-violet'])</th>
+                                    <th scope="col">@sortablelink('url', 'Url', [], ['class' => 'link-violet'])</th>
                                     <th scope="col">@sortablelink('agent', 'Agent', [], ['class' => 'link-violet'])</th>
-                                    <th scope="col">Utente</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -49,13 +49,13 @@
                                         </th>
                                         <th class="fw-normal">{{$log->action}}</th>
                                         <th class="fw-normal">{{$log->created_at->format('d-m-Y H:i:s')}}</th>
+                                        <th class="fw-normal">{{$log->user_id}}</th>
+                                        <th class="fw-normal">{{$log->method}}</th>
+                                        <th class="fw-normal">{{$log->ip}}</th>
                                         <th class="fw-normal">
                                             <a class="link-light-gray" href="{{$log->url}}">{{$log->url}}</a>
                                         </th>
-                                        <th class="fw-normal">{{$log->method}}</th>
-                                        <th class="fw-normal">{{$log->ip}}</th>
                                         <th class="fw-normal">{{$log->agent}}</th>
-                                        <th class="fw-normal">{{$log->user_id}}</th>
                                     </tr>
                                 @endforeach
                             </tbody>
