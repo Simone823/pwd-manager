@@ -47,19 +47,19 @@ Route::middleware('auth')->group(function () {
     Route::get('/accounts/edit/{id}', 'AccountController@edit')->middleware('hasPermission:accounts-edit')->name('accounts.edit');
     Route::put('/accounts/update/{id}', 'AccountController@update')->middleware('hasPermission:accounts-edit')->name('accounts.update');
     Route::delete('/accounts/delete/{id}', 'AccountController@destroy')->middleware('hasPermission:accounts-delete')->name('accounts.destroy');
+});
 
-    // Rotte middleware role admin
-    Route::middleware('hasRole:admin')->group(function () {
-        // Rotte permissions
-        Route::resource('/permissions', 'PermissionController')->only(['index']);
+// Rotte middleware role admin
+Route::middleware('hasRole:admin')->group(function () {
+    // Rotte permissions
+    Route::resource('/permissions', 'PermissionController')->only(['index']);
 
-        // Rotte roles
-        Route::resource('/roles', 'RoleController');
+    // Rotte roles
+    Route::resource('/roles', 'RoleController');
 
-        // Rotte users
-        Route::resource('/users', 'UserController');
+    // Rotte users
+    Route::resource('/users', 'UserController');
 
-        // Rote log activities
-        Route::resource('/log-activities', 'LogActivityController')->only(['index', 'destroy']);
-    });
+    // Rote log activities
+    Route::resource('/log-activities', 'LogActivityController')->only(['index', 'destroy']);
 });
