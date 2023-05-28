@@ -129,7 +129,18 @@
                                     <p class="field-name text-violet fw-semibold border-bottom-violet mb-1">URL / IP</p>
                                     <a target="__balnk" class="link-light-gray" href="{{$account->url}}">{{$account->url}}</a>
                                 </div>
+
+                                {{-- card info --}}
+                                @if ($account->description != null)
+                                    <div class="card-info">
+                                        <div class="tooltip-wrapper">
+                                            <i class="fa-sharp fa-solid fa-circle-info fs-4 shadow text-violet"></i>
+                                            <div class="tooltiptext-right">{{$account->description}}</div>
+                                        </div>
+                                    </div>
+                                @endif
                             </div>
+
 
                             {{-- card btn --}}
                             <div class="card-btn p-3">
