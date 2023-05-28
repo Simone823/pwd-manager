@@ -16,7 +16,8 @@ class CategorySeeder extends Seeder
         $categories = array(
             "Email",
             "Social",
-            "Website"
+            "Website",
+            "Database MySql"
         );
 
         // data e ora corrente

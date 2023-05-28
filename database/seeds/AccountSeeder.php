@@ -19,6 +19,7 @@ class AccountSeeder extends Seeder
         $categoryEmailId = Category::where('category_name', 'Email')->pluck('id')->first();
         $categorySocialId = Category::where('category_name', 'Social')->pluck('id')->first();
         $categoryWebsiteId = Category::where('category_name', 'Website')->pluck('id')->first();
+        $categoryDbMySqlId = Category::where('category_name', 'Database MySql')->pluck('id')->first();
 
         // array accounts password
         $accounts = array(
@@ -93,6 +94,14 @@ class AccountSeeder extends Seeder
                 'username' => $faker->userName(),
                 'password' => $faker->password(),
                 'description' => ''
+            ],
+            [
+                'name' => 'Crm Aba Db MYSQL',
+                'category_id' => $categoryDbMySqlId,
+                'url' => $faker->localIpv4(),
+                'username' => $faker->userName(),
+                'password' => $faker->password(),
+                'description' => "Nome Database: {$faker->userName()}"
             ],
         );
 
