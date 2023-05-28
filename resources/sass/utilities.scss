@@ -92,6 +92,7 @@
         transform: translateY(38px) translateX(-50%);
         z-index: 1;
         white-space: nowrap;
+        box-shadow: 0 0.5rem 1rem rgba($color: $black, $alpha: 0.15);
     }
 
     &:hover {
@@ -196,6 +197,38 @@
 
         &.swal2-styled:focus {
             box-shadow: none !important;
+        }
+    }
+}
+
+
+// TOOLTIPS
+.tooltip-wrapper {
+    position: relative;
+    max-width: max-content;
+    cursor: pointer;
+
+    .tooltiptext-right {
+        position: absolute;
+        min-width: 165px;
+        max-width: 200px;
+        visibility: hidden;
+        background-color: $violet;
+        color: $black;
+        font-weight: bold;
+        border-radius: 6px;
+        padding: 5px 10px;
+        top: 50%;
+        left: 100%;
+        transform: translateX(12px) translateY(-60%);
+        z-index: 1;
+        box-shadow: 0 0.5rem 1rem rgba($color: $black, $alpha: 0.20);
+    }
+
+    &:hover {
+        .tooltiptext-right {
+            visibility: visible;
+            transition: visibility .3s ease-in-out;
         }
     }
 }
