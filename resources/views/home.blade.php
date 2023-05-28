@@ -102,7 +102,7 @@
                     <div class="col-12 col-md-6 col-lg-3">
                         <div class="card bg-dark text-white shadow h-100 d-flex">
                             {{-- card body --}}
-                            <div class="card-body flex-grow-1 border-bottom-violet">
+                            <div class="card-body flex-grow-1">
                                 {{-- client name --}}
                                 <p class="badge-violet rounded-pill py-2 px-3 fw-bold fs-6">{{$account->client->name}}</p>
 
@@ -125,22 +125,22 @@
                                 </div>
 
                                 {{-- url --}}
-                                <div class="field-wrapper mb-3">
+                                <div class="field-wrapper">
                                     <p class="field-name text-violet fw-semibold border-bottom-violet mb-1">URL / IP</p>
                                     <a target="__balnk" class="link-light-gray" href="{{$account->url}}">{{$account->url}}</a>
                                 </div>
+                            </div>
 
-                                {{-- card info --}}
+                            {{-- tooltip info description --}}
+                            <div class="card-info border-bottom-violet p-3">
                                 @if ($account->description != null)
-                                    <div class="card-info">
-                                        <div class="tooltip-wrapper">
-                                            <i class="fa-sharp fa-solid fa-circle-info fs-4 shadow text-violet"></i>
-                                            <div class="tooltiptext-right">{{$account->description}}</div>
-                                        </div>
+                                    <div class="tooltip-wrapper">
+                                        <i class="fa-solid fa-message fs-5 shadow text-violet"></i>
+                                        {{-- <i class="fa-sharp fa-solid fa-circle-info fs-4 shadow text-violet"></i> --}}
+                                        <div class="tooltiptext-right">{{$account->description}}</div>
                                     </div>
                                 @endif
                             </div>
-
 
                             {{-- card btn --}}
                             <div class="card-btn p-3">
