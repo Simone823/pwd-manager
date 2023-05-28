@@ -79,7 +79,7 @@
                     {{-- description --}}
                     <div class="col-12">
                         <div class="form-floating mb-4">
-                            <textarea class="form-control text-area-violet shadow-sm" placeholder="Descrizione" id="description" name="description" style="height: 100px" readonly>{{old('description')}}</textarea>
+                            <textarea class="form-control text-area-violet shadow-sm" placeholder="Descrizione" id="description" name="description" style="height: 100px" readonly>{{$account->description}}</textarea>
                             <label for="description" class="text-violet">Descrizione</label>
                         </div>
                     </div>
