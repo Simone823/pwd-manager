@@ -8,8 +8,8 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     {{-- Icons website--}}
-    <link rel="icon" href="{{asset('assets/img/icon-site/icon-32x32.png')}}" sizes="32x32" />
-    <link rel="icon" href="{{asset('assets/img/icon-site/icon-192x192.png')}}" sizes="192x192" />
+    <link rel="icon" href="{{asset('/favicon.ico')}}" type="image/x-icon">
+    <link rel="shortcut icon" href="{{asset('assets/img/icon-site/icon-192x192.png')}}" sizes="192x192" />
     <link rel="apple-touch-icon" href="{{asset('assets/img/icon-site/icon-apple-touch.png')}}" />
 
     <!-- Fonts -->
