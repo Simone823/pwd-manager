@@ -26,7 +26,7 @@ class AccountSeeder extends Seeder
             [
                 'name' => 'Email Personale',
                 'category_id' => $categoryEmailId,
-                'url' => $faker->url(),
+                'url' => 'https://gmail.com',
                 'username' => $faker->userName(),
                 'password' => $faker->password(),
                 'description' => ''
@@ -34,7 +34,7 @@ class AccountSeeder extends Seeder
             [
                 'name' => 'Email Website',
                 'category_id' => $categoryEmailId,
-                'url' => $faker->url(),
+                'url' => 'https://outlook.com',
                 'username' => $faker->userName(),
                 'password' => $faker->password(),
                 'description' => ''
@@ -42,7 +42,7 @@ class AccountSeeder extends Seeder
             [
                 'name' => 'Email Agency',
                 'category_id' => $categoryEmailId,
-                'url' => $faker->url(),
+                'url' => 'https://gmail.com',
                 'username' => $faker->userName(),
                 'password' => $faker->password(),
                 'description' => ''
@@ -50,7 +50,7 @@ class AccountSeeder extends Seeder
             [
                 'name' => 'Social Facebook',
                 'category_id' => $categorySocialId,
-                'url' => $faker->url(),
+                'url' => 'https://facebook.com',
                 'username' => $faker->userName(),
                 'password' => $faker->password(),
                 'description' => ''
@@ -58,7 +58,7 @@ class AccountSeeder extends Seeder
             [
                 'name' => 'Social Twitter',
                 'category_id' => $categorySocialId,
-                'url' => $faker->url(),
+                'url' => 'https://twitter.com',
                 'username' => $faker->userName(),
                 'password' => $faker->password(),
                 'description' => ''
@@ -66,7 +66,7 @@ class AccountSeeder extends Seeder
             [
                 'name' => 'Social Instagram',
                 'category_id' => $categorySocialId,
-                'url' => $faker->url(),
+                'url' => 'https://instagram.com',
                 'username' => $faker->userName(),
                 'password' => $faker->password(),
                 'description' => ''
@@ -74,7 +74,7 @@ class AccountSeeder extends Seeder
             [
                 'name' => 'Website',
                 'category_id' => $categoryWebsiteId,
-                'url' => $faker->url(),
+                'url' => 'https://domain.com',
                 'username' => $faker->userName(),
                 'password' => $faker->password(),
                 'description' => ''
@@ -82,7 +82,7 @@ class AccountSeeder extends Seeder
             [
                 'name' => 'Website icons',
                 'category_id' => $categoryWebsiteId,
-                'url' => $faker->url(),
+                'url' => 'https://iconsweb.example',
                 'username' => $faker->userName(),
                 'password' => $faker->password(),
                 'description' => ''
@@ -90,7 +90,7 @@ class AccountSeeder extends Seeder
             [
                 'name' => 'Website Personal',
                 'category_id' => $categoryWebsiteId,
-                'url' => $faker->url(),
+                'url' => 'https://personaldomain.com',
                 'username' => $faker->userName(),
                 'password' => $faker->password(),
                 'description' => ''
@@ -108,7 +108,7 @@ class AccountSeeder extends Seeder
         // date time current
         $dateTime = new DateTime();
 
-        foreach ($accounts as $key => $account) {
+        foreach ($accounts as $account) {
             // client random
             $clientRandom = Client::inRandomOrder()->first();
 
@@ -124,6 +124,7 @@ class AccountSeeder extends Seeder
             $newAccount->password = Crypt::encryptString($account['password']);
             $newAccount->description = $account['description'];
             $newAccount->created_at = $dateTime->modify("+ 1 seconds");
+            $newAccount->updated_at = $newAccount->created_at;
 
             // save
             $newAccount->save();
