@@ -54,7 +54,8 @@
             {{-- btn dropdown profile --}}
             <div class="dropdown">
                 <button class="btn btn-violet dropdown-toggle fw-semibold shadow px-4" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    {{Auth::user()->username}}
+                    <i class="fa-solid fa-user me-1"></i>
+                    {{Auth::user()->name}} {{Auth::user()->surname}}
                 </button>
                 <ul class="dropdown-menu dropdown-menu-dark">
                     @if(Auth::user()->isAdmin())
