@@ -33,6 +33,7 @@
                                 <tr>
                                     <th scope="col"></th>
                                     <th scope="col">@sortablelink('name', 'Nome', [], ['class' => 'link-violet'])</th>
+                                    <th scope="col">@sortablelink('surname', 'Cognome', [], ['class' => 'link-violet'])</th>
                                     <th scope="col">@sortablelink('username', 'Nome Utente', [], ['class' => 'link-violet'])</th>
                                     <th scope="col">@sortablelink('email', 'Email', [], ['class' => 'link-violet'])</th>
                                     <th scope="col">@sortablelink('role.name', 'Ruolo', [], ['class' => 'link-violet'])</th>
@@ -65,6 +66,7 @@
                                             </div>
                                         </th>
                                         <th class="fw-normal">{{$user->name}}</th>
+                                        <th class="fw-normal">{{$user->surname}}</th>
                                         <th class="fw-normal">{{$user->username}}</th>
                                         <th class="fw-normal">{{$user->email}}</th>
                                         <th class="fw-normal">{{$user->role->name}}</th>

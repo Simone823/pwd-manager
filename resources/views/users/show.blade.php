@@ -33,15 +33,23 @@
                             {{-- name --}}
                             <div class="col-12 col-md-6">
                                 <div class="form-floating mb-4">
-                                    <input type="text" class="form-control input-violet shadow-sm @error('name') is-invalid @enderror" id="name" name="name" value="{{$user->name}}" placeholder="Nome" readonly>
+                                    <input type="text" class="form-control input-violet shadow-sm" id="name" name="name" value="{{$user->name}}" placeholder="Nome" readonly>
                                     <label for="name" class="text-violet">Nome</label>
+                                </div>
+                            </div>
+
+                            {{-- surname --}}
+                            <div class="col-12 col-md-6">
+                                <div class="form-floating mb-4">
+                                    <input type="text" class="form-control input-violet shadow-sm" id="surname" name="surname" value="{{$user->surname}}" placeholder="Cognome" readonly>
+                                    <label for="surname" class="text-violet">Cognome</label>
                                 </div>
                             </div>
 
                             {{-- username --}}
                             <div class="col-12 col-md-6">
                                 <div class="form-floating mb-4">
-                                    <input type="text" class="form-control input-violet shadow-sm @error('username') is-invalid @enderror" id="username" name="username" value="{{$user->username}}" placeholder="Username" readonly>
+                                    <input type="text" class="form-control input-violet shadow-sm" id="username" name="username" value="{{$user->username}}" placeholder="Username" readonly>
                                     <label for="username" class="text-violet">Username</label>
                                 </div>
                             </div>
@@ -49,7 +57,7 @@
                             {{-- email --}}
                             <div class="col-12 col-md-6">
                                 <div class="form-floating mb-4">
-                                    <input type="email" class="form-control input-violet shadow-sm @error('email') is-invalid @enderror" id="email" name="email" value="{{$user->email}}" placeholder="email" readonly>
+                                    <input type="email" class="form-control input-violet shadow-sm" id="email" name="email" value="{{$user->email}}" placeholder="email" readonly>
                                     <label for="email" class="text-violet">Email</label>
                                 </div>
                             </div>

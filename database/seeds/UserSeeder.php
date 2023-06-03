@@ -21,23 +21,26 @@ class UserSeeder extends Seeder
         // users array
         $users = array(
             [
-                'name' => 'admin',
+                'name' => 'system',
+                'surname' => 'administrator',
                 "username" => 'admin',
                 'email' => 'admin@pwdmanager.test',
                 'password' => 'PwdManager!!2023!!',
                 "role_id" => $roleAdmin->id
             ],
             [
-                'name' => 'manager',
+                'name' => 'enair',
+                'surname' => 'gibson',
                 "username" => 'manager',
-                'email' => 'manager@pwdmanager.test',
+                'email' => 'gibson@pwdmanager.test',
                 'password' => 'PwdManager!!2023!!',
                 "role_id" => $roleManager->id
             ],
             [
-                'name' => 'simone',
-                "username" => 'simone',
-                'email' => 'simone@pwdmanager.test',
+                'name' => 'delta',
+                'surname' => 'agenes',
+                "username" => 'delta',
+                'email' => 'agenes@pwdmanager.test',
                 'password' => 'PwdManager!!2023!!',
                 "role_id" => $roleUser->id
             ]
@@ -52,6 +55,7 @@ class UserSeeder extends Seeder
 
             // setto i valori
             $newUser->name = ucfirst($user['name']);
+            $newUser->surname = ucfirst($user['surname']);
             $newUser->username = strtolower($user['username']);
             $newUser->email = $user['email'];
             $newUser->password = Hash::make($user['password']);

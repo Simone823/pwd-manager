@@ -31,7 +31,7 @@ class UserController extends Controller
         LogActivity::addLog('Lista Utenti');
 
         // recupero tutti gli utenti dal db ordinati per none
-        $users = User::sortable(['name' => 'asc'])->paginate(10);
+        $users = User::sortable(['surname' => 'asc'])->paginate(10);
 
         return view('users.index', compact('users'));
     }
@@ -63,6 +63,7 @@ class UserController extends Controller
         // validazione request
         $request->validate([
             'name' => 'required|string|alpha|min:4|max:150',
+            'surname' => 'required|string|alpha|min:4|max:150',
             'username' => 'required|string|unique:users,username|min:4|max:150',
             'email' => 'required|email|string|unique:users,email|max:255',
             'password' => 'required|string|min:8|confirmed',
@@ -77,6 +78,7 @@ class UserController extends Controller
 
         // setto i valori
         $newUser->name = ucfirst($data['name']);
+        $newUser->surname = ucfirst($data['surname']);
         $newUser->username = strtolower($data['username']);
         $newUser->email = $data['email'];
         $newUser->password = Hash::make($data['password']);
@@ -158,6 +160,7 @@ class UserController extends Controller
         // validazione request
         $request->validate([
             'name' => 'required|string|alpha|min:4|max:150',
+            'surname' => 'required|string|alpha|min:4|max:150',
             'username' => 'required|string|unique:users,username,'.$id.'|min:4|max:150',
             'email' => 'required|email|string|unique:users,email,'.$id.'|max:255',
             'role_id' => 'required|exists:roles,id'
@@ -168,6 +171,7 @@ class UserController extends Controller
 
         // aggiorno i valori utente
         $user->name = ucfirst($data['name']);
+        $user->surname = ucfirst($data['surname']);
         $user->username = strtolower($data['username']);
         $user->email = $data['email'];
 

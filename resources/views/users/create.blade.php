@@ -47,6 +47,20 @@
                                     </div>
                                 </div>
 
+                                {{-- surname --}}
+                                <div class="col-12 col-md-6">
+                                    <div class="form-floating mb-4">
+                                        <input type="text" class="form-control input-violet shadow-sm @error('surname') is-invalid @enderror" id="surname" name="surname" value="{{old('surname')}}" placeholder="Cognome" required>
+                                        <label for="surname" class="text-violet">Cognome*</label>
+    
+                                        @error('surname')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div>
+
                                 {{-- username --}}
                                 <div class="col-12 col-md-6">
                                     <div class="form-floating mb-4">
