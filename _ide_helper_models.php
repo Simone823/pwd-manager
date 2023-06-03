@@ -98,7 +98,7 @@ namespace App{
  * @property string $method
  * @property string $ip
  * @property string|null $agent
- * @property int|null $user_id
+ * @property string|null $user_username
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @method static \Illuminate\Database\Eloquent\Builder|LogActivity newModelQuery()
@@ -113,7 +113,7 @@ namespace App{
  * @method static \Illuminate\Database\Eloquent\Builder|LogActivity whereMethod($value)
  * @method static \Illuminate\Database\Eloquent\Builder|LogActivity whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|LogActivity whereUrl($value)
- * @method static \Illuminate\Database\Eloquent\Builder|LogActivity whereUserId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|LogActivity whereUserUsername($value)
  */
 	class LogActivity extends \Eloquent {}
 }
@@ -193,6 +193,7 @@ namespace App{
  *
  * @property int $id
  * @property string $name
+ * @property string $surname
  * @property string $username
  * @property string $email
  * @property \Illuminate\Support\Carbon|null $email_verified_at
@@ -216,6 +217,7 @@ namespace App{
  * @method static \Illuminate\Database\Eloquent\Builder|User wherePassword($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereRememberToken($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereRoleId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereSurname($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereUsername($value)
  */
