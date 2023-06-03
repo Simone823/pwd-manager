@@ -71,7 +71,10 @@
                             {{-- buttons --}}
                             <div class="col-12 col-md-6 col-lg-3 d-flex flex-wrap gap-3">
                                 {{-- btn submit --}}
-                                <button type="submit" class="btn btn-violet fw-semibold shadow">Cerca</button>
+                                <button type="submit" class="btn btn-violet fw-semibold shadow">
+                                    <i class="fa-solid fa-magnifying-glass"></i>
+                                    Cerca
+                                </button>
 
                                 {{-- btn create account --}}
                                 @if (Auth::user()->hasPermission('accounts-create'))
