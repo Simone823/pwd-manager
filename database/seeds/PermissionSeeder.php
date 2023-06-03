@@ -38,6 +38,7 @@ class PermissionSeeder extends Seeder
             // setto i valori
             $newPermission->name = $permission;
             $newPermission->created_at = $dateTime->modify("+ 1 seconds");
+            $newPermission->updated_at = $newPermission->created_at;
 
             // save
             $newPermission->save();

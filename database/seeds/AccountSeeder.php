@@ -20,6 +20,7 @@ class AccountSeeder extends Seeder
         $categorySocialId = Category::where('category_name', 'Social')->pluck('id')->first();
         $categoryWebsiteId = Category::where('category_name', 'Website')->pluck('id')->first();
         $categoryDbMySqlId = Category::where('category_name', 'Database MySql')->pluck('id')->first();
+        $categoryFtp = Category::where('category_name', 'FTP')->pluck('id')->first();
 
         // array accounts password
         $accounts = array(
@@ -80,6 +81,14 @@ class AccountSeeder extends Seeder
                 'description' => ''
             ],
             [
+                'name' => 'Website wordpress',
+                'category_id' => $categoryWebsiteId,
+                'url' => 'https://examplewp.com',
+                'username' => $faker->userName(),
+                'password' => $faker->password(),
+                'description' => ""
+            ],
+            [
                 'name' => 'Website icons',
                 'category_id' => $categoryWebsiteId,
                 'url' => 'https://iconsweb.example',
@@ -103,6 +112,30 @@ class AccountSeeder extends Seeder
                 'password' => $faker->password(),
                 'description' => "Nome Database: {$faker->userName()}"
             ],
+            [
+                'name' => 'Ftp domain.com',
+                'category_id' => $categoryFtp,
+                'url' => $faker->localIpv4(),
+                'username' => $faker->userName(),
+                'password' => $faker->password(),
+                'description' => ""
+            ],
+            [
+                'name' => 'Ftp domain.com',
+                'category_id' => $categoryFtp,
+                'url' => $faker->localIpv4(),
+                'username' => $faker->userName(),
+                'password' => $faker->password(),
+                'description' => ""
+            ],
+            [
+                'name' => 'Ftp personal website',
+                'category_id' => $categoryFtp,
+                'url' => $faker->localIpv4(),
+                'username' => $faker->userName(),
+                'password' => $faker->password(),
+                'description' => ""
+            ]
         );
 
         // date time current

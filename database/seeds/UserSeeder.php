@@ -49,7 +49,7 @@ class UserSeeder extends Seeder
         // data e ora corrente
         $dateTime = new DateTime();
 
-        foreach ($users as $key => $user) {
+        foreach ($users as $user) {
             // una istanza di User
             $newUser = new User();
 
@@ -61,6 +61,7 @@ class UserSeeder extends Seeder
             $newUser->password = Hash::make($user['password']);
             $newUser->role_id = $user['role_id'];
             $newUser->created_at = $dateTime->modify("+ 1 seconds");
+            $newUser->updated_at = $newUser->created_at;
 
             // save
             $newUser->save();

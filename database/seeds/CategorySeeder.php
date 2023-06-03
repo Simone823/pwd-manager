@@ -17,19 +17,21 @@ class CategorySeeder extends Seeder
             "Email",
             "Social",
             "Website",
-            "Database MySql"
+            "Database MySql",
+            "FTP"
         );
 
         // data e ora corrente
         $dateTime = new DateTime();
 
-        foreach ($categories as $key => $category) {
+        foreach ($categories as $category) {
             // nuova istanza Category
             $newCategory = new Category();
 
             // setto i valori
             $newCategory->category_name = $category;
             $newCategory->created_at = $dateTime->modify("+ 1 seconds");
+            $newCategory->updated_at = $newCategory->created_at;
 
             // save
             $newCategory->save();

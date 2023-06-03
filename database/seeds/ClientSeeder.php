@@ -24,6 +24,7 @@ class ClientSeeder extends Seeder
             // setto i valori
             $newClient->name = $faker->name();
             $newClient->created_at = $dateTime->modify("+ 1 seconds");
+            $newClient->updated_at = $newClient->created_at;
 
             // save
             $newClient->save();
