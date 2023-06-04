@@ -213,4 +213,33 @@ class AccountController extends Controller
 
         return redirect()->back()->with('success', "L'Account con nome: {$account->name} è stato eliminato.");
     }
+
+    /**
+     * Elimina record selezionati
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\Response
+     */
+    public function deleteSelected(Request $request)
+    {
+        // controllo se esiste almeno un id
+        if(count($request->idsRecord) == 0) {
+            return response()->json([
+                'status' => 400,
+                'message' => 'There are no selected record ids'
+            ], 400);
+        }
+
+        
+        // elimino tutt i record aventi gli id della request
+        $accounts = Account::whereIn('id', $request->idsRecord)->delete();
+        
+        // Aggiungo il log attività
+        LogActivity::addLog("Eliminati Account selezionati");
+        
+        return response()->json([
+            'status' => 200,
+            'message' => 'Selected Accounts Password have been deleted.'
+        ], 200);
+    }
 }

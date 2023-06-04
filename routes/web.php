@@ -47,6 +47,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/accounts/edit/{id}', 'AccountController@edit')->middleware('hasPermission:accounts-edit')->name('accounts.edit');
     Route::put('/accounts/update/{id}', 'AccountController@update')->middleware('hasPermission:accounts-edit')->name('accounts.update');
     Route::delete('/accounts/delete/{id}', 'AccountController@destroy')->middleware('hasPermission:accounts-delete')->name('accounts.destroy');
+    Route::post('/accounts/deleteSelected', 'AccountController@deleteSelected')->middleware('hasPermission:accounts-delete')->name('accounts.deleteSelected');
 });
 
 // Rotte middleware role admin
