@@ -58,9 +58,11 @@
                             <tbody>
                                 @foreach ($logActivities as $log)    
                                     <tr>
-                                        <th class="d-flex gap-2">
+                                        <th class="d-flex align-items-center gap-2">
                                             {{-- check select --}}
-                                            <input type="checkbox" class="form-check-input" id="log_id" name="log_id" value="{{$log->id}}" >
+                                            <div class="form-check">
+                                                <input type="checkbox" class="form-check-input" id="log_id" name="log_id" value="{{$log->id}}" >
+                                            </div>
 
                                             {{-- btn delete --}}
                                             <div class="btn-delete">
