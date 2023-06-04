@@ -18,7 +18,7 @@
                 {{-- btn other action --}}
                 <div class="row mb-4">
                     <div class="dropdown">
-                        <button class="btn btn-violet dropdown-toggle shadow fw-semibold" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <button class="btn btn-transparent dropdown-toggle shadow fw-semibold" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                             <i class="fa-solid fa-ellipsis"></i>
                             Altro
                         </button>
