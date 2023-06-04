@@ -52,6 +52,10 @@
                                 <div class="col-12 col-md-6">
                                     <div class="form-floating mb-4">
                                         <select class="form-select select-violet shadow-sm" id="client_id" name="client_id" aria-label="client_id" required>
+                                            @if (!$account->client)
+                                                <option selected hidden value="">--</option>
+                                            @endif
+
                                             @foreach ($clients as $client)
                                                 <option {{old('client_id', $account->client_id) == $client->id ? 'selected' : ''}} value="{{$client->id}}">{{$client->name}}</option>
                                             @endforeach
@@ -70,6 +74,10 @@
                                 <div class="col-12 col-md-6">
                                     <div class="form-floating mb-4">
                                         <select class="form-select select-violet shadow-sm" id="category_id" name="category_id" aria-label="category_id" required>
+                                            @if (!$account->category)
+                                                <option selected hidden value="">--</option>
+                                            @endif
+
                                             @foreach ($categories as $category)
                                                 <option {{old('category_id', $account->category_id) == $category->id ? 'selected' : ''}} value="{{$category->id}}">{{$category->category_name}}</option>
                                             @endforeach

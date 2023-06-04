@@ -39,10 +39,14 @@
                     <div class="col-12 col-md-6">
                         <div class="form-floating mb-4">
                             <select class="form-select select-violet shadow-sm" id="client_id" name="client_id" aria-label="client_id" disabled>
-                                <option selected>-- Seleziona un Cliente --</option>
-                                @foreach ($clients as $client)
-                                    <option {{$account->client_id == $client->id ? 'selected' : ''}} value="{{$client->id}}">{{$client->name}}</option>
-                                @endforeach
+                                @if ($account->client)    
+                                    @foreach ($clients as $client)
+                                        <option {{$account->client_id == $client->id ? 'selected' : ''}} value="{{$client->id}}">{{$client->name}}</option>
+                                    @endforeach
+
+                                    @else
+                                        <option selected value="">--</option>
+                                @endif
                             </select>
                             <label for="client_id" class="text-violet">Cliente</label>
                         </div>
@@ -52,9 +56,14 @@
                     <div class="col-12 col-md-6">
                         <div class="form-floating mb-4">
                             <select class="form-select select-violet shadow-sm" id="category_id" name="category_id" aria-label="category_id" disabled>
-                                @foreach ($categories as $category)
-                                    <option {{old('category_id') == $category->id ? 'selected' : ''}} value="{{$category->id}}">{{$category->category_name}}</option>
-                                @endforeach
+                                @if ($account->category)
+                                    @foreach ($categories as $category)
+                                        <option {{old('category_id') == $category->id ? 'selected' : ''}} value="{{$category->id}}">{{$category->category_name}}</option>
+                                    @endforeach
+                                    
+                                    @else
+                                        <option selected value="">--</option>
+                                @endif
                             </select>
                             <label for="category_id" class="text-violet">Categoria</label>
                         </div>

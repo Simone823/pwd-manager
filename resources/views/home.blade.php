@@ -107,7 +107,7 @@
                             {{-- card body --}}
                             <div class="card-body flex-grow-1">
                                 {{-- client name --}}
-                                <p class="badge-violet rounded-pill py-2 px-3 fw-bold fs-6">{{$account->client->name}}</p>
+                                <p class="badge-violet rounded-pill py-2 px-3 fw-bold fs-6">{{$account->client ? $account->client->name : '-'}}</p>
 
                                 {{-- account name --}}
                                 <div class="field-wrapper mb-3">
@@ -118,7 +118,7 @@
                                 {{-- category name --}}
                                 <div class="field-wrapper mb-3">
                                     <p class="field-name text-violet fw-semibold border-bottom-violet mb-1">Categoria</p>
-                                    <p>{{$account->category->category_name}}</p>
+                                    <p>{{$account->category ? $account->category->category_name : '-'}}</p>
                                 </div>
 
                                 {{-- username --}}

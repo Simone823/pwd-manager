@@ -105,8 +105,8 @@
                                             @endif
                                         </th>
                                         <th class="fw-normal">{{$account->name}}</th>
-                                        <th class="fw-normal">{{$account->client->name}}</th>
-                                        <th class="fw-normal">{{$account->category->category_name}}</th>
+                                        <th class="fw-normal">{{$account->client ? $account->client->name : '-'}}</th>
+                                        <th class="fw-normal">{{$account->category ? $account->category->category_name : '-'}}</th>
                                         <th class="fw-normal">{{$account->description}}</th>
                                     </tr>
                                 @endforeach
