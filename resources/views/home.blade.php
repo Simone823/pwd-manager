@@ -156,7 +156,7 @@
                                         </a>
 
                                         {{-- btn view password account --}}
-                                        <button onclick="viewPasswordAccount('{{Session::get('Api_Token')}}', {{$account->id}})" type="button" class="btn btn-violet shadow">
+                                        <button onclick="apiViewPasswordAccount('{{Session::get('Api_Token')}}', {{$account->id}})" type="button" class="btn btn-violet shadow">
                                             <i class="fa-solid fa-unlock"></i>
                                             <span class="tooltiptext-bottom">Vedi Password</span>
                                         </button>
