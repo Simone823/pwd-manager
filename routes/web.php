@@ -30,6 +30,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/categories/edit/{id}', 'CategoryController@edit')->middleware('hasPermission:categories-edit')->name('categories.edit');
     Route::put('/categories/update/{id}', 'CategoryController@update')->middleware('hasPermission:categories-edit')->name('categories.update');
     Route::delete('/categories/delete/{id}', 'CategoryController@destroy')->middleware('hasPermission:categories-delete')->name('categories.destroy');
+    Route::post('/categories/deleteSelected', 'CategoryController@deleteSelected')->middleware('hasPermission:categories-delete')->name('categories.deleteSelected');
 
     // Rotte clienti
     Route::get('/clients/index', 'ClientController@index')->middleware('hasPermission:clients-view')->name('clients.index');

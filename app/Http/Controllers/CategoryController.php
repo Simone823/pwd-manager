@@ -157,4 +157,32 @@ class CategoryController extends Controller
 
         return redirect()->route('categories.index')->with('success', "La Categoria con nome: {$category->category_name} è stata eliminata.");
     }
+
+    /**
+     * Elimina record selezionati
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\Response
+     */
+    public function deleteSelected(Request $request)
+    {
+        // controllo se esiste almeno un id
+        if(count($request->idsRecord) == 0) {
+            return response()->json([
+                'status' => 400,
+                'message' => 'There are no selected record ids'
+            ], 400);
+        }
+        
+        // elimino tutt i record aventi gli id della request
+        $categories = Category::whereIn('id', $request->idsRecord)->delete();
+        
+        // Aggiungo il log attività
+        LogActivity::addLog("Eliminate Categorie selezionati");
+        
+        return response()->json([
+            'status' => 200,
+            'message' => 'Selected Categories have been deleted.'
+        ], 200);
+    }
 }
