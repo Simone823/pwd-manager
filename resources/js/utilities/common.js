@@ -59,6 +59,7 @@ deleteSelectedRecord = function(routeWeb) {
         idsRecord.push(checkBox.value);
     });
 
+    // post request axios, rotta web deleteSelected
     axios.post(routeWeb, 
         {
             idsRecord: idsRecord
