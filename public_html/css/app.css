@@ -14134,6 +14134,10 @@ fieldset:disabled .btn {
   transition: visibility 0.3s ease-in-out;
 }
 
+.cursor-pointer {
+  cursor: pointer;
+}
+
 #auth-login .logo-large {
   max-width: 355px;
 }
