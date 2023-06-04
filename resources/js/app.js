@@ -1,10 +1,13 @@
 /************************ IMPORTS ************************/
 require('./bootstrap');
 
+// Sweetalert
+import 'sweetalert2/src/sweetalert2.scss';
+
 // Utilities
 require('./utilities/loadingPage');
 import './utilities/api';
 
-// Sweetalert
-import 'sweetalert2/src/sweetalert2.scss';
+// Common
+import './utilities/common';
 /**********************************************************/

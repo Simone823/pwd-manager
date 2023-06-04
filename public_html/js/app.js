@@ -45371,18 +45371,23 @@ module.exports = function(module) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _utilities_api__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./utilities/api */ "./resources/js/utilities/api.js");
-/* harmony import */ var _utilities_api__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_utilities_api__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var sweetalert2_src_sweetalert2_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! sweetalert2/src/sweetalert2.scss */ "./node_modules/sweetalert2/src/sweetalert2.scss");
-/* harmony import */ var sweetalert2_src_sweetalert2_scss__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(sweetalert2_src_sweetalert2_scss__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var sweetalert2_src_sweetalert2_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! sweetalert2/src/sweetalert2.scss */ "./node_modules/sweetalert2/src/sweetalert2.scss");
+/* harmony import */ var sweetalert2_src_sweetalert2_scss__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(sweetalert2_src_sweetalert2_scss__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _utilities_api__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./utilities/api */ "./resources/js/utilities/api.js");
+/* harmony import */ var _utilities_api__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_utilities_api__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _utilities_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./utilities/common */ "./resources/js/utilities/common.js");
+/* harmony import */ var _utilities_common__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_utilities_common__WEBPACK_IMPORTED_MODULE_2__);
 /************************ IMPORTS ************************/
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
+
+// Sweetalert
+
 
 // Utilities
 __webpack_require__(/*! ./utilities/loadingPage */ "./resources/js/utilities/loadingPage.js");
 
 
-// Sweetalert
+// Common
 
 /**********************************************************/
 
@@ -45451,7 +45456,7 @@ var Swal = __webpack_require__(/*! sweetalert2/dist/sweetalert2.js */ "./node_mo
 /**********************************************************/
 
 // Visualizza password & username account
-viewPasswordAccount = function viewPasswordAccount(apiToken, idAccount) {
+apiViewPasswordAccount = function apiViewPasswordAccount(apiToken, idAccount) {
   axios.get('/api/viewPasswordAccount', {
     headers: {
       Authorization: apiToken
@@ -45476,6 +45481,83 @@ viewPasswordAccount = function viewPasswordAccount(apiToken, idAccount) {
       title: 'Oops...',
       text: message
     });
+  });
+};
+
+/***/ }),
+
+/***/ "./resources/js/utilities/common.js":
+/*!******************************************!*\
+  !*** ./resources/js/utilities/common.js ***!
+  \******************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+/************************ IMPORTS ************************/
+
+// sweet alert
+var Swal = __webpack_require__(/*! sweetalert2/dist/sweetalert2.js */ "./node_modules/sweetalert2/dist/sweetalert2.js");
+/**********************************************************/
+
+// seleziona tutti i record
+selectAllRecord = function selectAllRecord() {
+  // array all form-check-input
+  var allFormCheckBox = document.querySelectorAll('.form-check-input');
+  allFormCheckBox.forEach(function (checkBox) {
+    // imposto la proprietà checked a true
+    checkBox.checked = true;
+  });
+
+  // btn deseleziona tutto
+  btnDeselectAll = document.getElementById('deselect_all_record');
+  btnDeselectAll.classList.remove('d-none');
+};
+
+// deseleziona tutti i record
+deselectAllRecord = function deselectAllRecord() {
+  // array all form-check-input
+  var allFormCheckBox = document.querySelectorAll('.form-check-input');
+  allFormCheckBox.forEach(function (checkBox) {
+    // imposto la proprietà checked a false
+    checkBox.checked = false;
+  });
+
+  // btn deseleziona tutto
+  btnDeselectAll = document.getElementById('deselect_all_record');
+  btnDeselectAll.classList.add('d-none');
+};
+
+// elimina record selezionati
+deleteSelectedRecord = function deleteSelectedRecord(routeWeb) {
+  // array all form-check-input
+  var allFormCheckBox = document.querySelectorAll('.form-check-input:checked');
+
+  // array id record selezionati
+  var idsRecord = [];
+
+  // controllo se c'è almeno un record selezionato
+  if (allFormCheckBox.length == 0) {
+    return Swal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      text: 'Devi selezionare almeno un record.'
+    });
+  }
+
+  // push in idsRecord il valore delle checkbox  
+  allFormCheckBox.forEach(function (checkBox) {
+    idsRecord.push(checkBox.value);
+  });
+  axios.post(routeWeb, {
+    idsRecord: idsRecord
+  }, {
+    headers: {
+      'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
+    }
+  }).then(function (res) {
+    location.reload();
+  })["catch"](function (err) {
+    console.error(err);
   });
 };
 
