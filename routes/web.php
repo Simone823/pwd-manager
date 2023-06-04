@@ -62,4 +62,5 @@ Route::middleware('hasRole:admin')->group(function () {
 
     // Rote log activities
     Route::resource('/log-activities', 'LogActivityController')->only(['index', 'destroy']);
+    Route::post('/log-activities/deleteSelected', 'LogActivityController@deleteSelected')->name('log-activities.deleteSelected');
 });
