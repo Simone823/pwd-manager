@@ -161,4 +161,33 @@ class ClientController extends Controller
 
         return redirect()->route('clients.index')->with('success', "Il Cliente con nome: {$client->name} è stato eliminato.");
     }
+
+    /**
+     * Elimina record selezionati
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\Response
+     */
+    public function deleteSelected(Request $request)
+    {
+        // controllo se esiste almeno un id
+        if(count($request->idsRecord) == 0) {
+            return response()->json([
+                'status' => 400,
+                'message' => 'There are no selected record ids'
+            ], 400);
+        }
+
+        
+        // elimino tutt i record aventi gli id della request
+        $clients = Client::whereIn('id', $request->idsRecord)->delete();
+        
+        // Aggiungo il log attività
+        LogActivity::addLog("Eliminati Clienti selezionati");
+        
+        return response()->json([
+            'status' => 200,
+            'message' => 'Selected Clients have been deleted.'
+        ], 200);
+    }
 }

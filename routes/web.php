@@ -38,6 +38,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/clients/edit/{id}', 'ClientController@edit')->middleware('hasPermission:clients-edit')->name('clients.edit');
     Route::put('/clients/update/{id}', 'ClientController@update')->middleware('hasPermission:clients-edit')->name('clients.update');
     Route::delete('/clients/delete/{id}', 'ClientController@destroy')->middleware('hasPermission:clients-delete')->name('clients.destroy');
+    Route::post('/clients/deleteSelected', 'ClientController@deleteSelected')->middleware('hasPermission:clients-delete')->name('clients.deleteSelected');
 
     // Rotte accounts
     Route::get('/accounts/index', 'AccountController@index')->middleware('hasPermission:accounts-view')->name('accounts.index');

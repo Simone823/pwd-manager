@@ -15,17 +15,44 @@
                     </h2>
                 </div>
 
-                {{-- row crea categoria --}}
-                @if (Auth::user()->hasPermission('clients-create'))
-                    <div class="row mb-4">
-                        <div class="create-link">
-                            <a class="btn btn-transparent fw-semibold shadow" href="{{route('clients.create')}}">
-                                <i class="fa-solid fa-plus"></i>
-                                Crea
-                            </a>
+                {{-- actions --}}
+                <div class="row mb-4">
+                    <div class="col-12 d-flex flex-wrap gap-3">
+                        {{-- row crea categoria --}}
+                        @if (Auth::user()->hasPermission('clients-create'))
+                            <div class="create-link">
+                                <a class="btn btn-transparent fw-semibold shadow" href="{{route('clients.create')}}">
+                                    <i class="fa-solid fa-plus"></i>
+                                    Crea
+                                </a>
+                            </div>
+                        @endif
+
+                        {{-- btn other action --}}
+                        <div class="dropdown">
+                            <button class="btn btn-transparent dropdown-toggle shadow fw-semibold" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fa-solid fa-ellipsis"></i>
+                                Altro
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-dark">
+                                @if (Auth::user()->hasPermission('clients-delete'))
+                                    <li>
+                                        {{-- select all record --}}
+                                        <p onclick="selectAllRecord()" id="select_all_record" class="dropdown-item mb-0 cursor-pointer">Seleziona tutto</p>
+                                    </li>
+                                    <li>
+                                        {{-- deselect all record --}}
+                                        <p onclick="deselectAllRecord()" id="deselect_all_record" class="dropdown-item mb-0 cursor-pointer d-none">Deseleziona tutto</p>
+                                    </li>
+                                    <li>
+                                        {{-- delete selected record --}}
+                                        <p onclick="deleteSelectedRecord('{{route('clients.deleteSelected')}}')" class="dropdown-item mb-0 cursor-pointer" type="button">Elimina selezionati</p>
+                                    </li>
+                                @endif
+                            </ul>
                         </div>
                     </div>
-                @endif
+                </div>
 
                 {{-- row table clients --}}
                 <div class="row">
@@ -42,6 +69,13 @@
                                 @foreach ($clients as $client)    
                                     <tr>
                                         <th class="d-flex gap-2">
+                                            {{-- check select --}}
+                                            @if (Auth::user()->hasPermission('clients-delete'))
+                                                <div class="form-check">
+                                                    <input type="checkbox" class="form-check-input" id="client_id" name="client_id" value="{{$client->id}}" >
+                                                </div>
+                                            @endif
+
                                             {{-- btn edit --}}
                                             @if (Auth::user()->hasPermission('clients-edit'))
                                                 <a href="{{route('clients.edit', $client->id)}}" class="btn btn-violet shadow">
