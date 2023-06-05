@@ -120,8 +120,8 @@
                                 {{-- ruolo --}}
                                 <div class="col-12 col-md-6">
                                     <div class="form-floating mb-4">
-                                        <select class="form-select select-violet shadow-sm" id="role_id" name="role_id" aria-label="role_id" required>
-                                            <option selected>-- Seleziona un Ruolo --</option>
+                                        <select class="form-select select-violet shadow-sm @error('role_id') is-invalid @enderror" id="role_id" name="role_id" aria-label="role_id" required>
+                                            <option selected hidden>-- Seleziona un Ruolo --</option>
                                             @foreach ($roles as $role)
                                                 <option value="{{$role->id}}">{{$role->name}}</option>
                                             @endforeach
