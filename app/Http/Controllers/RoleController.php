@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\LogActivity;
 use App\Permission;
 use App\Role;
+use App\User;
 use Illuminate\Http\Request;
 
 class RoleController extends Controller
@@ -188,6 +189,14 @@ class RoleController extends Controller
     {
         // recupero il ruolo by id
         $role = Role::find($id);
+
+        // recupero l'utente by role id
+        $user = User::whereRoleId($id)->first();
+
+        // controllo se esiste almeno un utente con il ruolo passato
+        if($user) {
+            return redirect()->route('roles.index')->with('error', "Non puoi eliminare il Ruolo {$role->name}, esistono degli utenti con questo Ruolo.");
+        }
 
         if($role->name == 'Admin') {
             // aggiungo il log attività
