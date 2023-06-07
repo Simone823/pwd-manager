@@ -97,14 +97,6 @@ class AccountSeeder extends Seeder
                 'description' => ''
             ],
             [
-                'name' => 'Crm Aba Db MYSQL',
-                'category_id' => $categoryDbMySqlId,
-                'url' => $faker->localIpv4(),
-                'username' => $faker->userName(),
-                'password' => $faker->password(),
-                'description' => "Nome Database: {$faker->userName()}"
-            ],
-            [
                 'name' => 'Ftp domain.com',
                 'category_id' => $categoryFtp,
                 'url' => $faker->localIpv4(),
@@ -135,6 +127,14 @@ class AccountSeeder extends Seeder
                 'username' => $faker->userName(),
                 'password' => $faker->password(),
                 'description' => ''
+            ],
+            [
+                'name' => 'Website example.com Db MYSQL',
+                'category_id' => $categoryDbMySqlId,
+                'url' => $faker->localIpv4(),
+                'username' => $faker->userName(),
+                'password' => $faker->password(),
+                'description' => "Nome Database: {$faker->userName()}"
             ]
         );
 
