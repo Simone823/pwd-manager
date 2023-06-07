@@ -7,8 +7,7 @@
 /storage/*.key
 
 # vendor
-!/vendor/laravel/ui/auth-backend/
-/vendor/*
+/vendor/
 
 # env
 .env
