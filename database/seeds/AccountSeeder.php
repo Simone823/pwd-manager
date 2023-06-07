@@ -33,14 +33,6 @@ class AccountSeeder extends Seeder
                 'description' => ''
             ],
             [
-                'name' => 'Email Website',
-                'category_id' => $categoryEmailId,
-                'url' => 'https://outlook.com',
-                'username' => $faker->userName(),
-                'password' => $faker->password(),
-                'description' => ''
-            ],
-            [
                 'name' => 'Email Agency',
                 'category_id' => $categoryEmailId,
                 'url' => 'https://gmail.com',
@@ -135,6 +127,14 @@ class AccountSeeder extends Seeder
                 'username' => $faker->userName(),
                 'password' => $faker->password(),
                 'description' => ""
+            ],
+            [
+                'name' => 'Email Website',
+                'category_id' => $categoryEmailId,
+                'url' => 'https://outlook.com',
+                'username' => $faker->userName(),
+                'password' => $faker->password(),
+                'description' => ''
             ]
         );
 
