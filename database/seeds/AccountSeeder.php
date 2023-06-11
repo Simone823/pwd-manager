@@ -129,7 +129,7 @@ class AccountSeeder extends Seeder
                 'description' => ''
             ],
             [
-                'name' => 'Website example.com Db MYSQL',
+                'name' => 'Database Mysql example.com',
                 'category_id' => $categoryDbMySqlId,
                 'url' => $faker->localIpv4(),
                 'username' => $faker->userName(),
