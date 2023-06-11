@@ -17,10 +17,16 @@ use Illuminate\Support\Facades\Route;
 // Rotte autenticazione
 Auth::routes(["register" => false]);
 
+// Rotta default /
+Route::get('/', 'Demo\DemoController@index')->name('demo.default');
+
+// Rotta prepara demo
+Route::post('/demo/prepare-demo', 'Demo\DemoController@prepareDemo')->name('demo.prepareDemo');
+
 // Rotte gruppo middleware auth
 Route::middleware('auth')->group(function () {
-    // Rotta default /
-    Route::get('/', 'HomeController@index')->name('home');
+    // Rotte home
+    Route::get('/home', 'HomeController@index')->name('home');
     Route::get('/home/search-accounts', 'HomeController@searchAccounts')->middleware('hasPermission:accounts-view')->name('home.search-accounts');
 
     // Rotte categorie

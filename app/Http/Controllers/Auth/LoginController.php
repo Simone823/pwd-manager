@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\LogActivity;
 use App\PersonalAccessApiToken;
 use App\Providers\RouteServiceProvider;
+use App\User;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Session;
@@ -41,6 +42,23 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+    }
+
+    /**
+     * Show the application's login form.
+     *
+     * @return \Illuminate\View\View
+     */
+    public function showLoginForm()
+    {
+        // recupero l'utente demouser
+        $demoUser = User::whereUsername('demouser')->first();
+
+        if(empty($demoUser)) {
+            return redirect()->route('demo.default');
+        }
+
+        return view('auth.login');
     }
 
     /**

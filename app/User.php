@@ -12,6 +12,9 @@ class User extends Authenticatable
     use Notifiable;
     use Sortable;
 
+    // Attributes
+    public /* string */ $passwordDemoUser = "!DemoPwdManager!23!!...#";
+
     /**
      * The attributes that are mass assignable.
      *
