@@ -24,7 +24,8 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')->hourly();
+        // ogni trenta minuti chiamo la funzione reset demo nel demo controller
+        $schedule->call('App\Http\Controllers\Demo\DemoController@resetDemo')->everyThirtyMinutes();
     }
 
     /**
