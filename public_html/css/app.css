@@ -13901,6 +13901,14 @@ fieldset:disabled .btn {
   }
 }
 
+.logo-large {
+  max-width: 355px;
+}
+
+.fs-16px {
+  font-size: 16px;
+}
+
 .text-violet {
   color: #A684FF !important;
 }
@@ -14136,14 +14144,6 @@ fieldset:disabled .btn {
 
 .cursor-pointer {
   cursor: pointer;
-}
-
-#auth-login .logo-large {
-  max-width: 355px;
-}
-
-#auth-passwords-email .logo-large {
-  max-width: 355px;
 }
 
 #loader .loader-spinner {
