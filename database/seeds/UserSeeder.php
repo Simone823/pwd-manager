@@ -25,7 +25,7 @@ class UserSeeder extends Seeder
                 'surname' => 'administrator',
                 "username" => 'admin',
                 'email' => 'admin@pwdmanager.test',
-                'password' => 'PwdManager!!2023!!',
+                'password' => '!!PwdManager!.#23.,""',
                 "role_id" => $roleAdmin->id
             ],
             [
@@ -33,7 +33,7 @@ class UserSeeder extends Seeder
                 'surname' => 'gibson',
                 "username" => 'manager',
                 'email' => 'gibson@pwdmanager.test',
-                'password' => 'PwdManager!!2023!!',
+                'password' => '!!PwdManager!.#23.,""',
                 "role_id" => $roleManager->id
             ],
             [
@@ -41,7 +41,7 @@ class UserSeeder extends Seeder
                 'surname' => 'agenes',
                 "username" => 'delta',
                 'email' => 'agenes@pwdmanager.test',
-                'password' => 'PwdManager!!2023!!',
+                'password' => '!!PwdManager!.#23.,""',
                 "role_id" => $roleUser->id
             ]
         );

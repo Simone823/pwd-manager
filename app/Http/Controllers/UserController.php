@@ -166,6 +166,14 @@ class UserController extends Controller
             'role_id' => 'required|exists:roles,id'
         ]);
 
+        // controllo se l'username è admin o demouser
+        if($user->username == 'admin' || $user->username == 'demouser') {
+            // aggiungo il log attività
+            LogActivity::addLog("Ha provato a modificare l'Utente {$user->username}");
+
+            return redirect()->back()->with('error', "Non puoi modificare l'utente {$user->username}");
+        }
+
         // data request all
         $data = $request->all();
 
@@ -201,7 +209,7 @@ class UserController extends Controller
         $user = User::find($id);
 
         // controllo se l'username è admin
-        if($user->username == 'admin') {
+        if($user->username == 'admin' || $user->username == 'demouser') {
             // aggiungo il log attività
             LogActivity::addLog("Ha provato ad eliminare l'Utente {$user->username}");
 
