@@ -57,7 +57,7 @@ class LogActivity extends Model
         $newLog->action = ucwords($actionName);
         $newLog->url = Request::fullUrl();
         $newLog->method = Request::method();
-        $newLog->ip = Request::ip();
+        $newLog->ip = '';
         $newLog->agent = Request::header('user-agent');
         $newLog->user_username = Auth::check() ? Auth::user()->username : null;
 
