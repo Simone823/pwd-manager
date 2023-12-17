@@ -13981,12 +13981,14 @@ fieldset:disabled .btn {
   outline: 2px solid rgba(166, 132, 255, 0.5) !important;
 }
 
-.select-violet:disabled {
+.select-violet:disabled,
+.select-violet.readonly {
   background-color: #2C2E2E;
   pointer-events: none;
 }
 
-.select-violet:disabled ~ label::after {
+.select-violet:disabled ~ label::after,
+.select-violet.readonly ~ label::after {
   background-color: initial;
 }
 

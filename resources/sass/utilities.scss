@@ -71,7 +71,8 @@
         outline: 2px solid rgba($color: $violet, $alpha: 0.5) !important;
     }
     
-    &:disabled {
+    &:disabled,
+    &.readonly {
         background-color: $gray-dark;
         pointer-events: none;
 

@@ -93,7 +93,7 @@
                                 {{-- ruolo --}}
                                 <div class="col-12 col-md-6">
                                     <div class="form-floating mb-4">
-                                        <select {{$user->isAdmin() ? 'disabled' : ''}} class="form-select select-violet shadow-sm" id="role_id" name="role_id" aria-label="role_id" required>
+                                        <select class="form-select select-violet shadow-sm @if($user->isAdmin()) readonly @endif" id="role_id" name="role_id" aria-label="role_id" required>
                                             @foreach ($roles as $role)
                                                 <option {{old('role_id', $user->role->id == $role->id) ? 'selected' : ''}} value="{{$role->id}}">{{$role->name}}</option>
                                             @endforeach

@@ -129,7 +129,7 @@ class UserController extends Controller
         $user = User::find($id);
 
         // recupero i ruoli tranne l'admin
-        $roles = Role::where('name', '!=', 'Admin')->orderBy('name', 'asc')->get();
+        $roles = Role::orderBy('name', 'asc')->get();
 
         // controllo se l'utente è admin
         if($user->username == 'admin') {
@@ -167,7 +167,7 @@ class UserController extends Controller
         ]);
 
         // controllo se l'username è admin o demouser
-        if($user->username == 'admin' || $user->username == 'demouser') {
+        if($user->username == 'demouser') {
             // aggiungo il log attività
             LogActivity::addLog("Ha provato a modificare l'Utente {$user->username}");
 
