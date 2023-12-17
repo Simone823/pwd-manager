@@ -13902,11 +13902,8 @@ fieldset:disabled .btn {
 }
 
 .logo-large {
-  max-width: 355px;
-}
-
-.fs-16px {
-  font-size: 16px;
+  width: 100%;
+  max-width: 256px;
 }
 
 .text-violet {
@@ -14190,6 +14187,32 @@ select:-webkit-autofill:focus {
 
 .cursor-pointer {
   cursor: pointer;
+}
+
+#auth-login {
+  height: 100%;
+}
+
+#auth-login .card {
+  width: 100%;
+  max-width: 420px;
+}
+
+#auth-login .card .logo-large {
+  max-width: 265px;
+}
+
+#auth-passwords-email {
+  height: 100%;
+}
+
+#auth-passwords-email .card {
+  width: 100%;
+  max-width: 420px;
+}
+
+#auth-passwords-email .card .logo-large {
+  max-width: 265px;
 }
 
 #loader {

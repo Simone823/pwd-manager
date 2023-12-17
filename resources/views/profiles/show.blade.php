@@ -74,11 +74,6 @@
                                     <label for="role_id" class="text-violet">Ruolo</label>
                                 </div>
                             </div>
-
-                            {{-- change password --}}
-                            <div class="col-12 col-md-6">
-                                @include('profiles.modalChangePassword')
-                            </div>
                         </div>
 
                         {{-- row log activities --}}

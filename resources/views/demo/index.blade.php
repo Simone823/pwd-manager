@@ -3,10 +3,10 @@
 @section('title', '| Demo')
 
 @section('content')
-    <section id="demo-index">
-        <div class="container">
-            <div class="row align-items-center justify-content-center">
-                <div class="col-md-6">
+    <section id="demo-index" class="h-100">
+        <div class="container h-100">
+            <div class="row h-100 justify-content-center">
+                <div class="col-12">
     
                     {{-- logo --}}
                     <a href="{{url('/')}}" alt="{{config('app.name')}}">

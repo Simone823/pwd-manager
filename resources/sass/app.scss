@@ -10,6 +10,10 @@
 // Utilities
 @import "./utilities.scss";
 
+// Auth
+@import "./auth/login.scss";
+@import "./auth/passwords/email.scss";
+
 // Components
 @import "./components/loader.scss";
 @import "./components/navbar.scss";
