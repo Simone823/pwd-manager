@@ -37,7 +37,7 @@
                                 {{-- name --}}
                                 <div class="col-12 col-md-6">
                                     <div class="form-floating mb-4">
-                                        <input type="text" class="form-control input-violet shadow-sm @error('name') is-invalid @enderror" id="name" name="name" value="{{old('name', $user->name)}}" placeholder="Nome" required>
+                                        <input {{$user->isAdmin() ? 'readonly' : ''}} type="text" class="form-control input-violet shadow-sm @error('name') is-invalid @enderror" id="name" name="name" value="{{old('name', $user->name)}}" placeholder="Nome" required>
                                         <label for="name" class="text-violet">Nome</label>
     
                                         @error('name')
@@ -51,7 +51,7 @@
                                 {{-- surname --}}
                                 <div class="col-12 col-md-6">
                                     <div class="form-floating mb-4">
-                                        <input type="text" class="form-control input-violet shadow-sm @error('surname') is-invalid @enderror" id="surname" name="surname" value="{{old('surname', $user->surname)}}" placeholder="Cognome" required>
+                                        <input {{$user->isAdmin() ? 'readonly' : ''}} type="text" class="form-control input-violet shadow-sm @error('surname') is-invalid @enderror" id="surname" name="surname" value="{{old('surname', $user->surname)}}" placeholder="Cognome" required>
                                         <label for="surname" class="text-violet">Cognome</label>
     
                                         @error('surname')
@@ -65,7 +65,7 @@
                                 {{-- username --}}
                                 <div class="col-12 col-md-6">
                                     <div class="form-floating mb-4">
-                                        <input type="text" class="form-control input-violet shadow-sm @error('username') is-invalid @enderror" id="username" name="username" value="{{old('username', $user->username)}}" placeholder="Username" required>
+                                        <input {{$user->isAdmin() ? 'readonly' : ''}} type="text" class="form-control input-violet shadow-sm @error('username') is-invalid @enderror" id="username" name="username" value="{{old('username', $user->username)}}" placeholder="Username" required>
                                         <label for="username" class="text-violet">Username</label>
     
                                         @error('username')
@@ -93,7 +93,7 @@
                                 {{-- ruolo --}}
                                 <div class="col-12 col-md-6">
                                     <div class="form-floating mb-4">
-                                        <select class="form-select select-violet shadow-sm" id="role_id" name="role_id" aria-label="role_id" required>
+                                        <select {{$user->isAdmin() ? 'disabled' : ''}} class="form-select select-violet shadow-sm" id="role_id" name="role_id" aria-label="role_id" required>
                                             @foreach ($roles as $role)
                                                 <option {{old('role_id', $user->role->id == $role->id) ? 'selected' : ''}} value="{{$role->id}}">{{$role->name}}</option>
                                             @endforeach

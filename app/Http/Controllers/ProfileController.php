@@ -93,6 +93,13 @@ class ProfileController extends Controller
         // recupero l'utente
         $user = User::findOrFail($id);
 
+        if($user->username == 'demouser') {
+            // aggiungo il log attività
+            LogActivity::addLog("Ha provato a modificare l'Utente {$user->username}");
+
+            return redirect()->back()->with('error', "Non puoi modificare l'utente {$user->username}");
+        }
+
         if(!$user->isAdmin()) {
             $user->name = ucfirst($request->name);
             $user->surname = ucfirst($request->surname);
@@ -128,6 +135,11 @@ class ProfileController extends Controller
 
         // recupero l'utente
         $user = User::findOrFail($id);
+
+        if($user->username == 'demouser') {
+            return redirect()->back()->with('error', "Non puoi modificare la password  dell'utente {$user->username}");
+        }
+
         $user->password = Hash::make($request->password);
         $user->update();
 
