@@ -64,7 +64,7 @@
                                 {{-- username --}}
                                 <div class="col-12 col-md-6">
                                     <div class="form-floating mb-4">
-                                        <input type="text" class="form-control input-violet shadow-sm @error('username') is-invalid @enderror" id="username" name="username" value="{{old('username')}}" placeholder="Username" required>
+                                        <input type="text" class="form-control input-violet shadow-sm @error('username') is-invalid @enderror" id="username" name="username" value="{{old('username')}}" placeholder="Username" required autocomplete="username">
                                         <label for="username" class="text-violet">Username*</label>
     
                                         @error('username')
@@ -92,7 +92,7 @@
                                 {{-- password --}}
                                 <div class="col-12 col-md-6">
                                     <div class="form-floating mb-4">
-                                        <input type="password" class="form-control input-violet shadow-sm @error('password') is-invalid @enderror" id="password" name="password" value="" placeholder="Password" required>
+                                        <input type="password" class="form-control input-violet shadow-sm @error('password') is-invalid @enderror" id="password" name="password" value="" placeholder="Password" required autocomplete="new-password">
                                         <label for="password" class="text-violet">Password*</label>
     
                                         @error('email')

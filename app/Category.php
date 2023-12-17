@@ -34,6 +34,6 @@ class Category extends Model
      */
     public function accounts()
     {
-        return $this->hasMany('App\AccountPassword');
+        return $this->hasMany('App\Account');
     }
 }

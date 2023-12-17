@@ -29,7 +29,7 @@ class CategoryController extends Controller
         LogActivity::addLog("Lista Categorie");
 
         // recupero tutte le categorie dal db
-        $categories = Category::sortable(['category_name' => 'asc'])->paginate(10);
+        $categories = Category::sortable(['category_name' => 'asc'])->paginate(config('app.default_paginate'));
 
         return view('categories.index', compact('categories'));
     }

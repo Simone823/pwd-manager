@@ -1,19 +1,22 @@
 // Fonts
-@import url('https://fonts.googleapis.com/css?family=Nunito');
+@import url("https://fonts.googleapis.com/css?family=Nunito");
 
 // Variables
-@import 'variables';
+@import "variables";
 
 // Bootstrap
-@import '~bootstrap/scss/bootstrap';
+@import "~bootstrap/scss/bootstrap";
 
 // Utilities
-@import './utilities.scss';
+@import "./utilities.scss";
+
+// Auth
+@import "./auth/login.scss";
+@import "./auth/passwords/email.scss";
 
 // Components
-@import './components/loader.scss';
-@import './components/navbar.scss';
-
+@import "./components/loader.scss";
+@import "./components/navbar.scss";
 
 // scrollbar
 ::-webkit-scrollbar {
@@ -29,24 +32,39 @@
     border-radius: 3px;
 }
 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
 // set height
-html {
-    height: 100vh;
-    min-height: 100vh;
+html,
+body {
+    height: 100%;
 }
 
-body,
 #app {
-    height: 100vh;
-    min-height: 100vh;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+
+    &.is-loading {
+        display: none;
+    }
+    
+    main {
+        flex-grow: 1;
+        overflow-y: auto;
+    
+        section {
+            min-height: 100%;
+            padding-top: 30px;
+            padding-bottom: 30px;
+        }
+    }
 }
 
-main {
-    min-height: 100%;
-    padding-top: 85px;
-    padding-bottom: 65px;
-}
 
 // reset
 img {
@@ -72,7 +90,7 @@ table {
         }
     }
 
-    tr{
+    tr {
         th,
         td {
             white-space: nowrap !important;
@@ -96,13 +114,15 @@ table {
     }
 }
 
-.page-link.active, .active > .page-link {
+.page-link.active,
+.active > .page-link {
     background-color: $violet;
     color: $black;
     border-color: $black;
 }
 
-.page-link.disabled, .disabled > .page-link {
+.page-link.disabled,
+.disabled > .page-link {
     color: $violet;
     background-color: transparent;
     border-color: $violet;
@@ -115,7 +135,6 @@ table {
     color: $black;
 }
 
-
 // input checkbox
 .form-check {
     .form-check-input {
@@ -123,7 +142,7 @@ table {
         width: 16px;
         height: 16px;
         margin-right: 10px;
-    
+
         &:focus {
             border-color: $violet;
             box-shadow: 0 0 0 0.25rem rgba($color: $violet, $alpha: 0.25);

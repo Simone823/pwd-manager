@@ -1,17 +1,10 @@
-// div loader
-const divLoader = document.getElementById('loader');
+// Mostra o nascondi il carimento
+$(window).ready(function() {
+    const loader = $('#loader');
+    const app = $('#app');
 
-// div page loaded
-const divPageLoaded = document.getElementById('page-loaded');
-
-// document load event
-document.addEventListener('readystatechange', function(e) {
-    if(document.readyState == 'complete') {
-        setTimeout(() => {
-            divLoader.classList.remove('d-block');
-            divLoader.classList.add('d-none');
-
-            divPageLoaded.classList.remove('d-none');
-        }, 250);
-    }
+    setTimeout(() => {
+        loader.hide();
+        app.removeClass('is-loading');
+    }, 500);
 });

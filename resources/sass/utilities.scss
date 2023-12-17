@@ -49,7 +49,7 @@
 }
 
 
-// INPUTS / TEXTAREA / SELECT
+// INPUTS / TEXTAREA / SELECT / LABEL
 .input-violet,
 .text-area-violet {
     color: $light-gray !important;
@@ -61,6 +61,11 @@
 
     &:read-only {
         pointer-events: none;
+        background-color: $gray-dark;
+
+        & ~ label::after {
+            background-color: transparent !important;
+        }
     }
 }
 
@@ -73,13 +78,29 @@
     }
     
     &:disabled {
-        background-color: var(--bs-body-bg);
+        background-color: $gray-dark;
         pointer-events: none;
 
         & ~ label::after {
             background-color: initial;
         }
     }
+}
+
+/* Change Autocomplete styles in Chrome*/
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  border: none;
+  -webkit-text-fill-color: $light-gray !important;
+  -webkit-box-shadow: 0 0 0px 1000px #000 inset;
+  transition: background-color 5000s ease-in-out 0s;
 }
 
 
@@ -183,7 +204,7 @@
 }
 
 
-// SWEET ALERT
+// SWEET ALERT & MODAL
 .swal2-popup {
     background: var(--bs-dark) !important;
     padding: 20px 4px !important;
@@ -209,6 +230,27 @@
 
         &.swal2-styled:focus {
             box-shadow: none !important;
+        }
+    }
+}
+
+.modal {
+    .modal-content {
+        background-color: $dark;
+
+        .modal-header {
+            .modal-title {
+                color: $light-gray;
+            }
+
+            .btn-close {
+                filter: invert(100%);
+            }
+        }
+
+        .modal-header,
+        .modal-footer {
+            border: 0;
         }
     }
 }

@@ -41,6 +41,14 @@ class LogActivity extends Model
         'created_at'
     ];
 
+    /**
+     * RELAZIONE ONE TO MANY INVERSE CON USER
+     */
+    public function user()
+    {
+        return $this->belongsTo('App\User');
+    }
+
 
     /**
      * AGGIUNGI UN LOG SUL DB TABELLA LOG ACTIVITY
@@ -59,7 +67,7 @@ class LogActivity extends Model
         $newLog->method = Request::method();
         $newLog->ip = '';
         $newLog->agent = Request::header('user-agent');
-        $newLog->user_username = Auth::check() ? Auth::user()->username : null;
+        $newLog->user_id = Auth::id();
 
         // save
         $newLog->save();

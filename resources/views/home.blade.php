@@ -19,7 +19,7 @@
                             {{-- account name --}}
                             <div class="col-12 col-md-6 col-lg-3">
                                 <div class="form-floating">
-                                    <input type="text" class="form-control input-violet shadow-sm @error('account_name') is-invalid @enderror" id="account_name" name="account_name" value="{{old('account_name', Session::get('home-account_name-filter'))}}" placeholder="Nome Account">
+                                    <input type="text" class="form-control input-violet shadow-sm @error('account_name') is-invalid @enderror" id="account_name" name="account_name" value="{{old('account_name', Session::get('home-account_name-filter'))}}" placeholder="Nome Account" autofocus="false">
                                     <label for="account_name" class="text-violet">Nome Account</label>
 
                                     @error('account_name')
@@ -102,7 +102,7 @@
 
                 {{-- accounts --}}
                 @foreach ($accounts as $account)
-                    <div class="col-12 col-md-6 col-lg-3">
+                    <div class="col-12 col-md-6 col-lg-4 col-xl-3">
                         <div class="card bg-dark text-white shadow h-100 d-flex">
                             {{-- card body --}}
                             <div class="card-body flex-grow-1">
@@ -130,7 +130,11 @@
                                 {{-- url --}}
                                 <div class="field-wrapper">
                                     <p class="field-name text-violet fw-semibold border-bottom-violet mb-1">URL / IP</p>
-                                    <a target="__balnk" class="link-light-gray" href="{{$account->url}}">{{$account->url}}</a>
+                                    @if(str_contains($account->url, 'http') || str_contains($account->url, 'https'))
+                                        <a target="__balnk" class="link-light-gray" href="{{$account->url}}">{{$account->url}}</a>
+                                        @else
+                                            <p class="mb-0">{{$account->url}}</p>
+                                    @endif
                                 </div>
                             </div>
 

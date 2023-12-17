@@ -59,13 +59,20 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-
     /**
      * RELAZIONE ONE TO MANY INVERSE CON ROLE
      */
     public function role()
     {
         return $this->belongsTo('App\Role');
+    }
+
+    /**
+     * RELAZIONE ONE TO MANY CON LOG ACTIVITY
+     */
+    public function logActivities()
+    {
+        return $this->hasMany('App\LogActivity');
     }
 
 

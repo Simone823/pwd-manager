@@ -1,4 +1,4 @@
-<nav id="navbar" class="navbar navbar-dark navbar-expand-lg bg-dark shadow-md position-fixed top-0 w-100">
+<nav id="navbar" class="navbar navbar-dark navbar-expand-lg bg-dark shadow-md position-sticky top-0 w-100">
     <div class="container align-items-center">
 
         {{-- nav brand --}}
@@ -54,27 +54,45 @@
             {{-- btn dropdown profile --}}
             <div class="dropdown">
                 <button class="btn btn-violet dropdown-toggle fw-semibold shadow px-4" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    <i class="fa-solid fa-user me-1"></i>
                     {{Auth::user()->name}} {{Auth::user()->surname}}
                 </button>
                 <ul class="dropdown-menu dropdown-menu-dark">
+                    <li>
+                        <a class="dropdown-item @if (Route::is('profiles.*')) active @endif" href="{{route('profiles.show', Auth::id())}}">
+                            <i class="fa-solid fa-user-pen me-1"></i>
+                            Profilo
+                        </a>
+                    </li>
                     @if(Auth::user()->isAdmin())
                         <li>
-                            <a class="dropdown-item @if (Route::is('permissions.*')) active @endif" href="{{route('permissions.index')}}">Permessi</a>
+                            <a class="dropdown-item @if (Route::is('permissions.*')) active @endif" href="{{route('permissions.index')}}">
+                                <i class="fa-solid fa-briefcase me-1"></i>
+                                Permessi
+                            </a>
                         </li>
                         <li>
-                            <a class="dropdown-item @if (Route::is('roles.*')) active @endif" href="{{route('roles.index')}}">Ruoli</a>
+                            <a class="dropdown-item @if (Route::is('roles.*')) active @endif" href="{{route('roles.index')}}">
+                                <i class="fa-solid fa-medal me-1"></i>
+                                Ruoli
+                            </a>
                         </li>
                         <li>
-                            <a class="dropdown-item @if (Route::is('users.*')) active @endif" href="{{route('users.index')}}">Utenti</a>
+                            <a class="dropdown-item @if (Route::is('users.*')) active @endif" href="{{route('users.index')}}">
+                                <i class="fa-solid fa-user me-1"></i>
+                                Utenti
+                            </a>
                         </li>
                         <li>
-                            <a class="dropdown-item @if (Route::is('log-activities.*')) active @endif" href="{{route('log-activities.index')}}">Log Attività</a>
+                            <a class="dropdown-item @if (Route::is('log-activities.*')) active @endif" href="{{route('log-activities.index')}}">
+                                <i class="fa-solid fa-list me-1"></i>
+                                Log Attività
+                            </a>
                         </li>
                     @endif
                     <li><hr class="dropdown-divider"></li>
                     <li>
                         <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                            <i class="fa-solid fa-right-from-bracket me-1"></i>
                             Esci
                         </a>
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">

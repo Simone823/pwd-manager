@@ -38,7 +38,7 @@ class HomeController extends Controller
         $clients = Client::orderBy('name', 'asc')->get();
 
         // recupero tutti gli accounts dal db
-        $accounts = Account::sortable(['created_at' => 'desc'])->paginate(8);
+        $accounts = Account::sortable(['created_at' => 'desc'])->paginate(config('app.default_paginate'));
 
         // controllo se esistono account in sessione
         if(!empty(Session::get('home-accounts-filtered'))) {
@@ -75,7 +75,7 @@ class HomeController extends Controller
         if(!empty($request->account_name) && !empty($request->client_id) && !empty($request->category_id)) {
             $accounts = Account::where('name','LIKE', "%{$request->account_name}%")
                 ->where('client_id', $request->client_id)
-                ->where('category_id', $request->category_id)->sortable()->paginate(8);
+                ->where('category_id', $request->category_id)->sortable()->paginate(config('app.default_paginate'));
                 
             // salvo in sessione i filtri
             Session::put([
@@ -89,7 +89,7 @@ class HomeController extends Controller
 
         } else if(!empty($request->account_name) && !empty($request->client_id)) {
             $accounts = Account::where('name','LIKE', "%{$request->account_name}%")
-                ->where('client_id', $request->client_id)->sortable()->paginate(8);
+                ->where('client_id', $request->client_id)->sortable()->paginate(config('app.default_paginate'));
                 
             // salvo in sessione i filtri
             Session::put([
@@ -103,7 +103,7 @@ class HomeController extends Controller
             
         } else if(!empty($request->account_name) && !empty($request->category_id)) {
             $accounts = Account::where('name','LIKE', "%{$request->account_name}%")
-                ->where('category_id', $request->category_id)->sortable()->paginate(8);
+                ->where('category_id', $request->category_id)->sortable()->paginate(config('app.default_paginate'));
                 
             // salvo in sessione i filtri
             Session::put([
@@ -117,7 +117,7 @@ class HomeController extends Controller
            
         } else if(!empty($request->client_id) && !empty($request->category_id)) {
             $accounts = Account::where('client_id', $request->client_id)
-                ->where('category_id', $request->category_id)->sortable()->paginate(8);
+                ->where('category_id', $request->category_id)->sortable()->paginate(config('app.default_paginate'));
 
             // salvo in sessione i filtri
             Session::put([
@@ -130,7 +130,7 @@ class HomeController extends Controller
            return view('home')->with(['accounts' => Session::get('home-accounts-filtered'), 'clients' => $clients, 'categories' => $categories]);
             
         } else if(!empty($request->account_name)) {
-            $accounts = Account::where('name','LIKE', "%{$request->account_name}%")->sortable()->paginate(8);
+            $accounts = Account::where('name','LIKE', "%{$request->account_name}%")->sortable()->paginate(config('app.default_paginate'));
                 
             // salvo in sessione i filtri
             Session::put([
@@ -143,7 +143,7 @@ class HomeController extends Controller
            return view('home')->with(['accounts' => Session::get('home-accounts-filtered'), 'clients' => $clients, 'categories' => $categories]);
             
         } else if(!empty($request->client_id)) {
-            $accounts = Account::where('client_id', $request->client_id)->sortable()->paginate(8);
+            $accounts = Account::where('client_id', $request->client_id)->sortable()->paginate(config('app.default_paginate'));
 
             // salvo in sessione i filtri
             Session::put([
@@ -156,7 +156,7 @@ class HomeController extends Controller
            return view('home')->with(['accounts' => Session::get('home-accounts-filtered'), 'clients' => $clients, 'categories' => $categories]);
 
         } else if(!empty($request->category_id)) {
-            $accounts = Account::where('category_id', $request->category_id)->sortable()->paginate(8);
+            $accounts = Account::where('category_id', $request->category_id)->sortable()->paginate(config('app.default_paginate'));
 
             // salvo in sessione i filtri
             Session::put([

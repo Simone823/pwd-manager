@@ -38,7 +38,7 @@
   --bs-warning: #ffed4a;
   --bs-danger: #e3342f;
   --bs-light: #f8f9fa;
-  --bs-dark: #212529;
+  --bs-dark: rgb(33, 37, 41);
   --bs-primary-rgb: 52, 144, 220;
   --bs-secondary-rgb: 108, 117, 125;
   --bs-success-rgb: 56, 193, 114;
@@ -2319,7 +2319,7 @@ progress {
 
 .table-dark {
   --bs-table-color: #fff;
-  --bs-table-bg: #212529;
+  --bs-table-bg: rgb(33, 37, 41);
   --bs-table-border-color: #373b3e;
   --bs-table-striped-bg: #2c3034;
   --bs-table-striped-color: #fff;
@@ -3569,8 +3569,8 @@ fieldset:disabled .btn {
 
 .btn-dark {
   --bs-btn-color: #fff;
-  --bs-btn-bg: #212529;
-  --bs-btn-border-color: #212529;
+  --bs-btn-bg: rgb(33, 37, 41);
+  --bs-btn-border-color: rgb(33, 37, 41);
   --bs-btn-hover-color: #fff;
   --bs-btn-hover-bg: #424649;
   --bs-btn-hover-border-color: #373b3e;
@@ -3580,8 +3580,8 @@ fieldset:disabled .btn {
   --bs-btn-active-border-color: #373b3e;
   --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
   --bs-btn-disabled-color: #fff;
-  --bs-btn-disabled-bg: #212529;
-  --bs-btn-disabled-border-color: #212529;
+  --bs-btn-disabled-bg: rgb(33, 37, 41);
+  --bs-btn-disabled-border-color: rgb(33, 37, 41);
 }
 
 .btn-outline-primary {
@@ -3704,19 +3704,19 @@ fieldset:disabled .btn {
 }
 
 .btn-outline-dark {
-  --bs-btn-color: #212529;
-  --bs-btn-border-color: #212529;
+  --bs-btn-color: rgb(33, 37, 41);
+  --bs-btn-border-color: rgb(33, 37, 41);
   --bs-btn-hover-color: #fff;
-  --bs-btn-hover-bg: #212529;
-  --bs-btn-hover-border-color: #212529;
+  --bs-btn-hover-bg: rgb(33, 37, 41);
+  --bs-btn-hover-border-color: rgb(33, 37, 41);
   --bs-btn-focus-shadow-rgb: 33, 37, 41;
   --bs-btn-active-color: #fff;
-  --bs-btn-active-bg: #212529;
-  --bs-btn-active-border-color: #212529;
+  --bs-btn-active-bg: rgb(33, 37, 41);
+  --bs-btn-active-border-color: rgb(33, 37, 41);
   --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
-  --bs-btn-disabled-color: #212529;
+  --bs-btn-disabled-color: rgb(33, 37, 41);
   --bs-btn-disabled-bg: transparent;
-  --bs-btn-disabled-border-color: #212529;
+  --bs-btn-disabled-border-color: rgb(33, 37, 41);
   --bs-gradient: none;
 }
 
@@ -13957,11 +13957,22 @@ fieldset:disabled .btn {
 
 .input-violet:-moz-read-only, .text-area-violet:-moz-read-only {
   pointer-events: none;
+  background-color: #2C2E2E;
 }
 
 .input-violet:read-only,
 .text-area-violet:read-only {
   pointer-events: none;
+  background-color: #2C2E2E;
+}
+
+.input-violet:-moz-read-only ~ label::after, .text-area-violet:-moz-read-only ~ label::after {
+  background-color: transparent !important;
+}
+
+.input-violet:read-only ~ label::after,
+.text-area-violet:read-only ~ label::after {
+  background-color: transparent !important;
 }
 
 .select-violet {
@@ -13974,12 +13985,30 @@ fieldset:disabled .btn {
 }
 
 .select-violet:disabled {
-  background-color: var(--bs-body-bg);
+  background-color: #2C2E2E;
   pointer-events: none;
 }
 
 .select-violet:disabled ~ label::after {
   background-color: initial;
+}
+
+/* Change Autocomplete styles in Chrome*/
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  border: none;
+  -webkit-text-fill-color: rgb(243, 242, 242) !important;
+  -webkit-box-shadow: 0 0 0px 1000px #000 inset;
+  -webkit-transition: background-color 5000s ease-in-out 0s;
+  transition: background-color 5000s ease-in-out 0s;
 }
 
 .btn-violet,
@@ -14113,6 +14142,23 @@ fieldset:disabled .btn {
   box-shadow: none !important;
 }
 
+.modal .modal-content {
+  background-color: rgb(33, 37, 41);
+}
+
+.modal .modal-content .modal-header .modal-title {
+  color: rgb(243, 242, 242);
+}
+
+.modal .modal-content .modal-header .btn-close {
+  filter: invert(100%);
+}
+
+.modal .modal-content .modal-header,
+.modal .modal-content .modal-footer {
+  border: 0;
+}
+
 .tooltip-wrapper {
   position: relative;
   max-width: -moz-max-content;
@@ -14146,6 +14192,36 @@ fieldset:disabled .btn {
   cursor: pointer;
 }
 
+#auth-login {
+  height: 100%;
+}
+
+#auth-login .card {
+  width: 100%;
+  max-width: 420px;
+}
+
+#auth-login .card .logo-large {
+  max-width: 265px;
+}
+
+#auth-passwords-email {
+  height: 100%;
+}
+
+#auth-passwords-email .card {
+  width: 100%;
+  max-width: 420px;
+}
+
+#auth-passwords-email .card .logo-large {
+  max-width: 265px;
+}
+
+#loader {
+  height: 100%;
+}
+
 #loader .loader-spinner {
   width: 60px;
   height: 60px;
@@ -14168,7 +14244,7 @@ fieldset:disabled .btn {
 }
 
 #navbar {
-  z-index: 99999;
+  z-index: 100;
 }
 
 #navbar .navbar-brand .logo-large {
@@ -14193,21 +14269,36 @@ fieldset:disabled .btn {
   border-radius: 3px;
 }
 
-html {
-  height: 100vh;
-  min-height: 100vh;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-body,
+html,
+body {
+  height: 100%;
+}
+
 #app {
-  height: 100vh;
-  min-height: 100vh;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
-main {
+#app.is-loading {
+  display: none;
+}
+
+#app main {
+  flex-grow: 1;
+  overflow-y: auto;
+}
+
+#app main section {
   min-height: 100%;
-  padding-top: 85px;
-  padding-bottom: 65px;
+  padding-top: 30px;
+  padding-bottom: 30px;
 }
 
 img {

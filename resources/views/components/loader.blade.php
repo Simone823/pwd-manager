@@ -1,4 +1,9 @@
-<div id="loader" class="vw-100 vh-100 d-flex justify-content-center align-items-center d-block">
-    <p class="m-0 p-0 text-dark">.</p>
-    <span class="loader-spinner"></span>
+<div id="loader">
+    <div class="container h-100">
+        <div class="row h-100">
+            <div class="col-12 d-flex justify-content-center align-items-center">
+                <span class="loader-spinner"></span>
+            </div>
+        </div>
+    </div>
 </div>

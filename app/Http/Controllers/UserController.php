@@ -31,7 +31,7 @@ class UserController extends Controller
         LogActivity::addLog('Lista Utenti');
 
         // recupero tutti gli utenti dal db ordinati per none
-        $users = User::sortable(['surname' => 'asc'])->paginate(10);
+        $users = User::sortable(['surname' => 'asc'])->paginate(config('app.default_paginate'));
 
         return view('users.index', compact('users'));
     }

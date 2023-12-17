@@ -29,7 +29,7 @@ class ClientController extends Controller
         LogActivity::addLog("Lista Clienti");
 
         // recupero tutti i clienti da db
-        $clients = Client::sortable(['name' => 'asc'])->paginate(10);
+        $clients = Client::sortable(['name' => 'asc'])->paginate(config('app.default_paginate'));
 
         return view('clients.index', compact('clients'));
     }
