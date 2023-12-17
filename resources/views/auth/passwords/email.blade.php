@@ -4,28 +4,28 @@
 
 @section('content')
 <section id="auth-passwords-email">
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-6">
-    
-                {{-- logo --}}
-                <a href="{{url('/')}}" alt="{{config('app.name')}}">
-                    <figure class="logo-large mx-auto mb-5">
-                        <img src="{{asset('assets/img/icon-site/icon-large-svg.svg')}}" alt="{{config('app.name') . ' logo'}}">
-                    </figure>
-                </a>
+    <div class="container h-100">
+        <div class="row h-100 align-items-center justify-content-center">
 
-                {{-- turn back login --}}
-                <div class="turn-back mb-4">
-                    <a href="{{route('login')}}" class="btn btn-transparent fw-semibold">
-                        <i class="fa-solid fa-arrow-left"></i>
-                        Torna alla pagina Login
-                    </a>
-                </div>
-    
-                {{-- card form --}}
+            {{-- card form email reset pass --}}
+            <div class="col-12 d-flex justify-content-center">
                 <div class="card border-0 bg-dark rounded-md shadow-md">
                     <div class="card-body py-4">
+                        {{-- logo --}}
+                        <a href="{{url('/')}}" alt="{{config('app.name')}}">
+                            <figure class="logo-large mx-auto mb-5">
+                                <img src="{{asset('assets/img/icon-site/icon-large-svg.svg')}}" alt="{{config('app.name') . ' logo'}}">
+                            </figure>
+                        </a>
+
+                        {{-- turn back login --}}
+                        <div class="turn-back mb-4">
+                            <a href="{{route('login')}}" class="btn btn-transparent fw-semibold">
+                                <i class="fa-solid fa-arrow-left"></i>
+                                Torna alla pagina Login
+                            </a>
+                        </div>
+
                         {{-- flash message session --}}
                         @if (session('status'))
                             <div class="alert alert-success" role="alert">

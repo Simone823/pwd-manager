@@ -48,7 +48,7 @@
                                     <th scope="col"></th>
                                     <th scope="col">@sortablelink('action', 'Nome Azione', [], ['class' => 'link-violet'])</th>
                                     <th scope="col">@sortablelink('created_at', 'Data Azione', [], ['class' => 'link-violet'])</th>
-                                    <th scope="col">@sortablelink('user_username', 'Nome Utente', [], ['class' => 'link-violet'])</th>
+                                    <th scope="col">@sortablelink('user.username', 'Nome Utente', [], ['class' => 'link-violet'])</th>
                                     <th scope="col">@sortablelink('method', 'Metodo', [], ['class' => 'link-violet'])</th>
                                     <th scope="col">@sortablelink('ip', 'Ip', [], ['class' => 'link-violet'])</th>
                                     <th scope="col">@sortablelink('url', 'Url', [], ['class' => 'link-violet'])</th>
@@ -78,7 +78,7 @@
                                         </th>
                                         <th class="fw-normal">{{$log->action}}</th>
                                         <th class="fw-normal">{{$log->created_at->format('d-m-Y H:i:s')}}</th>
-                                        <th class="fw-normal">{{$log->user_username}}</th>
+                                        <th class="fw-normal">{{$log->user ? $log->user->username : '-'}}</th>
                                         <th class="fw-normal">{{$log->method}}</th>
                                         <th class="fw-normal">{{$log->ip}}</th>
                                         <th class="fw-normal">

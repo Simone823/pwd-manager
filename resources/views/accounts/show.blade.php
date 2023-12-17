@@ -15,13 +15,21 @@
                     </h2>
                 </div>
 
-                {{-- row turn back accounts index --}}
+                {{-- row buttons actions --}}
                 <div class="row mb-5">
-                    <div class="turn-back">
-                        <a class="btn btn-transparent fw-semibold shadow" href="{{url()->previous()}}">
+                    <div class="col-12 d-flex flex-wrap gap-3">
+                        <a class="turn-back btn btn-transparent fw-semibold shadow" href="{{url()->previous()}}">
                             <i class="fa-solid fa-arrow-left"></i>
                             Torna indietro
                         </a>
+    
+                        {{-- btn edit --}}
+                        @if (Auth::user()->hasPermission('accounts-edit'))
+                            <a href="{{route('accounts.edit', $account->id)}}" class="btn btn-transparent fw-semibold shadow">
+                                <i class="fa-solid fa-pen"></i>
+                                Modifica
+                            </a>
+                        @endif
                     </div>
                 </div>
 
@@ -58,7 +66,7 @@
                             <select class="form-select select-violet shadow-sm" id="category_id" name="category_id" aria-label="category_id" disabled>
                                 @if ($account->category)
                                     @foreach ($categories as $category)
-                                        <option {{old('category_id') == $category->id ? 'selected' : ''}} value="{{$category->id}}">{{$category->category_name}}</option>
+                                        <option {{$account->category->id == $category->id ? 'selected' : ''}} value="{{$category->id}}">{{$category->category_name}}</option>
                                     @endforeach
                                     
                                     @else
@@ -72,8 +80,8 @@
                     {{-- url ip --}}
                     <div class="col-12 col-md-6">
                         <div class="form-floating mb-4">
-                            <input type="url" class="form-control input-violet shadow-sm @error('url') is-invalid @enderror" id="url" name="url" value="{{$account->url}}" placeholder="Nome Account" readonly>
-                            <label for="url" class="text-violet">Url / Ip </label>
+                            <input type="text" class="form-control input-violet shadow-sm @error('url') is-invalid @enderror" id="url" name="url" value="{{$account->url}}" placeholder="Url / Ip" readonly>
+                            <label for="url" class="text-violet">Url / Ip</label>
                         </div>
                     </div>
 

@@ -50,6 +50,12 @@ Route::middleware('auth')->group(function () {
     Route::put('/accounts/update/{id}', 'AccountController@update')->middleware('hasPermission:accounts-edit')->name('accounts.update');
     Route::delete('/accounts/delete/{id}', 'AccountController@destroy')->middleware('hasPermission:accounts-delete')->name('accounts.destroy');
     Route::post('/accounts/deleteSelected', 'AccountController@deleteSelected')->middleware('hasPermission:accounts-delete')->name('accounts.deleteSelected');
+
+    // Profilo
+    Route::get('/profiles/show/{id}', 'ProfileController@show')->name('profiles.show');
+    Route::get('/profiles/edit/{id}', 'ProfileController@edit')->name('profiles.edit');
+    Route::post('/profiles/update/{id}', 'ProfileController@update')->name('profiles.update');
+    Route::post('/profiles/change-password/{id}', 'ProfileController@changePassword')->name('profiles.changePassword');
 });
 
 // Rotte middleware role admin

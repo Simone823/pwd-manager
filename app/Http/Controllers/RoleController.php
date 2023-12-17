@@ -31,7 +31,7 @@ class RoleController extends Controller
         LogActivity::addLog('Lista Ruoli');
 
         // get all roles orber by name asc
-        $roles = Role::sortable(['name' => 'asc'])->paginate(10);
+        $roles = Role::sortable(['name' => 'asc'])->paginate(config('app.default_paginate'));
 
         return view('roles.index', compact('roles'));
     }

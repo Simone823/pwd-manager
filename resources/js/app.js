@@ -5,9 +5,7 @@ require('./bootstrap');
 import 'sweetalert2/src/sweetalert2.scss';
 
 // Utilities
-require('./utilities/loadingPage');
 import './utilities/api';
-
-// Common
-import './utilities/common';
+require('./utilities/common');
+require('./utilities/loadingPage');
 /**********************************************************/

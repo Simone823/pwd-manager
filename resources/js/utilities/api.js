@@ -44,3 +44,44 @@ apiViewPasswordAccount = function(apiToken, idAccount) {
         })
     })
 }
+
+// elimina record selezionati
+deleteSelectedRecord = function(routeWeb) {
+    // array all form-check-input
+    const allFormCheckBox = document.querySelectorAll('.form-check-input:checked');
+
+    // array id record selezionati
+    const idsRecord = []; 
+
+    // controllo se c'è almeno un record selezionato
+    if(allFormCheckBox.length == 0) {
+        return Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Devi selezionare almeno un record.',
+        });
+    }
+
+    // push in idsRecord il valore delle checkbox  
+    allFormCheckBox.forEach(checkBox => {
+        idsRecord.push(checkBox.value);
+    });
+
+    // post request axios, rotta web deleteSelected
+    axios.post(routeWeb, 
+        {
+            idsRecord: idsRecord
+        }, 
+        {
+            headers: {
+                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
+            }
+        }
+    )
+    .then((res) => {
+        location.reload();
+    })
+    .catch((err) => {
+        console.error(err);
+    });
+}

@@ -32,7 +32,7 @@ class AccountController extends Controller
         LogActivity::addLog("Lista Account");
 
         // recupero tuti gli account dal db
-        $accounts = Account::sortable(['created_at' => 'desc'])->paginate(10);
+        $accounts = Account::sortable(['created_at' => 'desc'])->paginate(config('app.default_paginate'));
 
         return view('accounts.index', compact('accounts'));
     }
@@ -69,7 +69,7 @@ class AccountController extends Controller
             'name' => 'required|string|min:4|max:230',
             'client_id' => 'required|exists:clients,id',
             'category_id' => 'required|exists:categories,id',
-            'url' => 'nullable|url',
+            'url' => ['nullable', 'regex:/^(?:(?:https?|ftp):\/\/)?(?:[\w-]+\.)+[a-zA-Z]{2,}(?:\/\S*)?$|^(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})$/'],
             'username' => 'required|string|min:4|max:255',
             'password' => 'required|string|min:8|confirmed',
             'description' => 'nullable|string'
@@ -82,7 +82,7 @@ class AccountController extends Controller
         $newAccount = new Account();
 
         // setto i valori
-        $newAccount->name = ucwords($data['name']);
+        $newAccount->name = ucfirst($data['name']);
         $newAccount->client_id = $data['client_id'];
         $newAccount->category_id = $data['category_id'];
         $newAccount->url = $data['url'];
@@ -162,7 +162,7 @@ class AccountController extends Controller
             'name' => 'required|string|min:4|max:230',
             'client_id' => 'required|exists:clients,id',
             'category_id' => 'required|exists:categories,id',
-            'url' => 'nullable|url',
+            'url' => ['nullable', 'regex:/^(?:(?:https?|ftp):\/\/)?(?:[\w-]+\.)+[a-zA-Z]{2,}(?:\/\S*)?$|^(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})$/'],
             'username' => 'required|string|min:4|max:255',
             'password' => 'nullable|string|min:8|confirmed',
             'description' => 'nullable|string'
@@ -172,7 +172,7 @@ class AccountController extends Controller
         $data = $request->all();
 
         // setto i valori
-        $account->name = ucwords($data['name']);
+        $account->name = ucfirst($data['name']);
         $account->client_id = $data['client_id'];
         $account->category_id = $data['category_id'];
         $account->url = $data['url'];
