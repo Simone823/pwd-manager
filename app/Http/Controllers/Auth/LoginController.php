@@ -58,7 +58,7 @@ class LoginController extends Controller
             return redirect()->route('demo.default');
         }
 
-        return view('auth.login');
+        return view('auth.login', compact('demoUser'));
     }
 
     /**

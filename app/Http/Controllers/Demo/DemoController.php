@@ -23,10 +23,7 @@ class DemoController extends Controller
 
         // controllo se esiste l'utente
         if(!empty($demoUser)) {
-            return redirect()->route('login')->with([
-                'username' => $demoUser->username,
-                'password' => $demoUser->passwordDemoUser
-            ]);
+            return redirect()->route('login');
         }
 
         return view('demo.index');
