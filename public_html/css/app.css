@@ -14192,32 +14192,6 @@ select:-webkit-autofill:focus {
   cursor: pointer;
 }
 
-#auth-login {
-  height: 100%;
-}
-
-#auth-login .card {
-  width: 100%;
-  max-width: 420px;
-}
-
-#auth-login .card .logo-large {
-  max-width: 265px;
-}
-
-#auth-passwords-email {
-  height: 100%;
-}
-
-#auth-passwords-email .card {
-  width: 100%;
-  max-width: 420px;
-}
-
-#auth-passwords-email .card .logo-large {
-  max-width: 265px;
-}
-
 #loader {
   height: 100%;
 }

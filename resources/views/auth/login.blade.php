@@ -22,8 +22,8 @@
                                 @csrf
     
                                 {{-- email --}}
-                                <div class="form-floating mb-4">
-                                    <input type="text" class="form-control input-violet shadow-sm @error('username') is-invalid @enderror" id="username" name="username" value="{{old('username')}}" placeholder="Nome Utente" required autocomplete="username" autofocus="false">
+                                <div class="form-floating mb-3">
+                                    <input type="text" class="form-control input-violet shadow-sm @error('username') is-invalid @enderror" id="username" name="username" value="{{old('username', session('username'))}}" placeholder="Nome Utente" required autocomplete="username">
                                     <label for="username" class="text-violet">
                                         <i class="fa-solid fa-user"></i>
                                         Nome Utente
@@ -38,7 +38,7 @@
     
                                 {{-- password --}}
                                 <div class="form-floating mb-4">
-                                    <input type="password" class="form-control input-violet shadow-sm @error('password') is-invalid @enderror" id="password" name="password" placeholder="Password" required autocomplete="current-password">
+                                    <input type="password" class="form-control input-violet shadow-sm @error('password') is-invalid @enderror" id="password" name="password" placeholder="Password" value="{{session('password')}}" required autocomplete="current-password">
                                     <label for="password" class="text-violet">
                                         <i class="fa-solid fa-lock"></i>
                                         Password
