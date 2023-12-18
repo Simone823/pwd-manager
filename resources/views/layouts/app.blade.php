@@ -24,6 +24,7 @@
 
     <!-- Scripts stack -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+    @stack('scripts-js')
 
     {{-- Title --}}
     <title>{{config('app.name')}} @yield('title')</title>

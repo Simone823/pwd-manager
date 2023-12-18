@@ -1,14 +1,14 @@
 {{-- Button --}}
-<button type="button" class="link-light-gray border-0 bg-transparent" data-bs-toggle="modal" data-bs-target="#changePasswordModal">
+<button type="button" class="link-light-gray border-0 bg-transparent" data-bs-toggle="modal" data-bs-target="#changePasswordAccountModal">
     Cambia Password
 </button>
 
 <!-- Modal -->
-<div class="modal fade" id="changePasswordModal" tabindex="-1" aria-labelledby="changePasswordModalLabel" aria-hidden="true">
+<div class="modal fade" id="changePasswordAccountModal" tabindex="-1" aria-labelledby="changePasswordAccountModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="changePasswordModalLabel">
+                <h1 class="modal-title fs-5" id="changePasswordAccountModalLabel">
                     Cambia Password
                 </h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -17,7 +17,7 @@
                 {{-- flash message--}}
                 @include('components.flashMessage')
 
-                <form action="{{route('profiles.changePassword', $user->id)}}" method="post">
+                <form action="{{route('accounts.changePassword', $account->id)}}" method="post">
                     @csrf
 
                     {{-- password --}}
@@ -65,7 +65,7 @@
 @push('scripts-js')
     @if($errors->any())
         <script type="module">
-            openModal('changePasswordModal');
+            openModal('changePasswordAccountModal');
         </script>
     @endif
 @endpush

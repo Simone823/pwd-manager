@@ -37,3 +37,11 @@ $(document).ready(function() {
         }, 3000);
     });
 });
+
+// apri un modal (verrebbe usato quando è presente un form con errori di validazione)
+openModal = (idHtmlModal) => {
+    let modalChangePassword = new bootstrap.Modal(document.getElementById(idHtmlModal), {
+        keyboard: false
+    });
+    modalChangePassword.show();
+}

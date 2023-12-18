@@ -8,6 +8,7 @@ use App\Client;
 use App\LogActivity;
 use Crypt;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class AccountController extends Controller
 {
@@ -241,5 +242,30 @@ class AccountController extends Controller
             'status' => 200,
             'message' => 'Selected Accounts Password have been deleted.'
         ], 200);
+    }
+
+    /**
+     * Cambia Password dell'account
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function changePassword(Request $request, $id)
+    {
+        // validazione request
+        $request->validate([
+            'password' => 'required|string|min:8|confirmed'
+        ]);
+
+        // recupero l'utente
+        $account = Account::findOrFail($id);
+        $account->password = Crypt::encryptString($request->password);
+        $account->update();
+
+        // aggiungo il log attività
+        LogActivity::addLog("Ha cambiato la password dell'Account: {$account->name}");
+
+        return redirect()->route('accounts.show', $account->id)->with('success', 'La nuova Password è stata salvata.');
     }
 }

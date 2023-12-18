@@ -50,6 +50,7 @@ Route::middleware('auth')->group(function () {
     Route::put('/accounts/update/{id}', 'AccountController@update')->middleware('hasPermission:accounts-edit')->name('accounts.update');
     Route::delete('/accounts/delete/{id}', 'AccountController@destroy')->middleware('hasPermission:accounts-delete')->name('accounts.destroy');
     Route::post('/accounts/deleteSelected', 'AccountController@deleteSelected')->middleware('hasPermission:accounts-delete')->name('accounts.deleteSelected');
+    Route::post('/accounts/change-password/{id}', 'AccountController@changePassword')->middleware('hasPermission:accounts-edit')->name('accounts.changePassword');
 
     // Profilo
     Route::get('/profiles/show/{id}', 'ProfileController@show')->name('profiles.show');

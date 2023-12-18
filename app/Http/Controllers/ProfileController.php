@@ -131,7 +131,7 @@ class ProfileController extends Controller
         $user->password = Hash::make($request->password);
         $user->update();
 
-        return redirect()->route('profiles.show', $user->id);
+        return redirect()->route('profiles.show', $user->id)->with('success', 'La nuova Password è stata salvata.');
     }
 
     /**
