@@ -45,6 +45,9 @@
 
             @yield('content')
         </main>
+
+        {{-- footer --}}
+        @include('components.footer')
     </div>
 
 </body>
