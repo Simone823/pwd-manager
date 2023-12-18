@@ -1,0 +1,156 @@
+// Fonts
+@import url("https://fonts.googleapis.com/css?family=Nunito");
+
+// Variables
+@import "variables";
+
+// Bootstrap
+@import "~bootstrap/scss/bootstrap";
+
+// Utilities
+@import "./utilities.scss";
+
+// Auth
+@import "./auth/login.scss";
+@import "./auth/passwords/email.scss";
+
+// Components
+@import "./components/loader.scss";
+@import "./components/navbar.scss";
+
+// scrollbar
+::-webkit-scrollbar {
+    height: 6px;
+    width: 6px;
+    background-color: var(--bs-dark);
+}
+
+::-webkit-scrollbar-thumb {
+    height: 6px;
+    width: 6px;
+    background-color: $violet;
+    border-radius: 3px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+// set height
+html,
+body {
+    height: 100%;
+}
+
+#app {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+
+    &.is-loading {
+        display: none;
+    }
+    
+    main {
+        flex-grow: 1;
+        overflow-y: auto;
+    
+        section {
+            min-height: 100%;
+            padding-top: 30px;
+            padding-bottom: 30px;
+        }
+    }
+}
+
+
+// reset
+img {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+ul,
+ol {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+// table
+table {
+    thead {
+        tr {
+            th {
+                color: $violet;
+            }
+        }
+    }
+
+    tr {
+        th,
+        td {
+            white-space: nowrap !important;
+        }
+    }
+}
+
+// page link
+.pagination {
+    flex-wrap: wrap;
+}
+
+.page-link {
+    color: $light-gray;
+    border-color: $violet;
+
+    &:hover {
+        background-color: $violet;
+        color: $black !important;
+        border-color: $violet !important;
+    }
+}
+
+.page-link.active,
+.active > .page-link {
+    background-color: $violet;
+    color: $black;
+    border-color: $black;
+}
+
+.page-link.disabled,
+.disabled > .page-link {
+    color: $violet;
+    background-color: transparent;
+    border-color: $violet;
+}
+
+// drop down
+.dropdown-item.active,
+.dropdown-item:active {
+    background-color: $violet;
+    color: $black;
+}
+
+// input checkbox
+.form-check {
+    .form-check-input {
+        border-color: $violet;
+        width: 16px;
+        height: 16px;
+        margin-right: 10px;
+
+        &:focus {
+            border-color: $violet;
+            box-shadow: 0 0 0 0.25rem rgba($color: $violet, $alpha: 0.25);
+        }
+
+        &:disabled,
+        &:disabled ~ .form-check-label {
+            opacity: 1 !important;
+        }
+    }
+}
