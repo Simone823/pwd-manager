@@ -93,6 +93,13 @@
                         </div>
                     </div>
 
+                    {{-- btn view password account --}}
+                    <div class="col-12 col-md-6">
+                        <button onclick="apiViewPasswordAccount('{{Session::get('Api_Token')}}', {{$account->id}})" type="button" class="link-light-gray border-0 bg-transparent">
+                            Visualizza Password
+                        </button>
+                    </div>
+
                     {{-- description --}}
                     <div class="col-12">
                         <div class="form-floating mb-4">
