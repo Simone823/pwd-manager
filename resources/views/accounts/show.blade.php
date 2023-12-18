@@ -94,10 +94,15 @@
                     </div>
 
                     {{-- btn view password account --}}
-                    <div class="col-12 col-md-6">
+                    <div class="col-12 col-md-6 mb-4">
                         <button onclick="apiViewPasswordAccount('{{Session::get('Api_Token')}}', {{$account->id}})" type="button" class="link-light-gray border-0 bg-transparent">
                             Visualizza Password
                         </button>
+                    </div>
+
+                    {{-- change password --}}
+                    <div class="col-12 col-md-6 mb-4">
+                        @include('accounts.modalChangePassword')
                     </div>
 
                     {{-- description --}}

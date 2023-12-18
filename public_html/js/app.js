@@ -45163,6 +45163,7 @@ __webpack_require__(/*! ./utilities/loadingPage */ "./resources/js/utilities/loa
 /***/ (function(module, exports, __webpack_require__) {
 
 window._ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
+window.bootstrap = __webpack_require__(/*! bootstrap */ "./node_modules/bootstrap/dist/js/bootstrap.esm.js");
 
 /**
  * We'll load jQuery and the Bootstrap jQuery plugin which provides support
@@ -45327,6 +45328,14 @@ $(document).ready(function () {
     }, 3000);
   });
 });
+
+// apri un modal (verrebbe usato quando è presente un form con errori di validazione)
+openModal = function openModal(idHtmlModal) {
+  var modalChangePassword = new bootstrap.Modal(document.getElementById(idHtmlModal), {
+    keyboard: false
+  });
+  modalChangePassword.show();
+};
 
 /***/ }),
 
