@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Client;
 use App\LogActivity;
+use Auth;
 use Illuminate\Http\Request;
 
 class ClientController extends Controller
@@ -25,6 +26,10 @@ class ClientController extends Controller
      */
     public function index()
     {
+        if(!Auth::user()->hasPermission('clients-view')) {
+            abort(403);
+        }
+
         // aggiungo il log attività
         LogActivity::addLog("Lista Clienti");
 
@@ -41,6 +46,10 @@ class ClientController extends Controller
      */
     public function create()
     {
+        if(!Auth::user()->hasPermission('clients-create')) {
+            abort(403);
+        }
+
         // aggiungo il log attività
         LogActivity::addLog("Creazione Cliente");
 
@@ -55,6 +64,10 @@ class ClientController extends Controller
      */
     public function store(Request $request)
     {
+        if(!Auth::user()->hasPermission('clients-create')) {
+            abort(403);
+        }
+
         // validazione request
         $request->validate([
             'name' => 'required|string|min:4|max:200|unique:clients,name',
@@ -99,6 +112,10 @@ class ClientController extends Controller
      */
     public function edit($id)
     {
+        if(!Auth::user()->hasPermission('clients-edit')) {
+            abort(403);
+        }
+
         // recupero il cliente by id
         $client = Client::find($id);
 
@@ -117,6 +134,10 @@ class ClientController extends Controller
      */
     public function update(Request $request, $id)
     {
+        if(!Auth::user()->hasPermission('clients-edit')) {
+            abort(403);
+        }
+
         // recupero il cliente by id
         $client = Client::find($id);
 
@@ -150,6 +171,10 @@ class ClientController extends Controller
      */
     public function destroy($id)
     {
+        if(!Auth::user()->hasPermission('clients-delete')) {
+            abort(403);
+        }
+
         // recupero il cliente by id
         $client = Client::find($id);
 
@@ -170,6 +195,10 @@ class ClientController extends Controller
      */
     public function deleteSelected(Request $request)
     {
+        if(!Auth::user()->hasPermission('clients-delete')) {
+            abort(403);
+        }
+
         // controllo se esiste almeno un id
         if(count($request->idsRecord) == 0) {
             return response()->json([
@@ -177,7 +206,6 @@ class ClientController extends Controller
                 'message' => 'There are no selected record ids'
             ], 400);
         }
-
         
         // elimino tutt i record aventi gli id della request
         $clients = Client::whereIn('id', $request->idsRecord)->delete();

@@ -6,6 +6,7 @@ use App\Account;
 use App\Category;
 use App\Client;
 use App\LogActivity;
+use Auth;
 use Illuminate\Http\Request;
 use Session;
 
@@ -55,6 +56,10 @@ class HomeController extends Controller
      */
     public function searchAccounts(Request $request)
     {
+        if(!Auth::user()->hasPermission('accounts-view')) {
+            abort(403);
+        }
+
         // aggiungo il log di attività
         LogActivity::addLog('Dashboard View Cerca Account');
 

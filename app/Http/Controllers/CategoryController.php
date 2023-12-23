@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Category;
 use App\LogActivity;
+use Auth;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -25,6 +26,10 @@ class CategoryController extends Controller
      */
     public function index()
     {
+        if(!Auth::user()->hasPermission('categories-view')) {
+            abort(403);
+        }
+
         // aggiungo il log attività
         LogActivity::addLog("Lista Categorie");
 
@@ -41,6 +46,10 @@ class CategoryController extends Controller
      */
     public function create()
     {
+        if(!Auth::user()->hasPermission('categories-create')) {
+            abort(403);
+        }
+
         // aggiungo il log attività
         LogActivity::addLog("Creazione Categoria");
 
@@ -55,6 +64,10 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
+        if(!Auth::user()->hasPermission('categories-create')) {
+            abort(403);
+        }
+
         // validazione request
         $request->validate([
             'category_name' => 'required|string|alpha|min:3|max:200|unique:categories,category_name'
@@ -97,6 +110,10 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
+        if(!Auth::user()->hasPermission('categories-edit')) {
+            abort(403);
+        }
+
         // recupero la categoria by id
         $category = Category::find($id);
         
@@ -115,6 +132,10 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
+        if(!Auth::user()->hasPermission('categories-edit')) {
+            abort(403);
+        }
+
         // recupero la categoria by id
         $category = Category::find($id);
 
@@ -146,6 +167,10 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
+        if(!Auth::user()->hasPermission('categories-delete')) {
+            abort(403);
+        }
+
         // recupero la categoria by id
         $category = Category::find($id);
 
@@ -166,6 +191,10 @@ class CategoryController extends Controller
      */
     public function deleteSelected(Request $request)
     {
+        if(!Auth::user()->hasPermission('categories-delete')) {
+            abort(403);
+        }
+
         // controllo se esiste almeno un id
         if(count($request->idsRecord) == 0) {
             return response()->json([
