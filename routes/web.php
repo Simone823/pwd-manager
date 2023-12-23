@@ -14,32 +14,32 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-// Rotte autenticazione
+// Auth
 Auth::routes(["register" => false]);
 
-// Rotte gruppo middleware auth
+// Auth group
 Route::middleware('auth')->group(function () {
     // Rotta default
     Route::get('/', 'HomeController@index')->name('home');
     Route::get('/home/search-accounts', 'HomeController@searchAccounts')->name('home.search-accounts');
 
-    // Rotte Admin
+    // Admin
     Route::middleware('hasRole:admin')->group(function () {
-        // Rotte permissions
+        // Permissions
         Route::resource('/permissions', 'PermissionController')->only(['index']);
 
-        // Rotte roles
+        // Roles
         Route::resource('/roles', 'RoleController');
 
-        // Rotte users
+        // Users
         Route::resource('/users', 'UserController');
 
-        // Rote log activities
+        // LogActivities
         Route::resource('/log-activities', 'LogActivityController')->only(['index', 'destroy']);
         Route::post('/log-activities/deleteSelected', 'LogActivityController@deleteSelected')->name('log-activities.deleteSelected');
     });
 
-    // Rotte categorie
+    // Categories
     Route::get('/categories/index', 'CategoryController@index')->name('categories.index');
     Route::get('/categories/create', 'CategoryController@create')->name('categories.create');
     Route::post('/categories/store', 'CategoryController@store')->name('categories.store');
@@ -48,7 +48,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/categories/delete/{id}', 'CategoryController@destroy')->name('categories.destroy');
     Route::post('/categories/deleteSelected', 'CategoryController@deleteSelected')->name('categories.deleteSelected');
 
-    // Rotte clienti
+    // Clients
     Route::get('/clients/index', 'ClientController@index')->name('clients.index');
     Route::get('/clients/create', 'ClientController@create')->name('clients.create');
     Route::post('/clients/store', 'ClientController@store')->name('clients.store');
@@ -57,7 +57,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/clients/delete/{id}', 'ClientController@destroy')->name('clients.destroy');
     Route::post('/clients/deleteSelected', 'ClientController@deleteSelected')->name('clients.deleteSelected');
 
-    // Rotte accounts
+    // Accounts
     Route::get('/accounts/index', 'AccountController@index')->name('accounts.index');
     Route::get('/accounts/show/{id}', 'AccountController@show')->name('accounts.show');
     Route::get('/accounts/create', 'AccountController@create')->name('accounts.create');
@@ -68,7 +68,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/accounts/deleteSelected', 'AccountController@deleteSelected')->name('accounts.deleteSelected');
     Route::post('/accounts/change-password/{id}', 'AccountController@changePassword')->name('accounts.changePassword');
 
-    // Profilo
+    // Profile
     Route::get('/profiles/show/{id}', 'ProfileController@show')->name('profiles.show');
     Route::get('/profiles/edit/{id}', 'ProfileController@edit')->name('profiles.edit');
     Route::post('/profiles/update/{id}', 'ProfileController@update')->name('profiles.update');
