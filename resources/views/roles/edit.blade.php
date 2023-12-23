@@ -9,7 +9,7 @@
 
                 {{-- row title --}}
                 <div class="row mb-4">
-                    <h2 class="mb-0 text-violet fs-4 fw-bold">
+                    <h2 class="mb-0 text-orange fs-4 fw-bold">
                         <i class="fa-solid fa-pen"></i>
                         Modifica Ruolo {{$role->name}}
                     </h2>
@@ -36,8 +36,8 @@
                             <div class="row mb-2">
                                 <div class="col-12 col-md-6">
                                     <div class="form-floating mb-4">
-                                        <input type="text" class="form-control input-violet shadow-sm @error('name') is-invalid @enderror" id="name" name="name" value="{{old('name', $role->name)}}" placeholder="Nome Ruolo" required>
-                                        <label for="name" class="text-violet">Nome Ruolo*</label>
+                                        <input type="text" class="form-control input-orange shadow-sm @error('name') is-invalid @enderror" id="name" name="name" value="{{old('name', $role->name)}}" placeholder="Nome Ruolo" required>
+                                        <label for="name" class="text-orange">Nome Ruolo*</label>
     
                                         @error('name')
                                             <span class="invalid-feedback" role="alert">
@@ -51,7 +51,7 @@
                             {{-- row permissions --}}
                             <div class="row mb-4">
                                 <div class="col-12 mb-3">
-                                    <h4 class="mb-0 text-violet fw-light">Permessi</h4>
+                                    <h4 class="mb-0 text-orange fw-light">Permessi</h4>
                                 </div>
 
                                 <div class="col-12">
@@ -77,7 +77,7 @@
                             {{-- row btn submit --}}
                             <div class="row">
                                 <div class="col-12 d-flex justify-content-end">
-                                    <button type="submit" class="btn btn-violet fw-bold px-4 text-uppercase">
+                                    <button type="submit" class="btn btn-orange fw-bold px-4 text-uppercase">
                                         <i class="fa-solid fa-floppy-disk"></i>
                                         Salva Modifica
                                     </button>

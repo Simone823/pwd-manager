@@ -23,8 +23,8 @@
     
                                 {{-- email --}}
                                 <div class="form-floating mb-4">
-                                    <input type="text" class="form-control input-violet shadow-sm @error('username') is-invalid @enderror" id="username" name="username" value="{{old('username')}}" placeholder="Nome Utente" required autocomplete="username" autofocus="false">
-                                    <label for="username" class="text-violet">
+                                    <input type="text" class="form-control input-orange shadow-sm @error('username') is-invalid @enderror" id="username" name="username" value="{{old('username')}}" placeholder="Nome Utente" required autocomplete="username" autofocus="false">
+                                    <label for="username" class="text-orange">
                                         <i class="fa-solid fa-user"></i>
                                         Nome Utente
                                     </label>
@@ -38,8 +38,8 @@
     
                                 {{-- password --}}
                                 <div class="form-floating mb-3">
-                                    <input type="password" class="form-control input-violet shadow-sm @error('password') is-invalid @enderror" id="password" name="password" placeholder="Password" required autocomplete="new-password" autofocus="false">
-                                    <label for="password" class="text-violet">
+                                    <input type="password" class="form-control input-orange shadow-sm @error('password') is-invalid @enderror" id="password" name="password" placeholder="Password" required autocomplete="new-password" autofocus="false">
+                                    <label for="password" class="text-orange">
                                         <i class="fa-solid fa-lock"></i>
                                         Password
                                     </label>
@@ -62,7 +62,7 @@
                                 <div class="row mb-0">
                                     <div class="col-12 d-flex justify-content-center gap-3 gy-2 align-items-center flex-wrap">
                                         {{-- submit --}}
-                                        <button type="submit" class="btn btn-violet fw-bold shadow w-100 text-uppercase">
+                                        <button type="submit" class="btn btn-orange fw-bold shadow w-100 text-uppercase">
                                             {{ __('Login') }}
                                         </button>
                                     </div>

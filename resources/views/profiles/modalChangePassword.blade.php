@@ -22,8 +22,8 @@
 
                     {{-- password --}}
                     <div class="form-floating mb-4">
-                        <input type="password" class="form-control input-violet shadow-sm @error('password') is-invalid @enderror" id="password" name="password" value="" placeholder="Password" required autocomplete="new-password">
-                        <label for="password" class="text-violet">Password*</label>
+                        <input type="password" class="form-control input-orange shadow-sm @error('password') is-invalid @enderror" id="password" name="password" value="" placeholder="Password" required autocomplete="new-password">
+                        <label for="password" class="text-orange">Password*</label>
 
                         @error('password')
                             <span class="invalid-feedback" role="alert">
@@ -34,8 +34,8 @@
 
                     {{-- password confirm --}}
                     <div class="form-floating mb-4">
-                        <input type="password" class="form-control input-violet shadow-sm @error('password') is-invalid @enderror" id="password-confirm" name="password_confirmation" value="" placeholder="Conferma Password" required>
-                        <label for="password-confirm" class="text-violet">Conferma Password*</label>
+                        <input type="password" class="form-control input-orange shadow-sm @error('password') is-invalid @enderror" id="password-confirm" name="password_confirmation" value="" placeholder="Conferma Password" required>
+                        <label for="password-confirm" class="text-orange">Conferma Password*</label>
 
                         @error('password_confirm')
                             <span class="invalid-feedback" role="alert">
@@ -47,11 +47,11 @@
 
                 {{-- buttons --}}
                 <div class="modal-footer d-flex gap-2">
-                    <button type="submit" class="btn btn-violet fw-bold px-4 text-uppercase">
+                    <button type="submit" class="btn btn-orange fw-bold px-4 text-uppercase">
                         <i class="fa-solid fa-floppy-disk"></i>
                         Salva
                     </button>
-                    <button type="button" class="btn btn-violet fw-bold px-4 text-uppercase" data-bs-dismiss="modal">
+                    <button type="button" class="btn btn-orange fw-bold px-4 text-uppercase" data-bs-dismiss="modal">
                         <i class="fa-solid fa-ban"></i>
                         Annulla
                     </button>

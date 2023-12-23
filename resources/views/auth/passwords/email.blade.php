@@ -38,8 +38,8 @@
     
                             {{-- email --}}
                             <div class="form-floating mb-4">
-                                <input type="email" class="form-control input-violet shadow-sm @error('email') is-invalid @enderror" id="email" name="email" value="{{old('email')}}" placeholder="Indirizzo Email" required autocomplete="email">
-                                <label for="email" class="text-violet">
+                                <input type="email" class="form-control input-orange shadow-sm @error('email') is-invalid @enderror" id="email" name="email" value="{{old('email')}}" placeholder="Indirizzo Email" required autocomplete="email">
+                                <label for="email" class="text-orange">
                                     <i class="fa-solid fa-envelope"></i>
                                     Indirizzo Email
                                 </label>
@@ -54,7 +54,7 @@
                             {{-- btn submit --}}
                             <div class="row mb-0">
                                 <div class="col-12 d-flex justify-content-center">
-                                    <button type="submit" class="btn btn-violet shadow fw-bold">
+                                    <button type="submit" class="btn btn-orange shadow fw-bold">
                                         Invia link per il reset della Password
                                     </button>
                                 </div>

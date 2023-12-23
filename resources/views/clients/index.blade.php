@@ -9,7 +9,7 @@
 
                 {{-- row title --}}
                 <div class="row mb-4">
-                    <h2 class="mb-0 text-violet fs-4 fw-bold">
+                    <h2 class="mb-0 text-orange fs-4 fw-bold">
                         <i class="fa-solid fa-list"></i>
                         Lista Clienti
                     </h2>
@@ -61,8 +61,8 @@
                             <thead>
                                 <tr>
                                     <th scope="col"></th>
-                                    <th scope="col">@sortablelink('name', 'Nome Cliente', [], ['class' => 'link-violet'])</th>
-                                    <th scope="col">@sortablelink('description', 'Descrizione', [], ['class' => 'link-violet'])</th>
+                                    <th scope="col">@sortablelink('name', 'Nome Cliente', [], ['class' => 'link-orange'])</th>
+                                    <th scope="col">@sortablelink('description', 'Descrizione', [], ['class' => 'link-orange'])</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -78,7 +78,7 @@
 
                                             {{-- btn edit --}}
                                             @if (Auth::user()->hasPermission('clients-edit'))
-                                                <a href="{{route('clients.edit', $client->id)}}" class="btn btn-violet shadow">
+                                                <a href="{{route('clients.edit', $client->id)}}" class="btn btn-orange shadow">
                                                     <i class="fa-solid fa-pen"></i>
                                                 </a>
                                             @endif
@@ -90,7 +90,7 @@
                                                         @csrf
                                                         @method('DELETE')
 
-                                                        <button type="submit" class="btn btn-violet shadow">
+                                                        <button type="submit" class="btn btn-orange shadow">
                                                             <i class="fa-solid fa-trash"></i>
                                                         </button>
                                                     </form>

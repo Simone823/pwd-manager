@@ -9,7 +9,7 @@
 
                 {{-- row title --}}
                 <div class="row mb-4">
-                    <h2 class="mb-0 text-violet fs-4 fw-bold">
+                    <h2 class="mb-0 text-orange fs-4 fw-bold">
                         <i class="fa-solid fa-list"></i>
                         Lista Categorie
                     </h2>
@@ -61,7 +61,7 @@
                             <thead>
                                 <tr>
                                     <th scope="col"></th>
-                                    <th scope="col">@sortablelink('category_name', 'Nome Categoria', [], ['class' => 'link-violet'])</th>
+                                    <th scope="col">@sortablelink('category_name', 'Nome Categoria', [], ['class' => 'link-orange'])</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -77,7 +77,7 @@
 
                                             {{-- btn edit --}}
                                             @if (Auth::user()->hasPermission('categories-edit'))
-                                                <a href="{{route('categories.edit', $category->id)}}" class="btn btn-violet shadow">
+                                                <a href="{{route('categories.edit', $category->id)}}" class="btn btn-orange shadow">
                                                     <i class="fa-solid fa-pen"></i>
                                                 </a>
                                             @endif
@@ -89,7 +89,7 @@
                                                         @csrf
                                                         @method('DELETE')
 
-                                                        <button type="submit" class="btn btn-violet shadow">
+                                                        <button type="submit" class="btn btn-orange shadow">
                                                             <i class="fa-solid fa-trash"></i>
                                                         </button>
                                                     </form>

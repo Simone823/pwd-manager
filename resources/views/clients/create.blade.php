@@ -9,7 +9,7 @@
 
                 {{-- row title --}}
                 <div class="row mb-4">
-                    <h2 class="mb-0 text-violet fs-4 fw-bold">
+                    <h2 class="mb-0 text-orange fs-4 fw-bold">
                         <i class="fa-solid fa-plus"></i>
                         Creazione Cliente
                     </h2>
@@ -35,8 +35,8 @@
                             <div class="row mb-2">
                                 <div class="col-12 col-md-6">
                                     <div class="form-floating mb-4">
-                                        <input type="text" class="form-control input-violet shadow-sm @error('name') is-invalid @enderror" id="name" name="name" value="{{old('name')}}" placeholder="Nome Cliente" required>
-                                        <label for="name" class="text-violet">Nome Cliente*</label>
+                                        <input type="text" class="form-control input-orange shadow-sm @error('name') is-invalid @enderror" id="name" name="name" value="{{old('name')}}" placeholder="Nome Cliente" required>
+                                        <label for="name" class="text-orange">Nome Cliente*</label>
     
                                         @error('name')
                                             <span class="invalid-feedback" role="alert">
@@ -51,8 +51,8 @@
                             <div class="row mb-2">
                                 <div class="col-12">
                                     <div class="form-floating mb-4">
-                                        <textarea class="form-control text-area-violet shadow-sm" placeholder="Descrizione" id="description" name="description" style="height: 100px">{{old('description')}}</textarea>
-                                        <label for="description" class="text-violet">Descrizione</label>
+                                        <textarea class="form-control text-area-orange shadow-sm" placeholder="Descrizione" id="description" name="description" style="height: 100px">{{old('description')}}</textarea>
+                                        <label for="description" class="text-orange">Descrizione</label>
                                     </div>
                                 </div>
                             </div>
@@ -60,7 +60,7 @@
                             {{-- row btn submit --}}
                             <div class="row">
                                 <div class="col-12 d-flex justify-content-end">
-                                    <button type="submit" class="btn btn-violet fw-bold px-4 text-uppercase">
+                                    <button type="submit" class="btn btn-orange fw-bold px-4 text-uppercase">
                                         <i class="fa-solid fa-floppy-disk"></i>
                                         Salva
                                     </button>

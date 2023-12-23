@@ -9,7 +9,7 @@
 
                 {{-- row title --}}
                 <div class="row mb-4">
-                    <h2 class="mb-0 text-violet fs-4 fw-bold">
+                    <h2 class="mb-0 text-orange fs-4 fw-bold">
                         <i class="fa-sharp fa-solid fa-eye"></i>
                         Visualizza Ruolo {{$role->name}}
                     </h2>
@@ -32,8 +32,8 @@
                         <div class="row mb-2">
                             <div class="col-12 col-md-6">
                                 <div class="form-floating mb-4">
-                                    <input type="text" class="form-control input-violet shadow-sm @error('name') is-invalid @enderror" id="name" name="name" value="{{$role->name}}" placeholder="Nome Ruolo" readonly>
-                                    <label for="name" class="text-violet">Nome Ruolo</label>
+                                    <input type="text" class="form-control input-orange shadow-sm @error('name') is-invalid @enderror" id="name" name="name" value="{{$role->name}}" placeholder="Nome Ruolo" readonly>
+                                    <label for="name" class="text-orange">Nome Ruolo</label>
                                 </div>
                             </div>
                         </div>
@@ -41,7 +41,7 @@
                         {{-- row permissions --}}
                         <div class="row mb-4">
                             <div class="col-12 mb-3">
-                                <h4 class="mb-0 text-violet fw-light">Permessi</h4>
+                                <h4 class="mb-0 text-orange fw-light">Permessi</h4>
                             </div>
 
                             <div class="col-12">
@@ -59,7 +59,7 @@
                         {{-- row btn modifica --}}
                         <div class="row">
                             <div class="col-12 d-flex justify-content-end">
-                                <a href="{{route('roles.edit', $role->id)}}" class="btn btn-violet fw-bold px-4 text-uppercase">
+                                <a href="{{route('roles.edit', $role->id)}}" class="btn btn-orange fw-bold px-4 text-uppercase">
                                     <i class="fa-solid fa-pen"></i>
                                     Modifica
                                 </a>

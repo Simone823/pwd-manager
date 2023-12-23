@@ -9,7 +9,7 @@
 
                 {{-- row title --}}
                 <div class="row mb-4">
-                    <h2 class="mb-0 text-violet fs-4 fw-bold">
+                    <h2 class="mb-0 text-orange fs-4 fw-bold">
                         <i class="fa-solid fa-list"></i>
                         Lista Permessi
                     </h2>
@@ -21,7 +21,7 @@
                         <table class="table table-dark table-striped shadow">
                             <thead>
                                 <tr>
-                                    <th scope="col">@sortablelink('name', 'Nome Permesso', [], ['class' => 'link-violet'])</th>
+                                    <th scope="col">@sortablelink('name', 'Nome Permesso', [], ['class' => 'link-orange'])</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -35,7 +35,7 @@
                                                     @method('DELETE')
 
                                                     <!-- Button trigger modal -->
-                                                    <button type="submit" class="btn btn-violet shadow">
+                                                    <button type="submit" class="btn btn-orange shadow">
                                                         <i class="fa-solid fa-trash"></i>
                                                     </button>
                                                 </form>

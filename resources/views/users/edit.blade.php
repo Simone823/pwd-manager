@@ -9,7 +9,7 @@
 
                 {{-- row title --}}
                 <div class="row mb-4">
-                    <h2 class="mb-0 text-violet fs-4 fw-bold">
+                    <h2 class="mb-0 text-orange fs-4 fw-bold">
                         <i class="fa-solid fa-pen"></i>
                         Modifica Utente {{$user->username}}
                     </h2>
@@ -37,8 +37,8 @@
                                 {{-- name --}}
                                 <div class="col-12 col-md-6">
                                     <div class="form-floating mb-4">
-                                        <input type="text" class="form-control input-violet shadow-sm @error('name') is-invalid @enderror" id="name" name="name" value="{{old('name', $user->name)}}" placeholder="Nome" required>
-                                        <label for="name" class="text-violet">Nome</label>
+                                        <input type="text" class="form-control input-orange shadow-sm @error('name') is-invalid @enderror" id="name" name="name" value="{{old('name', $user->name)}}" placeholder="Nome" required>
+                                        <label for="name" class="text-orange">Nome</label>
     
                                         @error('name')
                                             <span class="invalid-feedback" role="alert">
@@ -51,8 +51,8 @@
                                 {{-- surname --}}
                                 <div class="col-12 col-md-6">
                                     <div class="form-floating mb-4">
-                                        <input type="text" class="form-control input-violet shadow-sm @error('surname') is-invalid @enderror" id="surname" name="surname" value="{{old('surname', $user->surname)}}" placeholder="Cognome" required>
-                                        <label for="surname" class="text-violet">Cognome</label>
+                                        <input type="text" class="form-control input-orange shadow-sm @error('surname') is-invalid @enderror" id="surname" name="surname" value="{{old('surname', $user->surname)}}" placeholder="Cognome" required>
+                                        <label for="surname" class="text-orange">Cognome</label>
     
                                         @error('surname')
                                             <span class="invalid-feedback" role="alert">
@@ -65,8 +65,8 @@
                                 {{-- username --}}
                                 <div class="col-12 col-md-6">
                                     <div class="form-floating mb-4">
-                                        <input type="text" class="form-control input-violet shadow-sm @error('username') is-invalid @enderror" id="username" name="username" value="{{old('username', $user->username)}}" placeholder="Username" required>
-                                        <label for="username" class="text-violet">Username</label>
+                                        <input type="text" class="form-control input-orange shadow-sm @error('username') is-invalid @enderror" id="username" name="username" value="{{old('username', $user->username)}}" placeholder="Username" required>
+                                        <label for="username" class="text-orange">Username</label>
     
                                         @error('username')
                                             <span class="invalid-feedback" role="alert">
@@ -79,8 +79,8 @@
                                 {{-- email --}}
                                 <div class="col-12 col-md-6">
                                     <div class="form-floating mb-4">
-                                        <input type="email" class="form-control input-violet shadow-sm @error('email') is-invalid @enderror" id="email" name="email" value="{{old('email', $user->email)}}" placeholder="email" required>
-                                        <label for="email" class="text-violet">Email</label>
+                                        <input type="email" class="form-control input-orange shadow-sm @error('email') is-invalid @enderror" id="email" name="email" value="{{old('email', $user->email)}}" placeholder="email" required>
+                                        <label for="email" class="text-orange">Email</label>
     
                                         @error('email')
                                             <span class="invalid-feedback" role="alert">
@@ -93,12 +93,12 @@
                                 {{-- ruolo --}}
                                 <div class="col-12 col-md-6">
                                     <div class="form-floating mb-4">
-                                        <select class="form-select select-violet shadow-sm" id="role_id" name="role_id" aria-label="role_id" required>
+                                        <select class="form-select select-orange shadow-sm" id="role_id" name="role_id" aria-label="role_id" required>
                                             @foreach ($roles as $role)
                                                 <option {{old('role_id', $user->role->id == $role->id) ? 'selected' : ''}} value="{{$role->id}}">{{$role->name}}</option>
                                             @endforeach
                                         </select>
-                                        <label for="role_id" class="text-violet">Ruolo*</label>
+                                        <label for="role_id" class="text-orange">Ruolo*</label>
 
                                         @error('role_id')
                                             <span class="invalid-feedback" role="alert">
@@ -112,7 +112,7 @@
                             {{-- row btn submit --}}
                             <div class="row">
                                 <div class="col-12 d-flex justify-content-end">
-                                    <button type="submit" class="btn btn-violet fw-bold px-4 text-uppercase">
+                                    <button type="submit" class="btn btn-orange fw-bold px-4 text-uppercase">
                                         <i class="fa-solid fa-floppy-disk"></i>
                                         Salva Modifica
                                     </button>

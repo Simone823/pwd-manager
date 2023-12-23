@@ -3,7 +3,7 @@
 
         {{-- row title --}}
         <div class="row mb-4">
-            <h2 class="mb-0 text-violet fs-4 fw-bold">
+            <h2 class="mb-0 text-orange fs-4 fw-bold">
                 <i class="fa-solid fa-list"></i>
                 Lista Log Attività
             </h2>
@@ -40,12 +40,12 @@
                     <thead>
                         <tr>
                             <th scope="col"></th>
-                            <th scope="col">@sortablelink('action', 'Nome Azione', [], ['class' => 'link-violet'])</th>
-                            <th scope="col">@sortablelink('created_at', 'Data Azione', [], ['class' => 'link-violet'])</th>
-                            <th scope="col">@sortablelink('method', 'Metodo', [], ['class' => 'link-violet'])</th>
-                            <th scope="col">@sortablelink('ip', 'Ip', [], ['class' => 'link-violet'])</th>
-                            <th scope="col">@sortablelink('url', 'Url', [], ['class' => 'link-violet'])</th>
-                            <th scope="col">@sortablelink('agent', 'Agent', [], ['class' => 'link-violet'])</th>
+                            <th scope="col">@sortablelink('action', 'Nome Azione', [], ['class' => 'link-orange'])</th>
+                            <th scope="col">@sortablelink('created_at', 'Data Azione', [], ['class' => 'link-orange'])</th>
+                            <th scope="col">@sortablelink('method', 'Metodo', [], ['class' => 'link-orange'])</th>
+                            <th scope="col">@sortablelink('ip', 'Ip', [], ['class' => 'link-orange'])</th>
+                            <th scope="col">@sortablelink('url', 'Url', [], ['class' => 'link-orange'])</th>
+                            <th scope="col">@sortablelink('agent', 'Agent', [], ['class' => 'link-orange'])</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -63,7 +63,7 @@
                                             @csrf
                                             @method('DELETE')
 
-                                            <button type="submit" class="btn btn-violet shadow">
+                                            <button type="submit" class="btn btn-orange shadow">
                                                 <i class="fa-solid fa-trash"></i>
                                             </button>
                                         </form>

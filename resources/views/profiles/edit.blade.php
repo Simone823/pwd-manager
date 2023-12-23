@@ -9,7 +9,7 @@
 
                 {{-- row title --}}
                 <div class="row mb-4">
-                    <h2 class="mb-0 text-violet fs-4 fw-bold">
+                    <h2 class="mb-0 text-orange fs-4 fw-bold">
                         <i class="fa-solid fa-pen"></i>
                         Modifica Profilo
                     </h2>
@@ -36,8 +36,8 @@
                                 {{-- name --}}
                                 <div class="col-12 col-md-6">
                                     <div class="form-floating mb-4">
-                                        <input {{$user->isAdmin() ? 'readonly' : ''}} type="text" class="form-control input-violet shadow-sm @error('name') is-invalid @enderror" id="name" name="name" value="{{old('name', $user->name)}}" placeholder="Nome" required>
-                                        <label for="name" class="text-violet">Nome*</label>
+                                        <input {{$user->isAdmin() ? 'readonly' : ''}} type="text" class="form-control input-orange shadow-sm @error('name') is-invalid @enderror" id="name" name="name" value="{{old('name', $user->name)}}" placeholder="Nome" required>
+                                        <label for="name" class="text-orange">Nome*</label>
     
                                         @error('name')
                                             <span class="invalid-feedback" role="alert">
@@ -50,8 +50,8 @@
                                 {{-- surname --}}
                                 <div class="col-12 col-md-6">
                                     <div class="form-floating mb-4">
-                                        <input {{$user->isAdmin() ? 'readonly' : ''}} type="text" class="form-control input-violet shadow-sm @error('surname') is-invalid @enderror" id="surname" name="surname" value="{{old('surname', $user->surname)}}" placeholder="Cognome" required>
-                                        <label for="surname" class="text-violet">Cognome*</label>
+                                        <input {{$user->isAdmin() ? 'readonly' : ''}} type="text" class="form-control input-orange shadow-sm @error('surname') is-invalid @enderror" id="surname" name="surname" value="{{old('surname', $user->surname)}}" placeholder="Cognome" required>
+                                        <label for="surname" class="text-orange">Cognome*</label>
     
                                         @error('surname')
                                             <span class="invalid-feedback" role="alert">
@@ -64,8 +64,8 @@
                                 {{-- email --}}
                                 <div class="col-12 col-md-6">
                                     <div class="form-floating mb-4">
-                                        <input type="email" class="form-control input-violet shadow-sm @error('email') is-invalid @enderror" id="email" name="email" value="{{old('email', $user->email)}}" placeholder="email" required>
-                                        <label for="email" class="text-violet">Email*</label>
+                                        <input type="email" class="form-control input-orange shadow-sm @error('email') is-invalid @enderror" id="email" name="email" value="{{old('email', $user->email)}}" placeholder="email" required>
+                                        <label for="email" class="text-orange">Email*</label>
     
                                         @error('email')
                                             <span class="invalid-feedback" role="alert">
@@ -79,7 +79,7 @@
                             {{-- row btn submit --}}
                             <div class="row">
                                 <div class="col-12 d-flex justify-content-end">
-                                    <button type="submit" class="btn btn-violet fw-bold px-4 text-uppercase">
+                                    <button type="submit" class="btn btn-orange fw-bold px-4 text-uppercase">
                                         <i class="fa-solid fa-floppy-disk"></i>
                                         Salva Modifica
                                     </button>

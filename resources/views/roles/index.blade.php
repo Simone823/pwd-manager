@@ -9,7 +9,7 @@
 
                 {{-- row title --}}
                 <div class="row mb-4">
-                    <h2 class="mb-0 text-violet fs-4 fw-bold">
+                    <h2 class="mb-0 text-orange fs-4 fw-bold">
                         <i class="fa-solid fa-list"></i>
                         Lista Ruoli
                     </h2>
@@ -32,7 +32,7 @@
                             <thead>
                                 <tr>
                                     <th scope="col"></th>
-                                    <th scope="col">@sortablelink('name', 'Nome Ruolo', [], ['class' => 'link-violet'])</th>
+                                    <th scope="col">@sortablelink('name', 'Nome Ruolo', [], ['class' => 'link-orange'])</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -40,12 +40,12 @@
                                     <tr>
                                         <th class="d-flex gap-2">
                                             {{-- btn show --}}
-                                            <a href="{{route('roles.show', $role->id)}}" class="btn btn-violet shadow">
+                                            <a href="{{route('roles.show', $role->id)}}" class="btn btn-orange shadow">
                                                 <i class="fa-sharp fa-solid fa-eye"></i>
                                             </a>
 
                                             {{-- btn edit --}}
-                                            <a href="{{route('roles.edit', $role->id)}}" class="btn btn-violet shadow @if($role->name == 'Admin') disabled @endif">
+                                            <a href="{{route('roles.edit', $role->id)}}" class="btn btn-orange shadow @if($role->name == 'Admin') disabled @endif">
                                                 <i class="fa-solid fa-pen"></i>
                                             </a>
 
@@ -55,7 +55,7 @@
                                                     @csrf
                                                     @method('DELETE')
 
-                                                    <button @if($role->name == 'Admin') disabled @endif type="submit" class="btn btn-violet shadow">
+                                                    <button @if($role->name == 'Admin') disabled @endif type="submit" class="btn btn-orange shadow">
                                                         <i class="fa-solid fa-trash"></i>
                                                     </button>
                                                 </form>

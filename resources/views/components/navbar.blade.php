@@ -53,7 +53,7 @@
 
             {{-- btn dropdown profile --}}
             <div class="dropdown">
-                <button class="btn btn-violet dropdown-toggle fw-semibold shadow px-4" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <button class="btn btn-orange dropdown-toggle fw-semibold shadow px-4" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                     {{Auth::user()->name}} {{Auth::user()->surname}}
                 </button>
                 <ul class="dropdown-menu dropdown-menu-dark">

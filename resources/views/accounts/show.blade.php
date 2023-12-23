@@ -9,7 +9,7 @@
 
                 {{-- row title --}}
                 <div class="row mb-4">
-                    <h2 class="mb-0 text-violet fs-4 fw-bold">
+                    <h2 class="mb-0 text-orange fs-4 fw-bold">
                         <i class="fa-sharp fa-solid fa-eye"></i>
                         Visualizza Account {{$account->name}}
                     </h2>
@@ -38,15 +38,15 @@
                     {{-- account name --}}
                     <div class="col-12 col-md-6">
                         <div class="form-floating mb-4">
-                            <input type="text" class="form-control input-violet shadow-sm @error('name') is-invalid @enderror" id="name" name="name" value="{{$account->name}}" placeholder="Nome Account" readonly>
-                            <label for="name" class="text-violet">Nome Account</label>
+                            <input type="text" class="form-control input-orange shadow-sm @error('name') is-invalid @enderror" id="name" name="name" value="{{$account->name}}" placeholder="Nome Account" readonly>
+                            <label for="name" class="text-orange">Nome Account</label>
                         </div>
                     </div>
 
                     {{-- client --}}
                     <div class="col-12 col-md-6">
                         <div class="form-floating mb-4">
-                            <select class="form-select select-violet shadow-sm" id="client_id" name="client_id" aria-label="client_id" disabled>
+                            <select class="form-select select-orange shadow-sm" id="client_id" name="client_id" aria-label="client_id" disabled>
                                 @if ($account->client)    
                                     @foreach ($clients as $client)
                                         <option {{$account->client_id == $client->id ? 'selected' : ''}} value="{{$client->id}}">{{$client->name}}</option>
@@ -56,14 +56,14 @@
                                         <option selected value="">--</option>
                                 @endif
                             </select>
-                            <label for="client_id" class="text-violet">Cliente</label>
+                            <label for="client_id" class="text-orange">Cliente</label>
                         </div>
                     </div>
 
                     {{-- category --}}
                     <div class="col-12 col-md-6">
                         <div class="form-floating mb-4">
-                            <select class="form-select select-violet shadow-sm" id="category_id" name="category_id" aria-label="category_id" disabled>
+                            <select class="form-select select-orange shadow-sm" id="category_id" name="category_id" aria-label="category_id" disabled>
                                 @if ($account->category)
                                     @foreach ($categories as $category)
                                         <option {{$account->category->id == $category->id ? 'selected' : ''}} value="{{$category->id}}">{{$category->category_name}}</option>
@@ -73,23 +73,23 @@
                                         <option selected value="">--</option>
                                 @endif
                             </select>
-                            <label for="category_id" class="text-violet">Categoria</label>
+                            <label for="category_id" class="text-orange">Categoria</label>
                         </div>
                     </div>
 
                     {{-- url ip --}}
                     <div class="col-12 col-md-6">
                         <div class="form-floating mb-4">
-                            <input type="text" class="form-control input-violet shadow-sm @error('url') is-invalid @enderror" id="url" name="url" value="{{$account->url}}" placeholder="Url / Ip" readonly>
-                            <label for="url" class="text-violet">Url / Ip</label>
+                            <input type="text" class="form-control input-orange shadow-sm @error('url') is-invalid @enderror" id="url" name="url" value="{{$account->url}}" placeholder="Url / Ip" readonly>
+                            <label for="url" class="text-orange">Url / Ip</label>
                         </div>
                     </div>
 
                     {{-- username --}}
                     <div class="col-12 col-md-6">
                         <div class="form-floating mb-4">
-                            <input type="text" class="form-control input-violet shadow-sm @error('username') is-invalid @enderror" id="username" name="username" value="{{$account->username}}" placeholder="Username" readonly>
-                            <label for="username" class="text-violet">Username</label>
+                            <input type="text" class="form-control input-orange shadow-sm @error('username') is-invalid @enderror" id="username" name="username" value="{{$account->username}}" placeholder="Username" readonly>
+                            <label for="username" class="text-orange">Username</label>
                         </div>
                     </div>
 
@@ -108,8 +108,8 @@
                     {{-- description --}}
                     <div class="col-12">
                         <div class="form-floating mb-4">
-                            <textarea class="form-control text-area-violet shadow-sm" placeholder="Descrizione" id="description" name="description" style="height: 100px" readonly>{{$account->description}}</textarea>
-                            <label for="description" class="text-violet">Descrizione</label>
+                            <textarea class="form-control text-area-orange shadow-sm" placeholder="Descrizione" id="description" name="description" style="height: 100px" readonly>{{$account->description}}</textarea>
+                            <label for="description" class="text-orange">Descrizione</label>
                         </div>
                     </div>
                 </div>

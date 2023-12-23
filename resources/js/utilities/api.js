@@ -23,12 +23,12 @@ apiViewPasswordAccount = function(apiToken, idAccount) {
             title: 'Password Account',
             html: `
                 <div class="form-floating mb-4">
-                    <input type="text" class="form-control input-violet shadow-sm" id="username" name="username" value="${username}" placeholder="Username" readonly>
-                    <label for="username" class="text-violet">Username</label>
+                    <input type="text" class="form-control input-orange shadow-sm" id="username" name="username" value="${username}" placeholder="Username" readonly>
+                    <label for="username" class="text-orange">Username</label>
                 </div>
                 <div class="form-floating">
-                    <input type="text" class="form-control input-violet shadow-sm" id="password" name="password" value="${password}" placeholder="Password" readonly>
-                    <label for="password" class="text-violet">Password</label>
+                    <input type="text" class="form-control input-orange shadow-sm" id="password" name="password" value="${password}" placeholder="Password" readonly>
+                    <label for="password" class="text-orange">Password</label>
                 </div>
             `,
         });

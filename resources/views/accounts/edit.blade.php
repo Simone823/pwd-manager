@@ -9,7 +9,7 @@
 
                 {{-- row title --}}
                 <div class="row mb-4">
-                    <h2 class="mb-0 text-violet fs-4 fw-bold">
+                    <h2 class="mb-0 text-orange fs-4 fw-bold">
                         <i class="fa-solid fa-pen"></i>
                         Modifica Account {{$account->name}}
                     </h2>
@@ -37,8 +37,8 @@
                                 {{-- account name --}}
                                 <div class="col-12 col-md-6">
                                     <div class="form-floating mb-4">
-                                        <input type="text" class="form-control input-violet shadow-sm @error('name') is-invalid @enderror" id="name" name="name" value="{{old('name', $account->name)}}" placeholder="Nome Account" required>
-                                        <label for="name" class="text-violet">Nome Account*</label>
+                                        <input type="text" class="form-control input-orange shadow-sm @error('name') is-invalid @enderror" id="name" name="name" value="{{old('name', $account->name)}}" placeholder="Nome Account" required>
+                                        <label for="name" class="text-orange">Nome Account*</label>
     
                                         @error('name')
                                             <span class="invalid-feedback" role="alert">
@@ -51,7 +51,7 @@
                                 {{-- client --}}
                                 <div class="col-12 col-md-6">
                                     <div class="form-floating mb-4">
-                                        <select class="form-select select-violet shadow-sm" id="client_id" name="client_id" aria-label="client_id" required>
+                                        <select class="form-select select-orange shadow-sm" id="client_id" name="client_id" aria-label="client_id" required>
                                             @if (!$account->client)
                                                 <option selected hidden value="">--</option>
                                             @endif
@@ -60,7 +60,7 @@
                                                 <option {{old('client_id', $account->client_id) == $client->id ? 'selected' : ''}} value="{{$client->id}}">{{$client->name}}</option>
                                             @endforeach
                                         </select>
-                                        <label for="client_id" class="text-violet">Cliente*</label>
+                                        <label for="client_id" class="text-orange">Cliente*</label>
 
                                         @error('client_id')
                                             <span class="invalid-feedback" role="alert">
@@ -73,7 +73,7 @@
                                 {{-- category --}}
                                 <div class="col-12 col-md-6">
                                     <div class="form-floating mb-4">
-                                        <select class="form-select select-violet shadow-sm" id="category_id" name="category_id" aria-label="category_id" required>
+                                        <select class="form-select select-orange shadow-sm" id="category_id" name="category_id" aria-label="category_id" required>
                                             @if (!$account->category)
                                                 <option selected hidden value="">--</option>
                                             @endif
@@ -82,7 +82,7 @@
                                                 <option {{old('category_id', $account->category_id) == $category->id ? 'selected' : ''}} value="{{$category->id}}">{{$category->category_name}}</option>
                                             @endforeach
                                         </select>
-                                        <label for="category_id" class="text-violet">Categoria*</label>
+                                        <label for="category_id" class="text-orange">Categoria*</label>
 
                                         @error('category_id')
                                             <span class="invalid-feedback" role="alert">
@@ -95,8 +95,8 @@
                                 {{-- url ip --}}
                                 <div class="col-12 col-md-6">
                                     <div class="form-floating mb-4">
-                                        <input type="text" class="form-control input-violet shadow-sm @error('url') is-invalid @enderror" id="url" name="url" value="{{old('url', $account->url)}}" placeholder="Nome Account">
-                                        <label for="url" class="text-violet">Url / Ip </label>
+                                        <input type="text" class="form-control input-orange shadow-sm @error('url') is-invalid @enderror" id="url" name="url" value="{{old('url', $account->url)}}" placeholder="Nome Account">
+                                        <label for="url" class="text-orange">Url / Ip </label>
     
                                         @error('url')
                                             <span class="invalid-feedback" role="alert">
@@ -109,8 +109,8 @@
                                 {{-- username --}}
                                 <div class="col-12 col-md-6">
                                     <div class="form-floating mb-4">
-                                        <input type="text" class="form-control input-violet shadow-sm @error('username') is-invalid @enderror" id="username" name="username" value="{{old('username', $account->username)}}" placeholder="Username" required autocomplete="username">
-                                        <label for="username" class="text-violet">Username*</label>
+                                        <input type="text" class="form-control input-orange shadow-sm @error('username') is-invalid @enderror" id="username" name="username" value="{{old('username', $account->username)}}" placeholder="Username" required autocomplete="username">
+                                        <label for="username" class="text-orange">Username*</label>
     
                                         @error('username')
                                             <span class="invalid-feedback" role="alert">
@@ -123,8 +123,8 @@
                                 {{-- password --}}
                                 <div class="col-12 col-md-6">
                                     <div class="form-floating mb-4">
-                                        <input type="password" class="form-control input-violet shadow-sm @error('password') is-invalid @enderror" id="password" name="password" value="" placeholder="Password" autocomplete="new-password">
-                                        <label for="password" class="text-violet">Password</label>
+                                        <input type="password" class="form-control input-orange shadow-sm @error('password') is-invalid @enderror" id="password" name="password" value="" placeholder="Password" autocomplete="new-password">
+                                        <label for="password" class="text-orange">Password</label>
     
                                         @error('password')
                                             <span class="invalid-feedback" role="alert">
@@ -137,8 +137,8 @@
                                 {{-- password confirm --}}
                                 <div class="col-12 col-md-6">
                                     <div class="form-floating mb-4">
-                                        <input type="password" class="form-control input-violet shadow-sm @error('password') is-invalid @enderror" id="password-confirm" name="password_confirmation" value="" placeholder="Conferma Password">
-                                        <label for="password-confirm" class="text-violet">Conferma Password</label>
+                                        <input type="password" class="form-control input-orange shadow-sm @error('password') is-invalid @enderror" id="password-confirm" name="password_confirmation" value="" placeholder="Conferma Password">
+                                        <label for="password-confirm" class="text-orange">Conferma Password</label>
     
                                         @error('password-confirm')
                                             <span class="invalid-feedback" role="alert">
@@ -151,8 +151,8 @@
                                 {{-- description --}}
                                 <div class="col-12">
                                     <div class="form-floating mb-4">
-                                        <textarea class="form-control text-area-violet shadow-sm" placeholder="Descrizione" id="description" name="description" style="height: 100px">{{old('description', $account->description)}}</textarea>
-                                        <label for="description" class="text-violet">Descrizione</label>
+                                        <textarea class="form-control text-area-orange shadow-sm" placeholder="Descrizione" id="description" name="description" style="height: 100px">{{old('description', $account->description)}}</textarea>
+                                        <label for="description" class="text-orange">Descrizione</label>
                                     </div>
                                 </div>
                             </div>
@@ -160,7 +160,7 @@
                             {{-- row btn submit --}}
                             <div class="row">
                                 <div class="col-12 d-flex justify-content-end">
-                                    <button type="submit" class="btn btn-violet fw-bold px-4 text-uppercase">
+                                    <button type="submit" class="btn btn-orange fw-bold px-4 text-uppercase">
                                         <i class="fa-solid fa-floppy-disk"></i>
                                         Salva Modifica
                                     </button>

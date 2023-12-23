@@ -9,7 +9,7 @@
 
                 {{-- row title --}}
                 <div class="row mb-4">
-                    <h2 class="mb-0 text-violet fs-4 fw-bold">
+                    <h2 class="mb-0 text-orange fs-4 fw-bold">
                         <i class="fa-solid fa-list"></i>
                         Lista Account
                     </h2>
@@ -61,10 +61,10 @@
                             <thead>
                                 <tr>
                                     <th scope="col"></th>
-                                    <th scope="col">@sortablelink('name', 'Nome Account', [], ['class' => 'link-violet'])</th>
-                                    <th scope="col">@sortablelink('client.name', 'Cliente', [], ['class' => 'link-violet'])</th>
-                                    <th scope="col">@sortablelink('category.category_name', 'Categoria', [], ['class' => 'link-violet'])</th>
-                                    <th scope="col">@sortablelink('descrizione', 'Descrizione', [], ['class' => 'link-violet'])</th>
+                                    <th scope="col">@sortablelink('name', 'Nome Account', [], ['class' => 'link-orange'])</th>
+                                    <th scope="col">@sortablelink('client.name', 'Cliente', [], ['class' => 'link-orange'])</th>
+                                    <th scope="col">@sortablelink('category.category_name', 'Categoria', [], ['class' => 'link-orange'])</th>
+                                    <th scope="col">@sortablelink('descrizione', 'Descrizione', [], ['class' => 'link-orange'])</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -79,13 +79,13 @@
                                             @endif
 
                                             {{-- btn show --}}
-                                            <a href="{{route('accounts.show', $account->id)}}" class="btn btn-violet shadow">
+                                            <a href="{{route('accounts.show', $account->id)}}" class="btn btn-orange shadow">
                                                 <i class="fa-sharp fa-solid fa-eye"></i>
                                             </a>
 
                                             {{-- btn edit --}}
                                             @if (Auth::user()->hasPermission('accounts-edit'))
-                                                <a href="{{route('accounts.edit', $account->id)}}" class="btn btn-violet shadow">
+                                                <a href="{{route('accounts.edit', $account->id)}}" class="btn btn-orange shadow">
                                                     <i class="fa-solid fa-pen"></i>
                                                 </a>
                                             @endif
@@ -97,7 +97,7 @@
                                                         @csrf
                                                         @method('DELETE')
 
-                                                        <button type="submit" class="btn btn-violet shadow">
+                                                        <button type="submit" class="btn btn-orange shadow">
                                                             <i class="fa-solid fa-trash"></i>
                                                         </button>
                                                     </form>

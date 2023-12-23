@@ -9,7 +9,7 @@
 
                 {{-- row title --}}
                 <div class="row mb-4">
-                    <h2 class="mb-0 text-violet fs-4 fw-bold">
+                    <h2 class="mb-0 text-orange fs-4 fw-bold">
                         <i class="fa-solid fa-plus"></i>
                         Creazione Categoria
                     </h2>
@@ -35,8 +35,8 @@
                             <div class="row mb-2">
                                 <div class="col-12 col-md-6">
                                     <div class="form-floating mb-4">
-                                        <input type="text" class="form-control input-violet shadow-sm @error('category_name') is-invalid @enderror" id="category_name" name="category_name" value="{{old('category_name')}}" placeholder="Nome Categoria" required>
-                                        <label for="category_name" class="text-violet">Nome Categoria*</label>
+                                        <input type="text" class="form-control input-orange shadow-sm @error('category_name') is-invalid @enderror" id="category_name" name="category_name" value="{{old('category_name')}}" placeholder="Nome Categoria" required>
+                                        <label for="category_name" class="text-orange">Nome Categoria*</label>
     
                                         @error('category_name')
                                             <span class="invalid-feedback" role="alert">
@@ -50,7 +50,7 @@
                             {{-- row btn submit --}}
                             <div class="row">
                                 <div class="col-12 d-flex justify-content-end">
-                                    <button type="submit" class="btn btn-violet fw-bold px-4 text-uppercase">
+                                    <button type="submit" class="btn btn-orange fw-bold px-4 text-uppercase">
                                         <i class="fa-solid fa-floppy-disk"></i>
                                         Salva
                                     </button>
