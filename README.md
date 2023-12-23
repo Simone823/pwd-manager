@@ -1,7 +1,7 @@
 <h1 align="center">Password Manager</h1>
 
 <p align="center">
-    <img src="./public_html/assets/img/mockup.png" width="400">
+    <img src="./public_html/assets/img/mockup.png" width="600">
 </p>
 
 ## Description
