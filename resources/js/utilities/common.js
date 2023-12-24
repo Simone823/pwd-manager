@@ -1,32 +1,25 @@
 // seleziona tutti i record
 selectAllRecord = function() {
-    // array all form-check-input
-    const allFormCheckBox = document.querySelectorAll('.form-check-input');
-
-    allFormCheckBox.forEach(checkBox => {
-        // imposto la proprietà checked a true
+    // Array di tutti i check select record
+    $('.form-check-input').each(function(index, checkBox) {
         checkBox.checked = true;
     });
 
     // btn deseleziona tutto
-    btnDeselectAll = document.getElementById('deselect_all_record');
-    btnDeselectAll.classList.remove('d-none');
+    btnDeselectAll = $('#deselect_all_record');
+    btnDeselectAll.removeClass('d-none');
 }
-
 
 // deseleziona tutti i record
 deselectAllRecord = function() {
-    // array all form-check-input
-    const allFormCheckBox = document.querySelectorAll('.form-check-input');
-
-    allFormCheckBox.forEach(checkBox => {
-        // imposto la proprietà checked a false
+    // Array di tutti i check select record
+    $('.form-check-input').each(function(index, checkBox) {
         checkBox.checked = false;
     });
 
     // btn deseleziona tutto
-    btnDeselectAll = document.getElementById('deselect_all_record');
-    btnDeselectAll.classList.add('d-none');
+    btnDeselectAll = $('#deselect_all_record');
+    btnDeselectAll.addClass('d-none');
 }
 
 // chiudi tutti gli alert in automatico
