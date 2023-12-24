@@ -190,7 +190,6 @@ class AccountController extends Controller
             'category_id' => 'required|exists:categories,id',
             'url' => ['nullable', 'regex:/^(?:(?:https?|ftp):\/\/)?(?:[\w-]+\.)+[a-zA-Z]{2,}(?:\/\S*)?$|^(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})$/'],
             'username' => 'required|string|min:4|max:255',
-            'password' => 'nullable|string|min:8|confirmed',
             'description' => 'nullable|string'
         ]);
 

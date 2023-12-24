@@ -70,7 +70,7 @@ class CategoryController extends Controller
 
         // validazione request
         $request->validate([
-            'category_name' => 'required|string|alpha|min:3|max:200|unique:categories,category_name'
+            'category_name' => 'required|string|regex:/^[\pL\s]+$/u|min:3|max:200|unique:categories,category_name'
         ]);
 
         // data request all
@@ -141,7 +141,7 @@ class CategoryController extends Controller
 
         // validazione request
         $request->validate([
-            'category_name' => 'required|string|alpha|min:3|max:200|unique:categories,category_name,'.$id
+            'category_name' => 'required|string|regex:/^[\pL\s]+$/u|min:3|max:200|unique:categories,category_name,'.$id
         ]);
 
         // data request all

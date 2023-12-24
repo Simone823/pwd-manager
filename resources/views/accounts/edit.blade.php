@@ -120,34 +120,6 @@
                                     </div>
                                 </div>
 
-                                {{-- password --}}
-                                <div class="col-12 col-md-6">
-                                    <div class="form-floating mb-4">
-                                        <input type="password" class="form-control input-orange shadow-sm @error('password') is-invalid @enderror" id="password" name="password" value="" placeholder="Password" autocomplete="new-password">
-                                        <label for="password" class="text-orange">Password</label>
-    
-                                        @error('password')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                    </div>
-                                </div>
-
-                                {{-- password confirm --}}
-                                <div class="col-12 col-md-6">
-                                    <div class="form-floating mb-4">
-                                        <input type="password" class="form-control input-orange shadow-sm @error('password') is-invalid @enderror" id="password-confirm" name="password_confirmation" value="" placeholder="Conferma Password">
-                                        <label for="password-confirm" class="text-orange">Conferma Password</label>
-    
-                                        @error('password-confirm')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                    </div>
-                                </div>
-
                                 {{-- description --}}
                                 <div class="col-12">
                                     <div class="form-floating mb-4">
