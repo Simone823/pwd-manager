@@ -10,7 +10,7 @@
                 {{-- row title --}}
                 <div class="row mb-4">
                     <h2 class="mb-0 text-orange fs-4 fw-bold">
-                        <i class="fa-sharp fa-solid fa-eye"></i>
+                        <i class="fa-solid fa-user me-1"></i>
                         Visualizza Utente {{$user->username}}
                     </h2>
                 </div>

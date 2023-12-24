@@ -10,7 +10,7 @@
                 {{-- row title --}}
                 <div class="row mb-4">
                     <h2 class="mb-0 text-orange fs-4 fw-bold">
-                        <i class="fa-solid fa-list"></i>
+                        <i class="fa-solid fa-medal me-1"></i>
                         Lista Ruoli
                     </h2>
                 </div>

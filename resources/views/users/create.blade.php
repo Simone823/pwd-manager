@@ -10,7 +10,7 @@
                 {{-- row title --}}
                 <div class="row mb-4">
                     <h2 class="mb-0 text-orange fs-4 fw-bold">
-                        <i class="fa-solid fa-plus"></i>
+                        <i class="fa-solid fa-user me-1"></i>
                         Creazione Utente
                     </h2>
                 </div>
