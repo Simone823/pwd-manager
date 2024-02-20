@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\LogActivity;
 use App\Permission;
+use Auth;
 use Illuminate\Http\Request;
 
 class PermissionController extends Controller
@@ -15,7 +16,7 @@ class PermissionController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('hasRole:admin');
+        $this->middleware('auth');
     }
 
     /**
@@ -25,6 +26,10 @@ class PermissionController extends Controller
      */
     public function index()
     {
+        if (!Auth::user()->isAdmin()) {
+            abort(401);
+        }
+
         // aggiungo il log attività
         LogActivity::addLog('Lista Permessi');
 

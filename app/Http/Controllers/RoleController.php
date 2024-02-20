@@ -6,6 +6,7 @@ use App\LogActivity;
 use App\Permission;
 use App\Role;
 use App\User;
+use Auth;
 use Illuminate\Http\Request;
 
 class RoleController extends Controller
@@ -17,7 +18,7 @@ class RoleController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('hasRole:admin');
+        $this->middleware('auth');
     }
 
     /**
@@ -27,6 +28,10 @@ class RoleController extends Controller
      */
     public function index()
     {
+        if (!Auth::user()->isAdmin()) {
+            abort(401);
+        }
+
         // aggiungo il log attività
         LogActivity::addLog('Lista Ruoli');
 
@@ -43,6 +48,10 @@ class RoleController extends Controller
      */
     public function create()
     {
+        if (!Auth::user()->isAdmin()) {
+            abort(401);
+        }
+
         // aggiungo il log attività
         LogActivity::addLog('Creazione Ruolo');
 
@@ -60,6 +69,10 @@ class RoleController extends Controller
      */
     public function store(Request $request)
     {
+        if (!Auth::user()->isAdmin()) {
+            abort(401);
+        }
+
         // validazione request
         $request->validate([
             'name' => 'required|unique:roles,name|alpha|min:4|max:150',
@@ -99,6 +112,10 @@ class RoleController extends Controller
      */
     public function show($id)
     {
+        if (!Auth::user()->isAdmin()) {
+            abort(401);
+        }
+
         // recupero il ruolo by id
         $role = Role::find($id);
 
@@ -119,6 +136,10 @@ class RoleController extends Controller
      */
     public function edit($id)
     {
+        if (!Auth::user()->isAdmin()) {
+            abort(401);
+        }
+
         // recupero il ruolo by id
         $role = Role::find($id);
 
@@ -148,6 +169,10 @@ class RoleController extends Controller
      */
     public function update(Request $request, $id)
     {
+        if (!Auth::user()->isAdmin()) {
+            abort(401);
+        }
+
         // validazione request
         $request->validate([
             'name' => 'required|alpha|min:4|max:150|unique:roles,name,'.$id,
@@ -187,6 +212,10 @@ class RoleController extends Controller
      */
     public function destroy($id)
     {
+        if (!Auth::user()->isAdmin()) {
+            abort(401);
+        }
+
         // recupero il ruolo by id
         $role = Role::find($id);
 

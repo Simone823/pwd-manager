@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\LogActivity;
+use Auth;
 use Illuminate\Http\Request;
 
 class LogActivityController extends Controller
@@ -14,7 +15,7 @@ class LogActivityController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('hasRole:admin');
+        $this->middleware('auth');
     }
 
     /**
@@ -24,6 +25,10 @@ class LogActivityController extends Controller
      */
     public function index()
     {
+        if (!Auth::user()->isAdmin()) {
+            abort(401);
+        }
+
         // recupero tutti i log dal db
         $logActivities = LogActivity::sortable(['created_at' => 'desc'])->paginate(config('app.default_paginate'));
 
@@ -38,6 +43,10 @@ class LogActivityController extends Controller
      */
     public function destroy($id)
     {
+        if (!Auth::user()->isAdmin()) {
+            abort(401);
+        }
+
         // recupero il log by id
         $logActivity = LogActivity::find($id);
 
@@ -55,6 +64,10 @@ class LogActivityController extends Controller
      */
     public function deleteSelected(Request $request)
     {
+        if (!Auth::user()->isAdmin()) {
+            abort(401);
+        }
+
         // controllo se esiste almeno un id
         if(count($request->idsRecord) == 0) {
             return response()->json([

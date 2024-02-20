@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\LogActivity;
 use App\Role;
 use App\User;
+use Auth;
 use Hash;
 use Illuminate\Http\Request;
 
@@ -17,7 +18,7 @@ class UserController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('hasRole:admin');
+        $this->middleware('auth');
     }
 
     /**
@@ -27,6 +28,10 @@ class UserController extends Controller
      */
     public function index()
     {
+        if (!Auth::user()->isAdmin()) {
+            abort(401);
+        }
+
         // aggiungo il log attività
         LogActivity::addLog('Lista Utenti');
 
@@ -43,6 +48,10 @@ class UserController extends Controller
      */
     public function create()
     {
+        if (!Auth::user()->isAdmin()) {
+            abort(401);
+        }
+
         // aggiungo il log attività
         LogActivity::addLog('Creazione Utente');
 
@@ -60,6 +69,10 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+        if (!Auth::user()->isAdmin()) {
+            abort(401);
+        }
+
         // validazione request
         $request->validate([
             'name' => 'required|string|alpha|min:4|max:150',
@@ -105,6 +118,10 @@ class UserController extends Controller
      */
     public function show($id)
     {
+        if (!Auth::user()->isAdmin()) {
+            abort(401);
+        }
+
         // recupero l'utente by id
         $user = User::find($id);
 
@@ -125,6 +142,10 @@ class UserController extends Controller
      */
     public function edit($id)
     {
+        if (!Auth::user()->isAdmin()) {
+            abort(401);
+        }
+
         // recupero l'utente by id
         $user = User::find($id);
 
@@ -154,6 +175,10 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
+        if (!Auth::user()->isAdmin()) {
+            abort(401);
+        }
+
         // recupero l'utente by id
         $user = User::find($id);
 
@@ -197,6 +222,10 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
+        if (!Auth::user()->isAdmin()) {
+            abort(401);
+        }
+        
         // recupero l'utenti by id
         $user = User::find($id);
 
