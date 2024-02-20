@@ -34,15 +34,15 @@ class ProfileController extends Controller
             return abort(401);
         }
 
+        // recupero l'utente
+        $user = User::findOrFail($id);
+
+        // recupero i dati delle relazioni
+        $roles = Role::orderBy('name', 'asc')->get();
+        $userLogActivities = $user->logActivities()->sortable(['created_at' => 'desc'])->paginate(config('app.default_paginate'));
+
         // aggiungo il log attività
         LogActivity::addLog('Visualizza Profilo');
-
-        // recupero l'utente e i ruoli
-        $user = User::findOrFail($id);
-        $roles = Role::orderBy('name', 'asc')->get();
-
-        // log attività utente
-        $userLogActivities = $user->logActivities()->sortable(['created_at' => 'desc'])->paginate(config('app.default_paginate'));
 
         return view('profiles.show', compact('user', 'roles', 'userLogActivities'));
     }
@@ -60,11 +60,11 @@ class ProfileController extends Controller
             return abort(401);
         }
 
-        // aggiungo il log attività
-        LogActivity::addLog('Modifica Profilo');
-
         // recupero l'utente
         $user = User::findOrFail($id);
+
+        // aggiungo il log attività
+        LogActivity::addLog('Modifica Profilo');
 
         return view('profiles.edit', compact('user'));
     }
@@ -90,7 +90,7 @@ class ProfileController extends Controller
             'email' => "required|email|string|unique:users,email,{$id}|max:255"
         ]);
 
-        // recupero l'utente
+        // aggiorno l'utente
         $user = User::findOrFail($id);
 
         if(!$user->isAdmin()) {
@@ -126,7 +126,7 @@ class ProfileController extends Controller
             'password' => 'required|string|min:8|confirmed'
         ]);
 
-        // recupero l'utente
+        // aggiorno la pass dell'utente
         $user = User::findOrFail($id);
         $user->password = Hash::make($request->password);
         $user->update();

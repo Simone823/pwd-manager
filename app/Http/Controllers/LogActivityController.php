@@ -29,7 +29,7 @@ class LogActivityController extends Controller
             abort(401);
         }
 
-        // recupero tutti i log dal db
+        // recupero i log
         $logActivities = LogActivity::sortable(['created_at' => 'desc'])->paginate(config('app.default_paginate'));
 
         return view('logActivities.index', compact('logActivities'));
@@ -47,10 +47,8 @@ class LogActivityController extends Controller
             abort(401);
         }
 
-        // recupero il log by id
+        // elimino il log
         $logActivity = LogActivity::find($id);
-
-        // delete log
         $logActivity->delete();
 
         return redirect()->back()->with('success', "Il Log Attività con Azione: {$logActivity->action}, IP: {$logActivity->ip} è stato eliminato.");
@@ -76,7 +74,7 @@ class LogActivityController extends Controller
             ], 400);
         }
         
-        // elimino tutt i record aventi gli id della request
+        // elimino tutt i log aventi gli id della request
         $logs = LogActivity::whereIn('id', $request->idsRecord)->delete();
 
         return response()->json([

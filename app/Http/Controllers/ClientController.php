@@ -30,11 +30,11 @@ class ClientController extends Controller
             abort(401);
         }
 
+        // recupero i clienti
+        $clients = Client::sortable(['name' => 'asc'])->paginate(config('app.default_paginate'));
+
         // aggiungo il log attività
         LogActivity::addLog("Lista Clienti");
-
-        // recupero tutti i clienti da db
-        $clients = Client::sortable(['name' => 'asc'])->paginate(config('app.default_paginate'));
 
         return view('clients.index', compact('clients'));
     }
@@ -74,17 +74,10 @@ class ClientController extends Controller
             'description' => 'string|nullable'
         ]);
 
-        // data request all
-        $data = $request->all();
-
-        // creo nuova istanza Client
+        // creo il nuovo cliente
         $newClient = new Client();
-
-        // setto i valori
-        $newClient->name = ucfirst($data['name']);
-        $newClient->description = $data['description'];
-
-        // save
+        $newClient->name = ucfirst($request->name);
+        $newClient->description = $request->description;
         $newClient->save();
 
         // aggiungo il log attività
@@ -116,8 +109,8 @@ class ClientController extends Controller
             abort(401);
         }
 
-        // recupero il cliente by id
-        $client = Client::find($id);
+        // recupero il cliente
+        $client = Client::findOrFail($id);
 
         // aggiungo il log attività
         LogActivity::addLog("Modifica Cliente {$client->name}");
@@ -138,23 +131,16 @@ class ClientController extends Controller
             abort(401);
         }
 
-        // recupero il cliente by id
-        $client = Client::find($id);
-
         // validazione request
         $request->validate([
             'name' => 'required|string|min:4|max:200|unique:clients,name,'.$id,
             'description' => 'string|nullable'
         ]);
 
-        // data request all
-        $data = $request->all();
-
-        // update valori
-        $client->name = ucfirst($data['name']);
-        $client->description = $data['description'];
-
-        // save
+        // aggiorno il cliente
+        $client = Client::findOrFail($id);
+        $client->name = ucfirst($request->name);
+        $client->description = $request->description;
         $client->update();
 
         // aggiungo il log attività
@@ -175,10 +161,8 @@ class ClientController extends Controller
             abort(401);
         }
 
-        // recupero il cliente by id
-        $client = Client::find($id);
-
-        // delete
+        // elimino il cliente
+        $client = Client::findOrFail($id);
         $client->delete();
 
         // aggiungo il log attività

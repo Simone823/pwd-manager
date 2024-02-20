@@ -30,11 +30,11 @@ class PermissionController extends Controller
             abort(401);
         }
 
+        // recupero i permessi
+        $permissions = Permission::sortable(['name' => 'asc'])->paginate(config('app.default_paginate'));
+
         // aggiungo il log attività
         LogActivity::addLog('Lista Permessi');
-
-        // get all permissions orbe by name asc
-        $permissions = Permission::sortable(['name' => 'asc'])->paginate(config('app.default_paginate'));
 
         return view('permissions.index', compact('permissions'));
     }

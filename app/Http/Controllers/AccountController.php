@@ -9,7 +9,6 @@ use App\LogActivity;
 use Auth;
 use Crypt;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
 
 class AccountController extends Controller
 {
@@ -34,11 +33,11 @@ class AccountController extends Controller
             abort(401);
         }
 
+        // recupero gli accounts
+        $accounts = Account::sortable(['created_at' => 'desc'])->paginate(config('app.default_paginate'));
+
         // aggiungo il log attività
         LogActivity::addLog("Lista Account");
-
-        // recupero tuti gli account dal db
-        $accounts = Account::sortable(['created_at' => 'desc'])->paginate(config('app.default_paginate'));
 
         return view('accounts.index', compact('accounts'));
     }
@@ -54,14 +53,12 @@ class AccountController extends Controller
             abort(401);
         }
 
+        // recupero i dati per le relazioni
+        $clients = Client::orderBy('name', 'asc')->get();
+        $categories = Category::orderBy('category_name', 'asc')->get();
+
         // aggiungo il log attività
         LogActivity::addLog("Creazione Account");
-
-        // recupero tutti i clienti dal db
-        $clients = Client::orderBy('name', 'asc')->get();
-
-        // recupero tutte le categorie dal db
-        $categories = Category::orderBy('category_name', 'asc')->get();
 
         return view('accounts.create', compact('clients', 'categories'));
     }
@@ -89,22 +86,15 @@ class AccountController extends Controller
             'description' => 'nullable|string'
         ]);
 
-        // data reuqest all
-        $data = $request->all();
-
-        // creo nuova istanza Account
+        // creo il nuovo account
         $newAccount = new Account();
-
-        // setto i valori
-        $newAccount->name = ucfirst($data['name']);
-        $newAccount->client_id = $data['client_id'];
-        $newAccount->category_id = $data['category_id'];
-        $newAccount->url = $data['url'];
-        $newAccount->username = $data['username'];
-        $newAccount->password = Crypt::encryptString($data['password']);
-        $newAccount->description = $data['description'];
-
-        // save
+        $newAccount->name = ucfirst($request->name);
+        $newAccount->client_id = $request->client_id;
+        $newAccount->category_id = $request->category_id;
+        $newAccount->url = $request->url;
+        $newAccount->username = $request->username;
+        $newAccount->password = Crypt::encryptString($request->password);
+        $newAccount->description = $request->description;
         $newAccount->save();
 
         // aggiungo il log attività
@@ -125,13 +115,11 @@ class AccountController extends Controller
             abort(401);
         }
 
-        // recupero l'account by id
-        $account = Account::find($id);
+        // recupero l'account
+        $account = Account::findOrFail($id);
 
-        // recupero tutti i clienti dal db
+        // recupero i dati per le relazioni
         $clients = Client::orderBy('name', 'asc')->get();
-
-        // recupero tutte le categorie dal db
         $categories = Category::orderBy('category_name', 'asc')->get();
 
         // aggiungo il log attività
@@ -152,13 +140,11 @@ class AccountController extends Controller
             abort(401);
         }
 
-        // recupero l'account by id
-        $account = Account::find($id);
+        // recupero l'account
+        $account = Account::findOrFail($id);
         
-        // recupero tutti i clienti dal db
+        // recupero i dati per le relazioni
         $clients = Client::orderBy('name', 'asc')->get();
-        
-        // recupero tutte le categorie dal db
         $categories = Category::orderBy('category_name', 'asc')->get();
 
         // aggiungo il log attività
@@ -180,9 +166,6 @@ class AccountController extends Controller
             abort(401);
         }
 
-        // recupero l'account by id
-        $account = Account::find($id);
-
         // validazione request
         $request->validate([
             'name' => 'required|string|min:4|max:230',
@@ -193,24 +176,21 @@ class AccountController extends Controller
             'description' => 'nullable|string'
         ]);
 
-        // data request all
-        $data = $request->all();
+        // recupero l'account
+        $account = Account::findOrFail($id);
 
         // setto i valori
-        $account->name = ucfirst($data['name']);
-        $account->client_id = $data['client_id'];
-        $account->category_id = $data['category_id'];
-        $account->url = $data['url'];
-        $account->description = $data['description'];
+        $account->name = ucfirst($request->name);
+        $account->client_id = $request->client_id;
+        $account->category_id = $request->category_id;
+        $account->url = $request->url;
+        $account->description = $request->description;
 
         // controllo se c'è la password nuova
-        if(array_key_exists('password', $data) && !empty($data['password'])) {
-            $account->password = Crypt::encryptString($data['password']);
-        } else {
-            $account->password = $account->password;
+        if(!empty($request->password)) {
+            $account->password = Crypt::encryptString($request->password);
         }
 
-        // update account
         $account->update();
 
         // aggiungo il log attività
@@ -231,10 +211,8 @@ class AccountController extends Controller
             abort(401);
         }
 
-        // recupero l'account by id
-        $account = Account::find($id);
-
-        // delete
+        // elimino l'account
+        $account = Account::findOrFail($id);
         $account->delete();
 
         // aggiungo il log attività
@@ -262,7 +240,6 @@ class AccountController extends Controller
                 'message' => 'There are no selected record ids'
             ], 400);
         }
-
         
         // elimino tutt i record aventi gli id della request
         $accounts = Account::whereIn('id', $request->idsRecord)->delete();

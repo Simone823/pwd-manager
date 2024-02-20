@@ -30,11 +30,11 @@ class CategoryController extends Controller
             abort(401);
         }
 
+        // recupero le categorie
+        $categories = Category::sortable(['category_name' => 'asc'])->paginate(config('app.default_paginate'));
+
         // aggiungo il log attività
         LogActivity::addLog("Lista Categorie");
-
-        // recupero tutte le categorie dal db
-        $categories = Category::sortable(['category_name' => 'asc'])->paginate(config('app.default_paginate'));
 
         return view('categories.index', compact('categories'));
     }
@@ -73,16 +73,9 @@ class CategoryController extends Controller
             'category_name' => 'required|string|regex:/^[\pL\s]+$/u|min:3|max:200|unique:categories,category_name'
         ]);
 
-        // data request all
-        $data = $request->all();
-
-        // creo nuova istanza Category
+        // creo la nuova categoria
         $newCategory = new Category();
-
-        // setto i valori
-        $newCategory->category_name = ucfirst($data['category_name']);
-
-        // save
+        $newCategory->category_name = ucfirst($request->category_name);
         $newCategory->save();
 
         // aggiungo il log attività
@@ -114,8 +107,8 @@ class CategoryController extends Controller
             abort(401);
         }
 
-        // recupero la categoria by id
-        $category = Category::find($id);
+        // recupero la categoria
+        $category = Category::findOrFail($id);
         
         // aggiungo il log attività
         LogActivity::addLog("Modifica Categoria {$category->category_name}");
@@ -136,21 +129,14 @@ class CategoryController extends Controller
             abort(401);
         }
 
-        // recupero la categoria by id
-        $category = Category::find($id);
-
         // validazione request
         $request->validate([
             'category_name' => 'required|string|regex:/^[\pL\s]+$/u|min:3|max:200|unique:categories,category_name,'.$id
         ]);
 
-        // data request all
-        $data = $request->all();
-
-        // update valori
-        $category->category_name = ucfirst($data['category_name']);
-
-        // save
+        // aggiorno la categoria
+        $category = Category::findOrFail($id);
+        $category->category_name = ucfirst($request->category_name);
         $category->update();
 
         // aggiungo il log attività
@@ -171,10 +157,8 @@ class CategoryController extends Controller
             abort(401);
         }
 
-        // recupero la categoria by id
-        $category = Category::find($id);
-
         // elimino la categoria
+        $category = Category::findOrFail($id);
         $category->delete();
 
         // aggiungo il log attività

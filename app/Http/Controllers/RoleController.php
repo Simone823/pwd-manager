@@ -32,11 +32,11 @@ class RoleController extends Controller
             abort(401);
         }
 
+        // recupero i ruoli
+        $roles = Role::sortable(['name' => 'asc'])->paginate(config('app.default_paginate'));
+
         // aggiungo il log attività
         LogActivity::addLog('Lista Ruoli');
-
-        // get all roles orber by name asc
-        $roles = Role::sortable(['name' => 'asc'])->paginate(config('app.default_paginate'));
 
         return view('roles.index', compact('roles'));
     }
@@ -52,11 +52,11 @@ class RoleController extends Controller
             abort(401);
         }
 
+        // recupero i permessi
+        $permissions = Permission::orderBy('name', 'asc')->get();
+
         // aggiungo il log attività
         LogActivity::addLog('Creazione Ruolo');
-
-        // recupero i permessi dal db ordinati per nome asc
-        $permissions = Permission::orderBy('name', 'asc')->get();
 
         return view('roles.create', compact('permissions'));
     }
@@ -79,24 +79,13 @@ class RoleController extends Controller
             'permissions' => 'exists:permissions,id'
         ]);
 
-        // request data
-        $data = $request->all();
-
         // creo un nuovo ruolo
         $newRole = new Role();
-
-        // setto i valori
-        $newRole->name = ucfirst($data['name']);
-
-        // save
+        $newRole->name = ucfirst($request->name);
         $newRole->save();
 
-        // controllo se esiste la key permessi
-        if(array_key_exists('permissions', $data)) {
-            $newRole->permissions()->attach($data['permissions']);
-        } else {
-            $newRole->permissions()->attach([]);
-        }
+        // allego i permessi
+        $newRole->permissions()->attach($request->permissions);
 
         // aggiungo il log attività
         LogActivity::addLog("Creato Ruolo {$newRole->name}");
@@ -116,10 +105,10 @@ class RoleController extends Controller
             abort(401);
         }
 
-        // recupero il ruolo by id
-        $role = Role::find($id);
+        // recupero il ruolo
+        $role = Role::findOrFail($id);
 
-        // recupero tutti i permessi 
+        // recupero i dati per le relazioni
         $permissions = Permission::orderBy('name', 'asc')->get();
 
         // aggiungo il log attività
@@ -140,10 +129,10 @@ class RoleController extends Controller
             abort(401);
         }
 
-        // recupero il ruolo by id
-        $role = Role::find($id);
+        // recupero il ruolo
+        $role = Role::findOrFail($id);
 
-        // recupero tutti i permessi
+        // recupero i dati per le relazioni
         $permissions = Permission::orderBy('name', 'asc')->get();
 
         // controllo se il nome del ruolo è Admin
@@ -179,24 +168,13 @@ class RoleController extends Controller
             'permissions' => 'exists:permissions,id'
         ]);
 
-        // request data
-        $data = $request->all();
-
-        // recupero il ruolo by id
+        // aggiorno il ruolo
         $role = Role::find($id);
-
-        // setto i valori
-        $role->name = ucfirst($data['name']);
-
-        // update
+        $role->name = ucfirst($request->name);
         $role->update();
 
-        // controllo se esiste la key permessi
-        if(array_key_exists('permissions', $data)) {
-            $role->permissions()->sync($data['permissions']);
-        } else {
-            $role->permissions()->sync([]);
-        }
+        // aggiorno i permessi
+        $role->permissions()->sync($request->permissions);
 
         // aggiungo il log attività
         LogActivity::addLog("Modificato Ruolo {$role->name}");
@@ -216,8 +194,8 @@ class RoleController extends Controller
             abort(401);
         }
 
-        // recupero il ruolo by id
-        $role = Role::find($id);
+        // recupero il ruolo
+        $role = Role::findOrFail($id);
 
         // recupero l'utente by role id
         $user = User::whereRoleId($id)->first();
@@ -232,12 +210,13 @@ class RoleController extends Controller
             LogActivity::addLog("Ha provato ad eliminare il Ruolo {$role->name}");
 
             return redirect()->route('roles.index')->with('error', "Non puoi eliminare il Ruolo {$role->name} !");
-        } else {
-            $role->delete();
-
-            // aggiungo il log attività
-            LogActivity::addLog("Eliminato Ruolo {$role->name}");
         }
+
+        // elimino il ruolo
+        $role->delete();
+
+        // aggiungo il log attività
+        LogActivity::addLog("Eliminato Ruolo {$role->name}");
 
         return redirect()->route('roles.index')->with('success', "Il Ruolo con nome: {$role->name} è stato eliminato");
     }

@@ -32,11 +32,11 @@ class UserController extends Controller
             abort(401);
         }
 
+        // recupero gli utenti
+        $users = User::sortable(['surname' => 'asc'])->paginate(config('app.default_paginate'));
+
         // aggiungo il log attività
         LogActivity::addLog('Lista Utenti');
-
-        // recupero tutti gli utenti dal db ordinati per none
-        $users = User::sortable(['surname' => 'asc'])->paginate(config('app.default_paginate'));
 
         return view('users.index', compact('users'));
     }
@@ -52,11 +52,11 @@ class UserController extends Controller
             abort(401);
         }
 
+        // recupero i dati per le relazioni
+        $roles = Role::where('name', '!=', 'Admin')->orderBy('name', 'asc')->get();
+
         // aggiungo il log attività
         LogActivity::addLog('Creazione Utente');
-
-        // recupero i ruoli tranne l'admin
-        $roles = Role::where('name', '!=', 'Admin')->orderBy('name', 'asc')->get();
 
         return view('users.create', compact('roles'));
     }
@@ -83,25 +83,14 @@ class UserController extends Controller
             'role_id' => 'required|exists:roles,id'
         ]);
 
-        // request all data
-        $data = $request->all();
-
         // creo un nuovo utente
         $newUser = new User();
-
-        // setto i valori
-        $newUser->name = ucfirst($data['name']);
-        $newUser->surname = ucfirst($data['surname']);
-        $newUser->username = strtolower($data['username']);
-        $newUser->email = $data['email'];
-        $newUser->password = Hash::make($data['password']);
-        
-        // controllo se esiste il ruolo
-        if(array_key_exists('role_id', $data)) {
-            $newUser->role_id = $data['role_id'];
-        }
-
-        // save
+        $newUser->name = ucfirst($request->name);
+        $newUser->surname = ucfirst($request->surname);
+        $newUser->username = strtolower($request->username);
+        $newUser->email = $request->email;
+        $newUser->password = Hash::make($request->password);
+        $newUser->role_id = $request->role_id;
         $newUser->save();
 
         // aggiungo il log attività
@@ -122,10 +111,10 @@ class UserController extends Controller
             abort(401);
         }
 
-        // recupero l'utente by id
-        $user = User::find($id);
+        // recupero l'utente
+        $user = User::findOrFail($id);
 
-        // recupero tutti i ruoli
+        // recupero i dati per le relazioni
         $roles = Role::orderBy('name', 'asc')->get();
 
         // aggiungo il log attività
@@ -146,10 +135,10 @@ class UserController extends Controller
             abort(401);
         }
 
-        // recupero l'utente by id
-        $user = User::find($id);
+        // recupero l'utente
+        $user = User::findOrFail($id);
 
-        // recupero i ruoli tranne l'admin
+        // recupero i dati per le relazioni
         $roles = Role::where('name', '!=', 'Admin')->orderBy('name', 'asc')->get();
 
         // controllo se l'utente è admin
@@ -179,9 +168,6 @@ class UserController extends Controller
             abort(401);
         }
 
-        // recupero l'utente by id
-        $user = User::find($id);
-
         // validazione request
         $request->validate([
             'name' => 'required|string|alpha|min:4|max:150',
@@ -191,21 +177,13 @@ class UserController extends Controller
             'role_id' => 'required|exists:roles,id'
         ]);
 
-        // data request all
-        $data = $request->all();
-
-        // aggiorno i valori utente
-        $user->name = ucfirst($data['name']);
-        $user->surname = ucfirst($data['surname']);
-        $user->username = strtolower($data['username']);
-        $user->email = $data['email'];
-
-        // controllo se esiste il ruolo
-        if(array_key_exists('role_id', $data)) {
-            $user->role_id = $data['role_id'];
-        }
-
-        // update
+        // aggiorno l'utente
+        $user = User::findOrFail($id);
+        $user->name = ucfirst($request->name);
+        $user->surname = ucfirst($request->surname);
+        $user->username = strtolower($request->username);
+        $user->email = $request->email;
+        $user->role_id = $request->role_id;
         $user->update();
 
         // aggiungo il log attività
@@ -235,12 +213,13 @@ class UserController extends Controller
             LogActivity::addLog("Ha provato ad eliminare l'Utente {$user->username}");
 
             return redirect()->route('users.index')->with('error', "Non puoi eliminare l'utente {$user->username}");
-        } else {
-            $user->delete();
-
-            // aggiungo il log attività
-            LogActivity::addLog("Eliminato Utente {$user->username}");
         }
+
+        // elimino l'utente
+        $user->delete();
+
+        // aggiungo il log attività
+        LogActivity::addLog("Eliminato Utente {$user->username}");
 
         return redirect()->route('users.index')->with('success', "L'Utente con username: {$user->username} è stato eliminato");
     }
