@@ -42,9 +42,6 @@ class HomeController extends Controller
                     'category_id' => 'nullable', 'exists:categories,id'
                 ]);
 
-                // aggiungo il log di attività
-                LogActivity::addLog('Dashboard View Cerca Account');
-
                 // salvo i filtri in sessione
                 $filtersAccount = $request->all();
                 Session::put('filtersAccounts.home', $filtersAccount);
