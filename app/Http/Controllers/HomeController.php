@@ -29,9 +29,6 @@ class HomeController extends Controller
      */
     public function index(Request $request)
     {
-        // aggiungo il log di attività
-        LogActivity::addLog('Dashboard View');
-
         // controllo se l'utente può vedere gli accounts
         if (Auth::user()->hasPermission('accounts-view')) {
             // recupero i filtri account in sessione
