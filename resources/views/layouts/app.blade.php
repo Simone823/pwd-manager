@@ -35,11 +35,12 @@
     @include('components.loader')
 
     <div id="app" class="is-loading">
-        @if(Auth::check())
-            {{-- Nav --}}
+        {{-- Nav --}}
+        @auth
             @include('components.navbar')
-        @endif
+        @endauth
 
+        {{-- main --}}
         <main>
             {{-- flash message --}}
             @include('components.flashMessage')
