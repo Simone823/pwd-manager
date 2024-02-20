@@ -18,7 +18,7 @@
                             {{-- account name --}}
                             <div class="col-12 col-md-6 col-lg-3">
                                 <div class="form-floating">
-                                    <input type="text" class="form-control input-orange shadow-sm @error('account_name') is-invalid @enderror" id="account_name" name="account_name" value="{{old('account_name', Session::get('filtersAccounts.home.account_name', 0))}}" placeholder="Nome Account" autofocus="false">
+                                    <input type="text" class="form-control input-orange shadow-sm @error('account_name') is-invalid @enderror" id="account_name" name="account_name" value="{{old('account_name', Session::get('filtersAccounts.home.account_name', ''))}}" placeholder="Nome Account" autofocus="false">
                                     <label for="account_name" class="text-orange">Nome Account</label>
 
                                     @error('account_name')
@@ -35,7 +35,7 @@
                                     <select class="form-select select-orange shadow-sm" id="client_id" name="client_id" aria-label="client_id">
                                       <option value="" selected>-- Seleziona un Cliente --</option>
                                         @foreach ($clients as $client)
-                                            <option {{old('client_id', Session::get('filtersAccounts.home.client_id', 0)) == $client->id ? 'selected' : ''}} value="{{$client->id}}">{{$client->name}}</option>
+                                            <option {{old('client_id', Session::get('filtersAccounts.home.client_id', '')) == $client->id ? 'selected' : ''}} value="{{$client->id}}">{{$client->name}}</option>
                                         @endforeach
                                     </select>
                                     <label for="client_id" class="text-orange">Cliente</label>
@@ -54,7 +54,7 @@
                                     <select class="form-select select-orange shadow-sm" id="category_id" name="category_id" aria-label="category_id">
                                       <option value="" selected>-- Seleziona una Categoria --</option>
                                         @foreach ($categories as $category)
-                                            <option {{old('category_id', Session::get('filtersAccounts.home.category_id', 0)) == $category->id ? 'selected' : ''}} value="{{$category->id}}">{{$category->category_name}}</option>
+                                            <option {{old('category_id', Session::get('filtersAccounts.home.category_id', '')) == $category->id ? 'selected' : ''}} value="{{$category->id}}">{{$category->category_name}}</option>
                                         @endforeach
                                     </select>
                                     <label for="category_id" class="text-orange">Categoria</label>
