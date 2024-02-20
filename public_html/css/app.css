@@ -14245,6 +14245,12 @@ table tr td {
   opacity: 1 !important;
 }
 
+.wrapper-no-records {
+  background-color: #de7539;
+  padding: 1rem 1.5rem;
+  font-weight: 500;
+}
+
 #auth-login {
   height: 100%;
 }

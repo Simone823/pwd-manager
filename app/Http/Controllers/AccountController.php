@@ -31,7 +31,7 @@ class AccountController extends Controller
     public function index()
     {
         if(!Auth::user()->hasPermission('accounts-view')) {
-            abort(403);
+            abort(401);
         }
 
         // aggiungo il log attività
@@ -51,7 +51,7 @@ class AccountController extends Controller
     public function create()
     {
         if(!Auth::user()->hasPermission('accounts-create')) {
-            abort(403);
+            abort(401);
         }
 
         // aggiungo il log attività
@@ -75,7 +75,7 @@ class AccountController extends Controller
     public function store(Request $request)
     {
         if(!Auth::user()->hasPermission('accounts-create')) {
-            abort(403);
+            abort(401);
         }
 
         // validazione request
@@ -122,7 +122,7 @@ class AccountController extends Controller
     public function show($id)
     {
         if(!Auth::user()->hasPermission('accounts-view')) {
-            abort(403);
+            abort(401);
         }
 
         // recupero l'account by id
@@ -149,7 +149,7 @@ class AccountController extends Controller
     public function edit($id)
     {
         if(!Auth::user()->hasPermission('accounts-edit')) {
-            abort(403);
+            abort(401);
         }
 
         // recupero l'account by id
@@ -177,7 +177,7 @@ class AccountController extends Controller
     public function update(Request $request, $id)
     {
         if(!Auth::user()->hasPermission('accounts-edit')) {
-            abort(403);
+            abort(401);
         }
 
         // recupero l'account by id
@@ -228,7 +228,7 @@ class AccountController extends Controller
     public function destroy($id)
     {
         if(!Auth::user()->hasPermission('accounts-delete')) {
-            abort(403);
+            abort(401);
         }
 
         // recupero l'account by id
@@ -252,7 +252,7 @@ class AccountController extends Controller
     public function deleteSelected(Request $request)
     {
         if(!Auth::user()->hasPermission('accounts-delete')) {
-            abort(403);
+            abort(401);
         }
 
         // controllo se esiste almeno un id
@@ -286,7 +286,7 @@ class AccountController extends Controller
     public function changePassword(Request $request, $id)
     {
         if(!Auth::user()->hasPermission('accounts-edit')) {
-            abort(403);
+            abort(401);
         }
 
         // validazione request

@@ -27,7 +27,7 @@ class ClientController extends Controller
     public function index()
     {
         if(!Auth::user()->hasPermission('clients-view')) {
-            abort(403);
+            abort(401);
         }
 
         // aggiungo il log attività
@@ -47,7 +47,7 @@ class ClientController extends Controller
     public function create()
     {
         if(!Auth::user()->hasPermission('clients-create')) {
-            abort(403);
+            abort(401);
         }
 
         // aggiungo il log attività
@@ -65,7 +65,7 @@ class ClientController extends Controller
     public function store(Request $request)
     {
         if(!Auth::user()->hasPermission('clients-create')) {
-            abort(403);
+            abort(401);
         }
 
         // validazione request
@@ -113,7 +113,7 @@ class ClientController extends Controller
     public function edit($id)
     {
         if(!Auth::user()->hasPermission('clients-edit')) {
-            abort(403);
+            abort(401);
         }
 
         // recupero il cliente by id
@@ -135,7 +135,7 @@ class ClientController extends Controller
     public function update(Request $request, $id)
     {
         if(!Auth::user()->hasPermission('clients-edit')) {
-            abort(403);
+            abort(401);
         }
 
         // recupero il cliente by id
@@ -172,7 +172,7 @@ class ClientController extends Controller
     public function destroy($id)
     {
         if(!Auth::user()->hasPermission('clients-delete')) {
-            abort(403);
+            abort(401);
         }
 
         // recupero il cliente by id
@@ -196,7 +196,7 @@ class ClientController extends Controller
     public function deleteSelected(Request $request)
     {
         if(!Auth::user()->hasPermission('clients-delete')) {
-            abort(403);
+            abort(401);
         }
 
         // controllo se esiste almeno un id
