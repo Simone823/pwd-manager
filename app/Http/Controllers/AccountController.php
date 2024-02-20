@@ -36,9 +36,6 @@ class AccountController extends Controller
         // recupero gli accounts
         $accounts = Account::sortable(['created_at' => 'desc'])->paginate(config('app.default_paginate'));
 
-        // aggiungo il log attività
-        LogActivity::addLog("Lista Account");
-
         return view('accounts.index', compact('accounts'));
     }
 
@@ -56,9 +53,6 @@ class AccountController extends Controller
         // recupero i dati per le relazioni
         $clients = Client::orderBy('name', 'asc')->get();
         $categories = Category::orderBy('category_name', 'asc')->get();
-
-        // aggiungo il log attività
-        LogActivity::addLog("Creazione Account");
 
         return view('accounts.create', compact('clients', 'categories'));
     }
@@ -98,7 +92,7 @@ class AccountController extends Controller
         $newAccount->save();
 
         // aggiungo il log attività
-        LogActivity::addLog("Creato Account {$newAccount->name}");
+        LogActivity::addLog("Creato Account: {$newAccount->name}");
 
         return redirect()->route('accounts.show', $newAccount->id)->with('success', "L'Account con nome: {$newAccount->name} è stato creato.");
     }
@@ -122,9 +116,6 @@ class AccountController extends Controller
         $clients = Client::orderBy('name', 'asc')->get();
         $categories = Category::orderBy('category_name', 'asc')->get();
 
-        // aggiungo il log attività
-        LogActivity::addLog("Visualizza Account {$account->name}");
-
         return view('accounts.show', compact('account', 'clients', 'categories'));
     }
 
@@ -146,9 +137,6 @@ class AccountController extends Controller
         // recupero i dati per le relazioni
         $clients = Client::orderBy('name', 'asc')->get();
         $categories = Category::orderBy('category_name', 'asc')->get();
-
-        // aggiungo il log attività
-        LogActivity::addLog("Modifica Account {$account->name}");
 
         return view('accounts.edit', compact('account', 'clients', 'categories'));
     }
@@ -194,7 +182,7 @@ class AccountController extends Controller
         $account->update();
 
         // aggiungo il log attività
-        LogActivity::addLog("Modificato Account {$account->name}");
+        LogActivity::addLog("Modificato Account: {$account->name}");
 
         return redirect()->route('accounts.show', $account->id)->with('success', "L'Account con nome: {$account->name} è stato modificato.");
     }
@@ -216,7 +204,7 @@ class AccountController extends Controller
         $account->delete();
 
         // aggiungo il log attività
-        LogActivity::addLog("Eliminato Account {$account->name}");
+        LogActivity::addLog("Eliminato Account: {$account->name}");
 
         return redirect()->back()->with('success', "L'Account con nome: {$account->name} è stato eliminato.");
     }
@@ -242,10 +230,13 @@ class AccountController extends Controller
         }
         
         // elimino tutt i record aventi gli id della request
-        $accounts = Account::whereIn('id', $request->idsRecord)->delete();
-        
+        $accounts = Account::whereIn('id', $request->idsRecord)->get();
+        $accounts->each->delete();
+
         // Aggiungo il log attività
-        LogActivity::addLog("Eliminati Account selezionati");
+        foreach ($accounts as $account) {
+            LogActivity::addLog("Eliminato Account: {$account->name}");
+        }
         
         return response()->json([
             'status' => 200,
@@ -277,7 +268,7 @@ class AccountController extends Controller
         $account->update();
 
         // aggiungo il log attività
-        LogActivity::addLog("Ha cambiato la password dell'Account: {$account->name}");
+        LogActivity::addLog("Cambio password dell'Account: {$account->name}");
 
         return redirect()->route('accounts.show', $account->id)->with('success', 'La nuova Password è stata salvata.');
     }

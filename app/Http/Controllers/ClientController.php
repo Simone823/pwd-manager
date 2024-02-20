@@ -33,9 +33,6 @@ class ClientController extends Controller
         // recupero i clienti
         $clients = Client::sortable(['name' => 'asc'])->paginate(config('app.default_paginate'));
 
-        // aggiungo il log attività
-        LogActivity::addLog("Lista Clienti");
-
         return view('clients.index', compact('clients'));
     }
 
@@ -49,9 +46,6 @@ class ClientController extends Controller
         if(!Auth::user()->hasPermission('clients-create')) {
             abort(401);
         }
-
-        // aggiungo il log attività
-        LogActivity::addLog("Creazione Cliente");
 
         return view('clients.create');
     }
@@ -81,7 +75,7 @@ class ClientController extends Controller
         $newClient->save();
 
         // aggiungo il log attività
-        LogActivity::addLog("Creato Cliente {$newClient->name}");
+        LogActivity::addLog("Creato Cliente: {$newClient->name}");
 
         return redirect()->route('clients.index')->with('success', "Il Cliente con nome: {$newClient->name} è stato creato.");
     }
@@ -112,9 +106,6 @@ class ClientController extends Controller
         // recupero il cliente
         $client = Client::findOrFail($id);
 
-        // aggiungo il log attività
-        LogActivity::addLog("Modifica Cliente {$client->name}");
-
         return view('clients.edit', compact('client'));
     }
 
@@ -144,7 +135,7 @@ class ClientController extends Controller
         $client->update();
 
         // aggiungo il log attività
-        LogActivity::addLog("Modificato Cliente {$client->name}");
+        LogActivity::addLog("Modificato Cliente: {$client->name}");
 
         return redirect()->route('clients.index')->with('success', "Il Cliente con nome: {$client->name} è stato modificato.");
     }
@@ -166,7 +157,7 @@ class ClientController extends Controller
         $client->delete();
 
         // aggiungo il log attività
-        LogActivity::addLog("Eliminato Cliente {$client->name}");
+        LogActivity::addLog("Eliminato Cliente: {$client->name}");
 
         return redirect()->route('clients.index')->with('success', "Il Cliente con nome: {$client->name} è stato eliminato.");
     }
@@ -191,11 +182,14 @@ class ClientController extends Controller
             ], 400);
         }
         
-        // elimino tutt i record aventi gli id della request
-        $clients = Client::whereIn('id', $request->idsRecord)->delete();
+        // elimino tutt i clienti aventi gli id della request
+        $clients = Client::whereIn('id', $request->idsRecord)->get();
+        $clients->each->delete();
         
         // Aggiungo il log attività
-        LogActivity::addLog("Eliminati Clienti selezionati");
+        foreach ($clients as $client) {
+            LogActivity::addLog("Eliminato Cliente: {$client->name}");
+        }
         
         return response()->json([
             'status' => 200,

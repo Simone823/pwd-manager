@@ -33,9 +33,6 @@ class CategoryController extends Controller
         // recupero le categorie
         $categories = Category::sortable(['category_name' => 'asc'])->paginate(config('app.default_paginate'));
 
-        // aggiungo il log attività
-        LogActivity::addLog("Lista Categorie");
-
         return view('categories.index', compact('categories'));
     }
 
@@ -49,9 +46,6 @@ class CategoryController extends Controller
         if(!Auth::user()->hasPermission('categories-create')) {
             abort(401);
         }
-
-        // aggiungo il log attività
-        LogActivity::addLog("Creazione Categoria");
 
         return view('categories.create');
     }
@@ -79,7 +73,7 @@ class CategoryController extends Controller
         $newCategory->save();
 
         // aggiungo il log attività
-        LogActivity::addLog("Creata Categoria {$newCategory->category_name}");
+        LogActivity::addLog("Creato Categoria: {$newCategory->category_name}");
 
         return redirect()->route('categories.index')->with('success', "La Categoria con nome: {$newCategory->category_name} è stata creata.");
     }
@@ -110,9 +104,6 @@ class CategoryController extends Controller
         // recupero la categoria
         $category = Category::findOrFail($id);
         
-        // aggiungo il log attività
-        LogActivity::addLog("Modifica Categoria {$category->category_name}");
-        
         return view('categories.edit', compact('category'));
     }
 
@@ -140,7 +131,7 @@ class CategoryController extends Controller
         $category->update();
 
         // aggiungo il log attività
-        LogActivity::addLog("Modificata Categoria {$category->category_name}");
+        LogActivity::addLog("Modificato Categoria: {$category->category_name}");
 
         return redirect()->route('categories.index')->with('success', "La Categoria con nome: $category->category_name è stata modificata.");
     }
@@ -162,7 +153,7 @@ class CategoryController extends Controller
         $category->delete();
 
         // aggiungo il log attività
-        LogActivity::addLog("Eliminata Categoria {$category->category_name}");
+        LogActivity::addLog("Eliminato Categoria: {$category->category_name}");
 
         return redirect()->route('categories.index')->with('success', "La Categoria con nome: {$category->category_name} è stata eliminata.");
     }
@@ -188,10 +179,13 @@ class CategoryController extends Controller
         }
         
         // elimino tutt i record aventi gli id della request
-        $categories = Category::whereIn('id', $request->idsRecord)->delete();
+        $categories = Category::whereIn('id', $request->idsRecord)->get();
+        $categories->each->delete();
         
         // Aggiungo il log attività
-        LogActivity::addLog("Eliminate Categorie selezionati");
+        foreach ($categories as $category) {
+            LogActivity::addLog("Eliminato Categoria: {$category->category_name}");
+        }
         
         return response()->json([
             'status' => 200,

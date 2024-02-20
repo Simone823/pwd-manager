@@ -75,7 +75,7 @@ class LogActivityController extends Controller
         }
         
         // elimino tutt i log aventi gli id della request
-        $logs = LogActivity::whereIn('id', $request->idsRecord)->delete();
+        LogActivity::whereIn('id', $request->idsRecord)->delete();
 
         return response()->json([
             'status' => 200,

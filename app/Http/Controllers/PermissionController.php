@@ -33,9 +33,6 @@ class PermissionController extends Controller
         // recupero i permessi
         $permissions = Permission::sortable(['name' => 'asc'])->paginate(config('app.default_paginate'));
 
-        // aggiungo il log attività
-        LogActivity::addLog('Lista Permessi');
-
         return view('permissions.index', compact('permissions'));
     }
 

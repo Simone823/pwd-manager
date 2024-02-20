@@ -41,9 +41,6 @@ class ProfileController extends Controller
         $roles = Role::orderBy('name', 'asc')->get();
         $userLogActivities = $user->logActivities()->sortable(['created_at' => 'desc'])->paginate(config('app.default_paginate'));
 
-        // aggiungo il log attività
-        LogActivity::addLog('Visualizza Profilo');
-
         return view('profiles.show', compact('user', 'roles', 'userLogActivities'));
     }
 
@@ -62,9 +59,6 @@ class ProfileController extends Controller
 
         // recupero l'utente
         $user = User::findOrFail($id);
-
-        // aggiungo il log attività
-        LogActivity::addLog('Modifica Profilo');
 
         return view('profiles.edit', compact('user'));
     }
@@ -102,7 +96,7 @@ class ProfileController extends Controller
         $user->update();
 
         // aggiungo il log attività
-        LogActivity::addLog('Modificato Profilo');
+        LogActivity::addLog("Modificato Profilo: {$user->name} {$user->surname}");
 
         return redirect()->route('profiles.show', $user->id)->with('success', 'Il tuo profilo è stato modificato con successo');
     }
@@ -130,6 +124,9 @@ class ProfileController extends Controller
         $user = User::findOrFail($id);
         $user->password = Hash::make($request->password);
         $user->update();
+
+        // aggiungo il log attività
+        LogActivity::addLog("Cambio password Profilo: {$user->name} {$user->surname}");
 
         return redirect()->route('profiles.show', $user->id)->with('success', 'La nuova Password è stata salvata.');
     }

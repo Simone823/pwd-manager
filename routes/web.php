@@ -21,7 +21,6 @@ Auth::routes(["register" => false]);
 Route::middleware('auth')->group(function () {
     // Rotta default
     Route::get('/', 'HomeController@index')->name('home');
-    Route::get('/home/search-accounts', 'HomeController@searchAccounts')->name('home.search-accounts');
 
     // Admin
     Route::middleware('hasRole:admin')->group(function () {
