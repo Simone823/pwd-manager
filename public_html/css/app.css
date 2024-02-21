@@ -14249,6 +14249,7 @@ table tr td {
   background-color: #de7539;
   padding: 1rem 1.5rem;
   font-weight: 500;
+  border-radius: 6px;
 }
 
 #auth-login {
