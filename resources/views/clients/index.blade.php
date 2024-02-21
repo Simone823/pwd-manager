@@ -66,41 +66,53 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($clients as $client)    
-                                    <tr>
-                                        <th class="d-flex gap-2">
-                                            {{-- check select --}}
-                                            @if (Auth::user()->hasPermission('clients-delete'))
-                                                <div class="form-check">
-                                                    <input type="checkbox" class="form-check-input" id="client_id" name="client_id" value="{{$client->id}}" >
+                                @if (count($clients) > 0)
+                                    @foreach ($clients as $client)    
+                                        <tr>
+                                            <th class="d-flex gap-2">
+                                                {{-- check select --}}
+                                                @if (Auth::user()->hasPermission('clients-delete'))
+                                                    <div class="form-check">
+                                                        <input type="checkbox" class="form-check-input" id="client_id" name="client_id" value="{{$client->id}}" >
+                                                    </div>
+                                                @endif
+
+                                                {{-- btn edit --}}
+                                                @if (Auth::user()->hasPermission('clients-edit'))
+                                                    <a href="{{route('clients.edit', $client->id)}}" class="btn btn-orange shadow">
+                                                        <i class="fa-solid fa-pen"></i>
+                                                    </a>
+                                                @endif
+
+                                                {{-- btn delete --}}
+                                                @if (Auth::user()->hasPermission('clients-delete'))
+                                                    <div class="btn-delete">
+                                                        <form action="{{route('clients.destroy', $client->id)}}" method="POST">
+                                                            @csrf
+                                                            @method('DELETE')
+
+                                                            <button type="submit" class="btn btn-orange shadow">
+                                                                <i class="fa-solid fa-trash"></i>
+                                                            </button>
+                                                        </form>
+                                                    </div>
+                                                @endif
+                                            </th>
+                                            <th class="fw-normal">{{$client->name}}</th>
+                                            <th class="fw-normal">{{$client->description}}</th>
+                                        </tr>
+                                    @endforeach
+
+                                    @else
+                                        <tr>
+                                            <td colspan="50">
+                                                <div class="wrapper-no-records">
+                                                    <strong>Info!</strong>
+                                                    Nessun record in tabella
                                                 </div>
-                                            @endif
-
-                                            {{-- btn edit --}}
-                                            @if (Auth::user()->hasPermission('clients-edit'))
-                                                <a href="{{route('clients.edit', $client->id)}}" class="btn btn-orange shadow">
-                                                    <i class="fa-solid fa-pen"></i>
-                                                </a>
-                                            @endif
-
-                                            {{-- btn delete --}}
-                                            @if (Auth::user()->hasPermission('clients-delete'))
-                                                <div class="btn-delete">
-                                                    <form action="{{route('clients.destroy', $client->id)}}" method="POST">
-                                                        @csrf
-                                                        @method('DELETE')
-
-                                                        <button type="submit" class="btn btn-orange shadow">
-                                                            <i class="fa-solid fa-trash"></i>
-                                                        </button>
-                                                    </form>
-                                                </div>
-                                            @endif
-                                        </th>
-                                        <th class="fw-normal">{{$client->name}}</th>
-                                        <th class="fw-normal">{{$client->description}}</th>
-                                    </tr>
-                                @endforeach
+                                            </td>
+                                        </tr>
+                                @endif
                             </tbody>
                         </table>
                     </div>

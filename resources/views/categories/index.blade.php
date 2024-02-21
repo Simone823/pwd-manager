@@ -65,40 +65,52 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($categories as $category)    
-                                    <tr>
-                                        <th class="d-flex gap-2">
-                                            {{-- check select --}}
-                                            @if (Auth::user()->hasPermission('categories-delete'))
-                                                <div class="form-check">
-                                                    <input type="checkbox" class="form-check-input" id="category_id" name="category_id" value="{{$category->id}}" >
+                                @if(count($categories) > 0)
+                                    @foreach ($categories as $category)    
+                                        <tr>
+                                            <th class="d-flex gap-2">
+                                                {{-- check select --}}
+                                                @if (Auth::user()->hasPermission('categories-delete'))
+                                                    <div class="form-check">
+                                                        <input type="checkbox" class="form-check-input" id="category_id" name="category_id" value="{{$category->id}}" >
+                                                    </div>
+                                                @endif
+
+                                                {{-- btn edit --}}
+                                                @if (Auth::user()->hasPermission('categories-edit'))
+                                                    <a href="{{route('categories.edit', $category->id)}}" class="btn btn-orange shadow">
+                                                        <i class="fa-solid fa-pen"></i>
+                                                    </a>
+                                                @endif
+
+                                                {{-- btn delete --}}
+                                                @if (Auth::user()->hasPermission('categories-delete'))
+                                                    <div class="btn-delete">
+                                                        <form action="{{route('categories.destroy', $category->id)}}" method="POST">
+                                                            @csrf
+                                                            @method('DELETE')
+
+                                                            <button type="submit" class="btn btn-orange shadow">
+                                                                <i class="fa-solid fa-trash"></i>
+                                                            </button>
+                                                        </form>
+                                                    </div>
+                                                @endif
+                                            </th>
+                                            <th class="fw-normal">{{$category->category_name}}</th>
+                                        </tr>
+                                    @endforeach
+                                    
+                                    @else
+                                        <tr>
+                                            <td colspan="50">
+                                                <div class="wrapper-no-records">
+                                                    <strong>Info!</strong>
+                                                    Nessun record in tabella
                                                 </div>
-                                            @endif
-
-                                            {{-- btn edit --}}
-                                            @if (Auth::user()->hasPermission('categories-edit'))
-                                                <a href="{{route('categories.edit', $category->id)}}" class="btn btn-orange shadow">
-                                                    <i class="fa-solid fa-pen"></i>
-                                                </a>
-                                            @endif
-
-                                            {{-- btn delete --}}
-                                            @if (Auth::user()->hasPermission('categories-delete'))
-                                                <div class="btn-delete">
-                                                    <form action="{{route('categories.destroy', $category->id)}}" method="POST">
-                                                        @csrf
-                                                        @method('DELETE')
-
-                                                        <button type="submit" class="btn btn-orange shadow">
-                                                            <i class="fa-solid fa-trash"></i>
-                                                        </button>
-                                                    </form>
-                                                </div>
-                                            @endif
-                                        </th>
-                                        <th class="fw-normal">{{$category->category_name}}</th>
-                                    </tr>
-                                @endforeach
+                                            </td>
+                                        </tr>
+                                @endif
                             </tbody>
                         </table>
                     </div>

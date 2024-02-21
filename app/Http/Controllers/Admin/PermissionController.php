@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use App\LogActivity;
+use App\Http\Controllers\Controller;
 use App\Permission;
 use Auth;
 use Illuminate\Http\Request;
@@ -33,7 +33,7 @@ class PermissionController extends Controller
         // recupero i permessi
         $permissions = Permission::sortable(['name' => 'asc'])->paginate(config('app.default_paginate'));
 
-        return view('permissions.index', compact('permissions'));
+        return view('admin.permissions.index', compact('permissions'));
     }
 
     /**

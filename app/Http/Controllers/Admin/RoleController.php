@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\LogActivity;
 use App\Permission;
 use App\Role;
@@ -35,7 +36,7 @@ class RoleController extends Controller
         // recupero i ruoli
         $roles = Role::sortable(['name' => 'asc'])->paginate(config('app.default_paginate'));
 
-        return view('roles.index', compact('roles'));
+        return view('admin.roles.index', compact('roles'));
     }
 
     /**
@@ -52,7 +53,7 @@ class RoleController extends Controller
         // recupero i permessi
         $permissions = Permission::orderBy('name', 'asc')->get();
 
-        return view('roles.create', compact('permissions'));
+        return view('admin.roles.create', compact('permissions'));
     }
 
     /**
@@ -84,7 +85,7 @@ class RoleController extends Controller
         // aggiungo il log attività
         LogActivity::addLog("Creato Ruolo: {$newRole->name}");
 
-        return redirect()->route('roles.index')->with('success', "Il Ruolo con nome {$newRole->name} è stato creato");
+        return redirect()->route('admin.roles.index')->with('success', "Il Ruolo con nome {$newRole->name} è stato creato");
     }
 
     /**
@@ -105,7 +106,7 @@ class RoleController extends Controller
         // recupero i dati per le relazioni
         $permissions = Permission::orderBy('name', 'asc')->get();
 
-        return view('roles.show', compact('role', 'permissions'));
+        return view('admin.roles.show', compact('role', 'permissions'));
     }
 
     /**
@@ -128,10 +129,10 @@ class RoleController extends Controller
 
         // controllo se il nome del ruolo è Admin
         if($role->name == 'Admin') {
-            return redirect()->route('roles.index')->with('error', "Non puoi modificare il Ruolo {$role->name}");
+            return redirect()->route('admin.roles.index')->with('error', "Non puoi modificare il Ruolo {$role->name}");
         }
 
-        return view('roles.edit', compact('role', 'permissions'));
+        return view('admin.roles.edit', compact('role', 'permissions'));
     }
 
     /**
@@ -164,7 +165,7 @@ class RoleController extends Controller
         // aggiungo il log attività
         LogActivity::addLog("Modificato Ruolo: {$role->name}");
 
-        return redirect()->route('roles.index')->with('success', "Il Ruolo {$role->name} è stato aggiornato");
+        return redirect()->route('admin.roles.index')->with('success', "Il Ruolo {$role->name} è stato aggiornato");
     }
 
     /**
@@ -187,14 +188,14 @@ class RoleController extends Controller
 
         // controllo se esiste almeno un utente con il ruolo passato
         if($user) {
-            return redirect()->route('roles.index')->with('error', "Non puoi eliminare il Ruolo {$role->name}, esistono degli utenti con questo Ruolo.");
+            return redirect()->route('admin.roles.index')->with('error', "Non puoi eliminare il Ruolo {$role->name}, esistono degli utenti con questo Ruolo.");
         }
 
         if($role->name == 'Admin') {
             // aggiungo il log attività
             LogActivity::addLog("Ha provato ad eliminare il Ruolo: {$role->name}");
 
-            return redirect()->route('roles.index')->with('error', "Non puoi eliminare il Ruolo {$role->name} !");
+            return redirect()->route('admin.roles.index')->with('error', "Non puoi eliminare il Ruolo {$role->name} !");
         }
 
         // elimino il ruolo
@@ -203,6 +204,6 @@ class RoleController extends Controller
         // aggiungo il log attività
         LogActivity::addLog("Eliminato Ruolo: {$role->name}");
 
-        return redirect()->route('roles.index')->with('success', "Il Ruolo con nome: {$role->name} è stato eliminato");
+        return redirect()->route('admin.roles.index')->with('success', "Il Ruolo con nome: {$role->name} è stato eliminato");
     }
 }

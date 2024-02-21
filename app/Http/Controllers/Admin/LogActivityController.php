@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\LogActivity;
 use Auth;
 use Illuminate\Http\Request;
@@ -32,7 +33,7 @@ class LogActivityController extends Controller
         // recupero i log
         $logActivities = LogActivity::sortable(['created_at' => 'desc'])->paginate(config('app.default_paginate'));
 
-        return view('logActivities.index', compact('logActivities'));
+        return view('admin.logActivities.index', compact('logActivities'));
     }
 
     /**

@@ -65,25 +65,25 @@
                     </li>
                     @if(Auth::user()->isAdmin())
                         <li>
-                            <a class="dropdown-item @if (Route::is('permissions.*')) active @endif" href="{{route('permissions.index')}}">
+                            <a class="dropdown-item @if (Route::is('admin.permissions.*')) active @endif" href="{{route('admin.permissions.index')}}">
                                 <i class="fa-solid fa-briefcase me-1"></i>
                                 Permessi
                             </a>
                         </li>
                         <li>
-                            <a class="dropdown-item @if (Route::is('roles.*')) active @endif" href="{{route('roles.index')}}">
+                            <a class="dropdown-item @if (Route::is('admin.roles.*')) active @endif" href="{{route('admin.roles.index')}}">
                                 <i class="fa-solid fa-medal me-1"></i>
                                 Ruoli
                             </a>
                         </li>
                         <li>
-                            <a class="dropdown-item @if (Route::is('users.*')) active @endif" href="{{route('users.index')}}">
+                            <a class="dropdown-item @if (Route::is('admin.users.*')) active @endif" href="{{route('admin.users.index')}}">
                                 <i class="fa-solid fa-user me-1"></i>
                                 Utenti
                             </a>
                         </li>
                         <li>
-                            <a class="dropdown-item @if (Route::is('log-activities.*')) active @endif" href="{{route('log-activities.index')}}">
+                            <a class="dropdown-item @if (Route::is('admin.log-activities.*')) active @endif" href="{{route('admin.log-activities.index')}}">
                                 <i class="fa-solid fa-list me-1"></i>
                                 Log Attività
                             </a>

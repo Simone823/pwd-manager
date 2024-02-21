@@ -68,48 +68,60 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($accounts as $account)
-                                    <tr>
-                                        <th class="d-flex align-items-center gap-2">
-                                            {{-- check select --}}
-                                            @if (Auth::user()->hasPermission('accounts-delete'))
-                                                <div class="form-check">
-                                                    <input type="checkbox" class="form-check-input" id="account_id" name="account_id" value="{{$account->id}}" >
-                                                </div>
-                                            @endif
+                                @if(count($accounts) > 0)
+                                    @foreach ($accounts as $account)
+                                        <tr>
+                                            <th class="d-flex align-items-center gap-2">
+                                                {{-- check select --}}
+                                                @if (Auth::user()->hasPermission('accounts-delete'))
+                                                    <div class="form-check">
+                                                        <input type="checkbox" class="form-check-input" id="account_id" name="account_id" value="{{$account->id}}" >
+                                                    </div>
+                                                @endif
 
-                                            {{-- btn show --}}
-                                            <a href="{{route('accounts.show', $account->id)}}" class="btn btn-orange shadow">
-                                                <i class="fa-sharp fa-solid fa-eye"></i>
-                                            </a>
-
-                                            {{-- btn edit --}}
-                                            @if (Auth::user()->hasPermission('accounts-edit'))
-                                                <a href="{{route('accounts.edit', $account->id)}}" class="btn btn-orange shadow">
-                                                    <i class="fa-solid fa-pen"></i>
+                                                {{-- btn show --}}
+                                                <a href="{{route('accounts.show', $account->id)}}" class="btn btn-orange shadow">
+                                                    <i class="fa-sharp fa-solid fa-eye"></i>
                                                 </a>
-                                            @endif
 
-                                            {{-- btn delete --}}
-                                            @if (Auth::user()->hasPermission('accounts-delete'))
-                                                <div class="btn-delete">
-                                                    <form action="{{route('accounts.destroy', $account->id)}}" method="POST">
-                                                        @csrf
-                                                        @method('DELETE')
+                                                {{-- btn edit --}}
+                                                @if (Auth::user()->hasPermission('accounts-edit'))
+                                                    <a href="{{route('accounts.edit', $account->id)}}" class="btn btn-orange shadow">
+                                                        <i class="fa-solid fa-pen"></i>
+                                                    </a>
+                                                @endif
 
-                                                        <button type="submit" class="btn btn-orange shadow">
-                                                            <i class="fa-solid fa-trash"></i>
-                                                        </button>
-                                                    </form>
+                                                {{-- btn delete --}}
+                                                @if (Auth::user()->hasPermission('accounts-delete'))
+                                                    <div class="btn-delete">
+                                                        <form action="{{route('accounts.destroy', $account->id)}}" method="POST">
+                                                            @csrf
+                                                            @method('DELETE')
+
+                                                            <button type="submit" class="btn btn-orange shadow">
+                                                                <i class="fa-solid fa-trash"></i>
+                                                            </button>
+                                                        </form>
+                                                    </div>
+                                                @endif
+                                            </th>
+                                            <th class="fw-normal">{{$account->name}}</th>
+                                            <th class="fw-normal">{{$account->client ? $account->client->name : '-'}}</th>
+                                            <th class="fw-normal">{{$account->category ? $account->category->category_name : '-'}}</th>
+                                            <th class="fw-normal">{{$account->description}}</th>
+                                        </tr>
+                                    @endforeach
+                                    
+                                    @else
+                                        <tr>
+                                            <td colspan="50">
+                                                <div class="wrapper-no-records">
+                                                    <strong>Info!</strong>
+                                                    Nessun record in tabella
                                                 </div>
-                                            @endif
-                                        </th>
-                                        <th class="fw-normal">{{$account->name}}</th>
-                                        <th class="fw-normal">{{$account->client ? $account->client->name : '-'}}</th>
-                                        <th class="fw-normal">{{$account->category ? $account->category->category_name : '-'}}</th>
-                                        <th class="fw-normal">{{$account->description}}</th>
-                                    </tr>
-                                @endforeach
+                                            </td>
+                                        </tr>
+                                @endif
                             </tbody>
                         </table>
                     </div>

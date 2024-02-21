@@ -14246,6 +14246,7 @@ table tr td {
 }
 
 .wrapper-no-records {
+  color: black;
   background-color: #de7539;
   padding: 1rem 1.5rem;
   font-weight: 500;

@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\LogActivity;
 use App\Role;
 use App\User;
@@ -35,7 +36,7 @@ class UserController extends Controller
         // recupero gli utenti
         $users = User::sortable(['surname' => 'asc'])->paginate(config('app.default_paginate'));
 
-        return view('users.index', compact('users'));
+        return view('admin.users.index', compact('users'));
     }
 
     /**
@@ -52,7 +53,7 @@ class UserController extends Controller
         // recupero i dati per le relazioni
         $roles = Role::where('name', '!=', 'Admin')->orderBy('name', 'asc')->get();
 
-        return view('users.create', compact('roles'));
+        return view('admin.users.create', compact('roles'));
     }
 
     /**
@@ -90,7 +91,7 @@ class UserController extends Controller
         // aggiungo il log attività
         LogActivity::addLog("Creato Utente: {$newUser->username}");
 
-        return redirect()->route('users.index')->with('success', "L'Utente con username: {$newUser->username} è stato creato.");
+        return redirect()->route('admin.users.index')->with('success', "L'Utente con username: {$newUser->username} è stato creato.");
     }
 
     /**
@@ -111,7 +112,7 @@ class UserController extends Controller
         // recupero i dati per le relazioni
         $roles = Role::orderBy('name', 'asc')->get();
 
-        return view('users.show', compact('user', 'roles'));
+        return view('admin.users.show', compact('user', 'roles'));
     }
 
     /**
@@ -134,10 +135,10 @@ class UserController extends Controller
 
         // controllo se l'utente è admin
         if($user->username == 'admin') {
-            return redirect()->route('users.index')->with('error', "Non puoi modificare l'Utente con username {$user->username} .");
+            return redirect()->route('admin.users.index')->with('error', "Non puoi modificare l'Utente con username {$user->username} .");
         }
 
-        return view('users.edit', compact('user', 'roles'));
+        return view('admin.users.edit', compact('user', 'roles'));
     }
 
     /**
@@ -174,7 +175,7 @@ class UserController extends Controller
         // aggiungo il log attività
         LogActivity::addLog("Modificato Utente: {$user->username}");
 
-        return redirect()->route('users.index')->with('success', "L'Utente con username {$user->username} è stato modificato.");
+        return redirect()->route('admin.users.index')->with('success', "L'Utente con username {$user->username} è stato modificato.");
     }
 
     /**
@@ -197,7 +198,7 @@ class UserController extends Controller
             // aggiungo il log attività
             LogActivity::addLog("Ha provato ad eliminare l'Utente: {$user->username}");
 
-            return redirect()->route('users.index')->with('error', "Non puoi eliminare l'utente {$user->username}");
+            return redirect()->route('admin.users.index')->with('error', "Non puoi eliminare l'utente {$user->username}");
         }
 
         // elimino l'utente
@@ -206,6 +207,6 @@ class UserController extends Controller
         // aggiungo il log attività
         LogActivity::addLog("Eliminato Utente: {$user->username}");
 
-        return redirect()->route('users.index')->with('success', "L'Utente con username: {$user->username} è stato eliminato");
+        return redirect()->route('admin.users.index')->with('success', "L'Utente con username: {$user->username} è stato eliminato");
     }
 }

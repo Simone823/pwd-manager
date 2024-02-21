@@ -18,7 +18,7 @@
                 {{-- row turn back users index --}}
                 <div class="row mb-5">
                     <div class="turn-back">
-                        <a class="btn btn-transparent fw-semibold shadow" href="{{route('users.index')}}">
+                        <a class="btn btn-transparent fw-semibold shadow" href="{{route('admin.users.index')}}">
                             <i class="fa-solid fa-arrow-left"></i>
                             Torna alla lista Utenti
                         </a>
@@ -28,7 +28,7 @@
                 {{-- row form --}}
                 <div class="row">
                     <div class="col-12">
-                        <form action="{{route('users.store')}}" method="POST">
+                        <form action="{{route('admin.users.store')}}" method="POST">
                             @csrf
                             
                             {{-- row input --}}

@@ -18,7 +18,7 @@
                 {{-- row turn back users index --}}
                 <div class="row mb-5">
                     <div class="turn-back">
-                        <a class="btn btn-transparent fw-semibold shadow" href="{{route('users.index')}}">
+                        <a class="btn btn-transparent fw-semibold shadow" href="{{route('admin.users.index')}}">
                             <i class="fa-solid fa-arrow-left"></i>
                             Torna alla lista Utenti
                         </a>
@@ -79,7 +79,7 @@
                         @if ($user->username != 'admin')
                             <div class="row">
                                 <div class="col-12 d-flex justify-content-end">
-                                    <a href="{{route('users.edit', $user->id)}}" class="btn btn-orange fw-bold px-4 text-uppercase">
+                                    <a href="{{route('admin.users.edit', $user->id)}}" class="btn btn-orange fw-bold px-4 text-uppercase">
                                         <i class="fa-solid fa-pen"></i>
                                         Modifica
                                     </a>

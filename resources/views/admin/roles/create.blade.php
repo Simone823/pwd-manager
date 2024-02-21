@@ -18,7 +18,7 @@
                 {{-- row turn back role index --}}
                 <div class="row mb-5">
                     <div class="turn-back">
-                        <a class="btn btn-transparent fw-semibold shadow" href="{{route('roles.index')}}">
+                        <a class="btn btn-transparent fw-semibold shadow" href="{{route('admin.roles.index')}}">
                             <i class="fa-solid fa-arrow-left"></i>
                             Torna alla lista Ruoli
                         </a>
@@ -28,7 +28,7 @@
                 {{-- row form --}}
                 <div class="row">
                     <div class="col-12">
-                        <form action="{{route('roles.store')}}" method="POST">
+                        <form action="{{route('admin.roles.store')}}" method="POST">
                             @csrf
 
                             {{-- role name --}}

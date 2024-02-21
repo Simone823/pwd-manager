@@ -28,9 +28,8 @@
                 {{-- row form --}}
                 <div class="row">
                     <div class="col-12">
-                        <form action="{{route('roles.update', $role->id)}}" method="POST">
+                        <form action="{{route('admin.roles.update', $role->id)}}" method="POST">
                             @csrf
-                            @method('PUT')
 
                             {{-- role name --}}
                             <div class="row mb-2">

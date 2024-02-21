@@ -23,18 +23,31 @@ Route::middleware('auth')->group(function () {
     Route::get('/', 'HomeController@index')->name('home');
 
     // Admin
-    Route::middleware('hasRole:admin')->group(function () {
+    Route::namespace('Admin')->name('admin.')->group(function () {
         // Permissions
-        Route::resource('/permissions', 'PermissionController')->only(['index']);
+        Route::get('/permissions/index', 'PermissionController@index')->name('permissions.index');
 
         // Roles
-        Route::resource('/roles', 'RoleController');
+        Route::get('/roles/index', 'RoleController@index')->name('roles.index');
+        Route::get('/roles/create', 'RoleController@create')->name('roles.create');
+        Route::post('/roles/store', 'RoleController@store')->name('roles.store');
+        Route::get('/roles/show/{id}', 'RoleController@show')->name('roles.show');
+        Route::get('/roles/edit/{id}', 'RoleController@edit')->name('roles.edit');
+        Route::post('/roles/update/{id}', 'RoleController@update')->name('roles.update');
+        Route::delete('/roles/delete/{id}', 'RoleController@destroy')->name('roles.delete');
 
         // Users
-        Route::resource('/users', 'UserController');
+        Route::get('/users/index', 'UserController@index')->name('users.index');
+        Route::get('/users/create', 'UserController@create')->name('users.create');
+        Route::post('/users/store', 'UserController@store')->name('users.store');
+        Route::get('/users/show/{id}', 'UserController@show')->name('users.show');
+        Route::get('/users/edit/{id}', 'UserController@edit')->name('users.edit');
+        Route::post('/users/update/{id}', 'UserController@update')->name('users.update');
+        Route::delete('/users/delete/{id}', 'UserController@destroy')->name('users.delete');
 
         // LogActivities
-        Route::resource('/log-activities', 'LogActivityController')->only(['index', 'destroy']);
+        Route::get('/log-activities/index', 'LogActivityController@index')->name('log-activities.index');
+        Route::delete('/log-activities/delete/{id}', 'LogActivityController@destroy')->name('log-activities.delete');
         Route::post('/log-activities/deleteSelected', 'LogActivityController@deleteSelected')->name('log-activities.deleteSelected');
     });
 
